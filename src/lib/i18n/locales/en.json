@@ -1,0 +1,31 @@
+{
+  "common": {
+    "change-language": "Switch language",
+    "change-theme": "Switch theme"
+  },
+  "nav": {
+    "home": "Home",
+    "settings": "Setting"
+  },
+  "theme": {
+    "title": "Theme",
+    "color": "Color",
+    "radius": "Radius"
+  },
+  "data-table": {
+    "pagination": {
+      "row-per-page": "Rows per page",
+      "current-page": "The {{c}} / {{n}} Page"
+    },
+    "no-data": "No data"
+  },
+  "auth": {
+    "header": "Login",
+    "password": "Password",
+    "input-password": "Please enter your password",
+    "login": "Login",
+    "logout": "Logout",
+    "username": "Username",
+    "input-username": "Please enter your username"
+  }
+}

@@ -1,0 +1,181 @@
+name: Release
+
+# 限定推送 tag 形式为 x.y.z 的时候触发
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+env:
+  registry: ghcr.io
+  registry-username: ${{ github.actor }}
+  registry-password: ${{ secrets.GITHUB_TOKEN }}
+  # TODO: 确保此处的 secrets 在 GitHub 仓库中都存在且无误
+  server-host: ${{ secrets.SERVER_HOST }}
+  server-username: ${{ secrets.SERVER_USERNAME }}
+  server-password: ${{ secrets.SERVER_PASSWORD }}
+  node-env: production
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      # TODO: 修改此处的dockerfile路径，镜像名，容器名和端口号。可以根据需要添加多个镜像。
+      matrix:
+        include:
+          - dockerfile: ./Dockerfile
+            image: ${{ github.repository }}/starter-react
+            container: starter-react-demo
+            port: 5001:80
+
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # TODO: 移除这个 step，如果你不需要 Feishu 通知
+      - name: Create notification
+        id: notification-before
+        uses: actions/github-script@v6
+        if: always()
+        env:
+          GITHUB_REPOSITORY: ${{ toJson(github.repository) }}
+          GITHUB_HEAD_COMMIT: ${{ toJson(github.event.head_commit) }}
+          NOW_TAG: ${{ github.ref_name }}
+        with:
+          script: |
+            const repository = process.env.GITHUB_REPOSITORY
+            const commit = JSON.parse(process.env.GITHUB_HEAD_COMMIT);
+            const authorName = commit.author.name;
+            const message = commit.message;
+            const url = commit.url;
+            return {"msg_type":"text","content":{"text":`镜像开始构建:\n- 仓库: ${repository}\n- 标签: ${process.env.NOW_TAG}\n- 提交作者: ${authorName}\n- 任务url: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`}}
+
+      # TODO: 移除这个 step，如果你不需要 Feishu 通知
+      - name: Send Feishu notification
+        if: always()
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d ${{ toJson(steps.notification-before.outputs.result) }} ${{ secrets.FEI_SHU_URL }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.registry }}
+          username: ${{ env.registry-username }}
+          password: ${{ env.registry-password }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.registry }}/${{ matrix.image }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        id: docker_build
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+
+      # TODO: 移除这个 step，如果你不需要 Feishu 通知
+      - name: Create notification
+        id: notification
+        uses: actions/github-script@v6
+        if: always()
+        env:
+          GITHUB_REPOSITORY: ${{ toJson(github.repository) }}
+          GITHUB_HEAD_COMMIT: ${{ toJson(github.event.head_commit) }}
+          CONCLUSION: ${{ steps.docker_build.conclusion }}
+          IMAGE: ${{ toJson(steps.meta.outputs.tags) }}
+          NOW_TAG: ${{ github.ref_name }}
+        with:
+          script: |
+            const conclusion = process.env.CONCLUSION;
+            const repository = process.env.GITHUB_REPOSITORY;
+            const commit = JSON.parse(process.env.GITHUB_HEAD_COMMIT);
+            const authorName = commit.author.name;
+            const message = commit.message;
+            const url = commit.url;
+            const image = process.env.IMAGE;
+            return {"msg_type":"text","content":{"text":`${conclusion == 'success' ? "镜像构建成功" : "镜像构建失败"}:\n- 仓库: ${repository}\n- 标签: ${process.env.NOW_TAG}\n- 提交作者: ${authorName}\n- 任务url: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}\n- 镜像url: ${JSON.parse(image).split('\n')[0]}`}}
+
+      # TODO: 移除这个 step，如果你不需要 Feishu 通知
+      - name: Send Feishu notification
+        if: always()
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d ${{ toJson(steps.notification.outputs.result) }} ${{ secrets.FEI_SHU_URL }}
+
+      # TODO: 移除这个 step，如果你不需要自动部署到服务器
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v0.1.10
+        id: deploy_to_server
+        with:
+          host: ${{ env.server-host }}
+          username: ${{ env.server-username }}
+          password: ${{ env.server-password }}
+          script: |
+            echo "开始登录"
+            docker login -u ${{ env.registry-username }} -p ${{ env.registry-password }} ${{ env.registry }}
+
+            echo "开始获取当前运行信息"
+            container_name="${{ matrix.container }}"
+            image_id=$(docker inspect --format='{{.Image}}' $container_name 2>/dev/null)
+            if [ -z "$image_id" ]; then
+                echo "容器 $container_name 不存在"
+            else
+                image_tag=$(docker image inspect --format='{{index .RepoTags 0}}' $image_id | cut -d ":" -f 2)
+                echo "容器 $container_name 的当前镜像标签版本号为: $image_tag"
+            fi
+
+            echo "开始拉取镜像，新版本号为: ${{ github.ref_name }}"
+            docker pull ${{ env.registry }}/${{ matrix.image }}:${{ github.ref_name }}
+            echo "开始停止并删除旧容器"
+            docker stop ${{ matrix.container }} || true && docker rm ${{ matrix.container }} || true
+            echo "开始删除旧镜像"
+            docker rmi ${{ env.registry }}/${{ matrix.image }}:${image_tag} || true
+            echo "开始启动新容器"
+            docker run --env NODE_ENV=${{ env.node-env }} -d -p ${{ matrix.port }} --name ${{ matrix.container }} ${{ env.registry }}/${{ matrix.image }}:${{ github.ref_name }}
+
+      # TODO: 移除这个 step，如果你不需要 Feishu 通知
+      - name: Create notification
+        id: notification_after
+        uses: actions/github-script@v6
+        if: always()
+        env:
+          GITHUB_REPOSITORY: ${{ toJson(github.repository) }}
+          GITHUB_HEAD_COMMIT: ${{ toJson(github.event.head_commit) }}
+          CONCLUSION: ${{ steps.deploy_to_server.conclusion }}
+          IMAGE: ${{ toJson(steps.meta.outputs.tags) }}
+          NOW_TAG: ${{ github.ref_name }}
+          HOST: ${{ env.server-host }}
+          PORT: ${{ matrix.port }}
+        with:
+          script: |
+            const conclusion = process.env.CONCLUSION;
+            const repository = process.env.GITHUB_REPOSITORY;
+            const commit = JSON.parse(process.env.GITHUB_HEAD_COMMIT);
+            const authorName = commit.author.name;
+            const message = commit.message;
+            const url = commit.url;
+            const image = process.env.IMAGE;
+            const websiteUrl = `http://${process.env.HOST}:${process.env.PORT.split(':')[0]}`;
+            return {"msg_type":"text","content":{"text":`${conclusion == 'success' ? "部署到服务器成功" : "部署到服务器失败"}:\n- 仓库: ${repository}\n- 标签: ${process.env.NOW_TAG}\n- 提交作者: ${authorName}\n- 任务url: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}\n- 镜像url: ${JSON.parse(image).split('\n')[0]}\n- 网站url: ${websiteUrl}`}}
+
+      # TODO: 移除这个 step，如果你不需要 Feishu 通知
+      - name: Send Feishu notification
+        if: always()
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d ${{ toJson(steps.notification_after.outputs.result) }} ${{ secrets.FEI_SHU_URL }}

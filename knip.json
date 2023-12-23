@@ -1,0 +1,19 @@
+{
+  "$schema": "https://unpkg.com/knip@3/schema.json",
+  "ignoreExportsUsedInFile": {
+    "type": true,
+    "interface": true
+  },
+  "ignoreDependencies": [
+    "@iconify-json/lucide",
+    "@iconify-json/mdi",
+    "@iconify-json/simple-icons",
+
+    "virtual:uno.css"
+  ],
+  "entry": [
+    "*.config.{js,ts}",
+    "src/main.tsx",
+    "src/app/**/{layout,page,loding,not-found,error,global-error,route,template,default}.tsx"
+  ]
+}

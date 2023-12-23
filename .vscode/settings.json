@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.validate": ["typescript", "typescriptreact"],
+
+  "i18n-ally.localesPaths": ["src/lib/i18n/locales"],
+  "i18n-ally.keystyle": "nested",
+
+  "unocss.disable": false
+}
