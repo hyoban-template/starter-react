@@ -29,7 +29,7 @@ jobs:
       matrix:
         include:
           - dockerfile: ./Dockerfile
-            image: ${{ github.repository }}/starter-react
+            image: ${{ github.repository }}
             container: starter-react-demo
             port: 5001:80
 
