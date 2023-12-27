@@ -2,8 +2,7 @@ import { atom, useAtom, useAtomValue, useSetAtom } from "jotai"
 import { atomEffect } from "jotai-effect"
 import { atomWithStorage } from "jotai/utils"
 
-// eslint-disable-next-line unicorn/no-useless-undefined
-const isSystemDarkAtom = atom<boolean | undefined>(undefined)
+const isSystemDarkAtom = atom<boolean | null>(null)
 isSystemDarkAtom.onMount = (set) => {
   if (typeof window === "undefined") return
   const matcher = window.matchMedia("(prefers-color-scheme: dark)")
@@ -19,7 +18,7 @@ isSystemDarkAtom.onMount = (set) => {
 const themeOptions = ["system", "light", "dark"] as const
 export type Theme = (typeof themeOptions)[number]
 
-function isDarkMode(setting?: Theme | null, isSystemDark?: boolean) {
+function isDarkMode(setting?: Theme | null, isSystemDark?: boolean | null) {
   return setting === "dark" || (isSystemDark && setting !== "light")
 }
 
