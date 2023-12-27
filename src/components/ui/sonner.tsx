@@ -1,5 +1,5 @@
 import { Toaster as Sonner } from "sonner"
-import { useDark } from "~/hooks/use-dark"
+import { useDark } from "jotai-dark"
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
