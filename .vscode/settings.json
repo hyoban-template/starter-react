@@ -8,5 +8,11 @@
   "i18n-ally.localesPaths": ["src/lib/i18n/locales"],
   "i18n-ally.keystyle": "nested",
 
-  "unocss.disable": false
+  "unocss.disable": false,
+
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "lucide-react",
+    "react-day-picker",
+    "@radix-ui/*"
+  ]
 }
