@@ -1,4 +1,5 @@
-import { useLocalStorage } from "foxact/use-local-storage"
+import { useAtomValue } from "jotai"
+import { atomWithStorage } from "jotai/utils"
 import { useTranslation } from "react-i18next"
 
 import { SideNav } from "~/components/side-nav"
@@ -18,6 +19,11 @@ import { Utility } from "~/components/utility"
 import type { NavItem } from "~/components/side-nav"
 import type { PropsWithChildren } from "react"
 
+const resizablePanelLayoutAtom = atomWithStorage<number[]>(
+  "resizable-panel-layout",
+  [20, 80],
+)
+
 export function SidebarLayout({
   children,
   nav,
@@ -25,16 +31,13 @@ export function SidebarLayout({
   nav?: NavItem[]
 }>) {
   const { t } = useTranslation()
-  const [defaultLayout] = useLocalStorage<number[]>(
-    "react-resizable-panels",
-    [20, 80],
-  )
+  const defaultLayout = useAtomValue(resizablePanelLayoutAtom)
   return (
     <ResizablePanelGroup
       direction="horizontal"
       autoSaveId="react-resizable-panels"
     >
-      <ResizablePanel defaultSize={defaultLayout![0]}>
+      <ResizablePanel defaultSize={defaultLayout[0]}>
         <aside className="text-white bg-primary dark:bg-secondary h-full flex flex-col p-4">
           <SideNav className="grow" nav={nav} />
           <Utility>
@@ -54,7 +57,7 @@ export function SidebarLayout({
         </aside>
       </ResizablePanel>
       <ResizableHandle />
-      <ResizablePanel defaultSize={defaultLayout![1]}>
+      <ResizablePanel defaultSize={defaultLayout[1]}>
         <main className="overflow-auto w-full h-full p-10 relative">
           {children}
         </main>

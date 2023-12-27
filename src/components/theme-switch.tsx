@@ -1,4 +1,5 @@
-import { useLocalStorage } from "foxact/use-local-storage"
+import { useAtom } from "jotai"
+import { atomWithStorage } from "jotai/utils"
 import { useTranslation } from "react-i18next"
 
 import { Button } from "~/components/ui/button"
@@ -20,16 +21,19 @@ const builtinColors = [
 ] as const
 const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const
 
+const currentColorAtom = atomWithStorage("currentColor", "neutral", undefined, {
+  getOnInit: true,
+})
+const currentRadiusAtom = atomWithStorage<(typeof builtinRadiuses)[number]>(
+  "currentRadius",
+  0.5,
+  undefined,
+  { getOnInit: true },
+)
+
 export function ThemeSwitch() {
-  const [currentColor, setCurrentColor] = useLocalStorage(
-    "currentColor",
-    "neutral",
-  )
-
-  const [currentRadius, setCurrentRadius] = useLocalStorage<
-    (typeof builtinRadiuses)[number]
-  >("currentRadius", 0.5)
-
+  const [currentColor, setCurrentColor] = useAtom(currentColorAtom)
+  const [currentRadius, setCurrentRadius] = useAtom(currentRadiusAtom)
   const { t } = useTranslation()
 
   return (
