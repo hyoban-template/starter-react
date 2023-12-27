@@ -2,22 +2,19 @@ import { atom, useAtom, useAtomValue, useSetAtom } from "jotai"
 import { atomEffect } from "jotai-effect"
 import { atomWithStorage } from "jotai/utils"
 
-const query = "(prefers-color-scheme: dark)"
-
 // eslint-disable-next-line unicorn/no-useless-undefined
 const isSystemDarkAtom = atom<boolean | undefined>(undefined)
-const systemDarkEffect = atomEffect((_get, set) => {
+isSystemDarkAtom.onMount = (set) => {
   if (typeof window === "undefined") return
-  const matcher = window.matchMedia(query)
+  const matcher = window.matchMedia("(prefers-color-scheme: dark)")
   const update = () => {
-    set(isSystemDarkAtom, matcher.matches)
+    set(matcher.matches)
   }
   matcher.addEventListener("change", update)
-  update()
   return () => {
     matcher.removeEventListener("change", update)
   }
-})
+}
 
 const themeOptions = ["system", "light", "dark"] as const
 export type Theme = (typeof themeOptions)[number]
@@ -63,9 +60,8 @@ const toggleDarkEffect = atomEffect((get, set) => {
 })
 
 export function useDark() {
-  useAtom(systemDarkEffect)
-  useAtom(toggleDarkEffect)
   const isDark = useAtomValue(isDarkAtom)
   const toggleDark = useSetAtom(toggleDarkAtom)
+  useAtom(toggleDarkEffect)
   return { isDark, toggleDark }
 }
