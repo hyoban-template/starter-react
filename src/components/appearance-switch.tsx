@@ -1,4 +1,3 @@
-import { useDark } from "jotai-dark"
 import { useTranslation } from "react-i18next"
 
 import {
@@ -7,6 +6,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "~/components/ui/tooltip"
+import { useDark } from "~/hooks/use-dark"
 import { cn } from "~/lib/utils"
 
 export function AppearanceSwitch({ className }: { className?: string }) {

@@ -2,11 +2,11 @@ import "@unocss/reset/tailwind.css"
 import "virtual:uno.css"
 import "~/lib/i18n"
 
-import { useDark } from "jotai-dark"
 import { Toaster } from "sonner"
 import { SWRConfig } from "swr"
 
 import { TailwindIndicator } from "~/components/tailwind-indicator"
+import { useDark } from "~/hooks/use-dark"
 
 export default function Layout({ children }: React.PropsWithChildren) {
   const { isDark } = useDark()

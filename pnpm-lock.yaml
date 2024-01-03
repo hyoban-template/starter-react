@@ -57,8 +57,8 @@ dependencies:
     specifier: ^3.0.6
     version: 3.0.6
   framer-motion:
-    specifier: ^10.17.0
-    version: 10.17.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^10.17.2
+    version: 10.17.2(react-dom@18.2.0)(react@18.2.0)
   i18next:
     specifier: ^23.7.15
     version: 23.7.15
@@ -69,8 +69,8 @@ dependencies:
     specifier: ^0.3.0
     version: 0.3.0(jotai@2.6.1)
   jotai-dark:
-    specifier: ^0.0.6
-    version: 0.0.6(jotai-effect@0.2.3)(jotai@2.6.1)(react@18.2.0)
+    specifier: ^0.1.0
+    version: 0.1.0(jotai-effect@0.2.3)
   jotai-effect:
     specifier: ^0.2.3
     version: 0.2.3(jotai@2.6.1)
@@ -3991,8 +3991,8 @@ packages:
       signal-exit: 4.1.0
     dev: true
 
-  /framer-motion@10.17.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-92brXaYasyEwaPV7tnHnc6MKxdN84CxWE1aZ80q/mlS+wQo0rxp/pmjGt5hdAEK5RCKJsWToI+MyIcGoA91Msg==}
+  /framer-motion@10.17.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZfWwAFWgc3xCnJIyzV0y+DI3W/Hfxn/2ySLF6qu9Pa3chNcHzqaWt+G8iExhXuLK0A1gunooiOC0qddlX5BY1A==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -4422,16 +4422,12 @@ packages:
       jotai: 2.6.1(@types/react@18.2.46)(react@18.2.0)
     dev: false
 
-  /jotai-dark@0.0.6(jotai-effect@0.2.3)(jotai@2.6.1)(react@18.2.0):
-    resolution: {integrity: sha512-X1N5yTIp1hb1zndvb5nGNxyNkWNZbcSkXIcpNJblhn6y6Ct95wm3thdvKlJEBaQH+AhglYEcTsHphVoyiTMOoQ==}
+  /jotai-dark@0.1.0(jotai-effect@0.2.3):
+    resolution: {integrity: sha512-e4ROSJWAqe32qez9UaggJkTpHLZz3F7JqolcDQZXtDK8lSHN6ZKk+Jlk9vA76TDgryLAZKHnah8ss7WDORGb2w==}
     peerDependencies:
-      jotai: ^2.0.0
       jotai-effect: ^0.2.3
-      react: ^18.0.0
     dependencies:
-      jotai: 2.6.1(@types/react@18.2.46)(react@18.2.0)
       jotai-effect: 0.2.3(jotai@2.6.1)
-      react: 18.2.0
     dev: false
 
   /jotai-effect@0.2.3(jotai@2.6.1):
