@@ -70,7 +70,12 @@ if (!proxyPath || !proxyTarget) {
 
 export default defineConfig({
   plugins: [
-    React(),
+    React({
+      plugins: [
+        ["@swc-jotai/debug-label", { atomNames: ["atomDark"] }],
+        ["@swc-jotai/react-refresh", { atomNames: ["atomDark"] }],
+      ],
+    }),
     UnoCSS(),
     ViteProxyPlugin({
       proxyPath,

@@ -2,6 +2,7 @@ import "@unocss/reset/tailwind.css"
 import "virtual:uno.css"
 import "~/lib/i18n"
 
+import { DevTools } from "jotai-devtools"
 import { Toaster } from "sonner"
 import { SWRConfig } from "swr"
 
@@ -9,7 +10,7 @@ import { TailwindIndicator } from "~/components/tailwind-indicator"
 import { useDark } from "~/hooks/use-dark"
 
 export default function Layout({ children }: React.PropsWithChildren) {
-  const { isDark } = useDark()
+  const { theme } = useDark()
   return (
     <SWRConfig
       value={{
@@ -18,7 +19,7 @@ export default function Layout({ children }: React.PropsWithChildren) {
     >
       {children}
       <Toaster
-        theme={isDark ? "dark" : "light"}
+        theme={theme}
         className="toaster group"
         toastOptions={{
           classNames: {
@@ -33,6 +34,7 @@ export default function Layout({ children }: React.PropsWithChildren) {
         }}
       />
       <TailwindIndicator />
+      <DevTools theme={theme} />
     </SWRConfig>
   )
 }
