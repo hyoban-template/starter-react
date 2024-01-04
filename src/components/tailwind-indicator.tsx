@@ -23,7 +23,7 @@ export function TailwindIndicator() {
 
   return (
     <div
-      className={`fixed top-1 right-1 z-50 h-6 w-6 p-3
+      className={`fixed top-8 right-6 z-50 h-6 w-6 p-3
       font-mono text-xs text-white bg-gray-800 rounded-full
       ${show ? "flex items-center justify-center" : "hidden"}`}
     >
