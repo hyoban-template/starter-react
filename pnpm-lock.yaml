@@ -69,8 +69,8 @@ dependencies:
     specifier: ^0.3.0
     version: 0.3.0(jotai@2.6.1)
   jotai-dark:
-    specifier: ^0.2.2
-    version: 0.2.2(jotai-effect@0.2.3)
+    specifier: ^0.2.3
+    version: 0.2.3(jotai-effect@0.2.3)(jotai@2.6.1)
   jotai-effect:
     specifier: ^0.2.3
     version: 0.2.3(jotai@2.6.1)
@@ -4833,11 +4833,13 @@ packages:
       jotai: 2.6.1(@types/react@18.2.46)(react@18.2.0)
     dev: false
 
-  /jotai-dark@0.2.2(jotai-effect@0.2.3):
-    resolution: {integrity: sha512-d5r7jMKrB+Wk9ymnfT45fSXS/TURNsnWoHJ/6oCfg9NYyDH6kt3O975pwzjB483rbBaGLOnhv9MpLX8Kp8vm0Q==}
+  /jotai-dark@0.2.3(jotai-effect@0.2.3)(jotai@2.6.1):
+    resolution: {integrity: sha512-Ynj/jTlQ773ChETMSAcohDrU/J7yyb6i0hGd4hjie56OfqVWvSTQP6wvokruBTve2UnqrAqEhjaMS9J7zI3VAw==}
     peerDependencies:
+      jotai: '>=2.5.0'
       jotai-effect: ^0.2.3
     dependencies:
+      jotai: 2.6.1(@types/react@18.2.46)(react@18.2.0)
       jotai-effect: 0.2.3(jotai@2.6.1)
     dev: false
 

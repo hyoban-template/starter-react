@@ -42,7 +42,7 @@
     "i18next": "^23.7.15",
     "jotai": "^2.6.1",
     "jotai-cache": "^0.3.0",
-    "jotai-dark": "^0.2.2",
+    "jotai-dark": "^0.2.3",
     "jotai-effect": "^0.2.3",
     "jotai-location": "^0.5.2",
     "lucide-react": "^0.303.0",
