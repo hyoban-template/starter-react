@@ -1,5 +1,6 @@
 import { atom, useAtomValue } from "jotai"
 import { atomWithSuspenseQuery } from "jotai-tanstack-query"
+import { $fetch } from "ofetch"
 import { Suspense } from "react"
 
 import { Loading } from "~/components/loading"
@@ -13,13 +14,7 @@ const idAtom = atom(1)
 const userAtom = atomWithSuspenseQuery((get: Getter) => ({
   queryKey: ["users", get(idAtom)],
   queryFn: async ({ queryKey: [, id] }) => {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-    return res.json() as Promise<{
-      userId: number
-      id: number
-      title: string
-      completed: boolean
-    }>
+    return await $fetch<unknown>(`https://reqres.in/api/users/${id}?delay=1`)
   },
 }))
 
