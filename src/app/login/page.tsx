@@ -1,9 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { $fetch } from "ofetch"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
-import { toast } from "sonner"
 import { z } from "zod"
 
 import { MyInput } from "~/components/my-input"
@@ -17,6 +15,7 @@ import {
   FormMessage,
 } from "~/components/ui/form"
 import { Utility } from "~/components/utility"
+import { myFetch } from "~/lib/network"
 
 const loginInputSchema = z.object({
   username: z.string().min(1),
@@ -24,16 +23,7 @@ const loginInputSchema = z.object({
   remember: z.boolean(),
 })
 type LoginInput = z.infer<typeof loginInputSchema>
-
-type OutputType<T> =
-  | {
-      err: string
-    }
-  | {
-      err: null
-      data: T
-    }
-type LoginOutput = OutputType<{ token: string }>
+type LoginOutput = { token: string }
 
 export default function LoginPage() {
   const { t } = useTranslation()
@@ -49,20 +39,11 @@ export default function LoginPage() {
   const navigate = useNavigate()
 
   const onSubmit = form.handleSubmit((data) => {
-    $fetch<LoginOutput>("/api/login", {
-      method: "POST",
-      body: data,
-    })
-      .then((res) => {
-        if (!("data" in res)) {
-          throw new Error(res.err)
-        }
-        window.localStorage.setItem("token", res.data.token)
+    myFetch<LoginOutput, LoginInput>(["/api/login", data])
+      .then(() => {
         navigate("/")
       })
-      .catch((err: Error) => {
-        toast.error(err.message)
-      })
+      .catch(() => {})
   })
 
   return (
