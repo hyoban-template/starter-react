@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "prepare": "simple-git-hooks",
-    "check": "pnpm lint && pnpm typecheck && pnpm build",
+    "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm knip",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -39,7 +39,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "^3.1.0",
-    "framer-motion": "^10.17.9",
     "i18next": "^23.7.16",
     "jotai": "^2.6.1",
     "jotai-dark": "^0.2.3",

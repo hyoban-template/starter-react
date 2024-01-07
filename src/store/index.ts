@@ -4,7 +4,7 @@ import { atomWithStorage } from "jotai/vanilla/utils"
 
 export const store = createStore()
 
-export const tokenAtom = atomWithStorage("token", "", undefined, {
+const tokenAtom = atomWithStorage("token", "", undefined, {
   getOnInit: true,
 })
 export function isTokenValid() {
@@ -20,6 +20,9 @@ export function clearToken() {
   store.set(tokenAtom, "")
 }
 
+/**
+ * @public
+ */
 export const locationAtom = atomWithLocation()
 export function goLogin() {
   store.set(locationAtom, {

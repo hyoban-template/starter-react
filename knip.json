@@ -8,12 +8,16 @@
     "@iconify-json/lucide",
     "@iconify-json/mdi",
     "@iconify-json/simple-icons",
-
+    "@eslint/eslintrc",
+    "@swc-jotai/debug-label",
+    "@swc-jotai/react-refresh",
     "virtual:uno.css"
   ],
   "entry": [
     "*.config.{js,ts}",
     "src/main.tsx",
-    "src/app/**/{layout,page,loding,not-found,error,global-error,route,template,default}.tsx"
+    "src/app/**/{layout,page,loding,not-found,error,global-error,route,template,default}.tsx",
+    "src/components/ui/*.tsx",
+    "src/components/auto-form/fields/*.tsx"
   ]
 }
