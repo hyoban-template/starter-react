@@ -2,22 +2,19 @@ import "@unocss/reset/tailwind.css"
 import "virtual:uno.css"
 import "~/lib/i18n"
 
+import { Provider } from "jotai"
 import { DevTools } from "jotai-devtools"
 import { Toaster } from "sonner"
-import { SWRConfig } from "swr"
 
 import { TailwindIndicator } from "~/components/tailwind-indicator"
 import { useDark } from "~/hooks/use-dark"
 import { cn } from "~/lib/utils"
+import { store } from "~/store"
 
 export default function Layout({ children }: React.PropsWithChildren) {
   const { theme } = useDark()
   return (
-    <SWRConfig
-      value={{
-        revalidateOnFocus: import.meta.env.PROD,
-      }}
-    >
+    <Provider store={store}>
       <div
         className={cn(
           "h-full",
@@ -47,6 +44,6 @@ export default function Layout({ children }: React.PropsWithChildren) {
         <TailwindIndicator />
         <DevTools theme={theme} />
       </div>
-    </SWRConfig>
+    </Provider>
   )
 }
