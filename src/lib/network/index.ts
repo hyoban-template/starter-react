@@ -1,7 +1,6 @@
 import { $fetch } from "ofetch"
 import { toast } from "sonner"
 
-import { goLogin } from "~/store/location"
 import { clearToken, getToken, isTokenValid, setToken } from "~/store/token"
 
 type OutputType<T> =
@@ -32,7 +31,7 @@ export async function myFetch<
     if (res.err === "NO_LOGIN") {
       toast.error("请重新登录")
       clearToken()
-      goLogin()
+      window.location.pathname = "/login"
     } else {
       toast.error(res.err)
     }

@@ -1,4 +1,8 @@
+import { atomWithHash } from "jotai-location"
+import { useAtom } from "jotai/react"
+
 import { DataTable } from "~/components/data-table"
+import { Input } from "~/components/ui/input"
 
 import type { ColumnDef } from "@tanstack/react-table"
 
@@ -40,6 +44,21 @@ const columns: ColumnDef<Payment>[] = [
   },
 ]
 
+const searchAtom = atomWithHash("search", "")
+
 export default function Page() {
-  return <DataTable columns={columns} data={payments} />
+  const [search, setSearch] = useAtom(searchAtom)
+  return (
+    <div className="space-y-10">
+      <Input
+        value={search}
+        onChange={(e) => {
+          setSearch(e.currentTarget.value)
+        }}
+        placeholder="Search payments"
+        className="w-96"
+      />
+      <DataTable columns={columns} data={payments} />
+    </div>
+  )
 }
