@@ -1,11 +1,21 @@
-import i18n from "i18next"
+import i18next from "i18next"
+import { atomWithStorage } from "jotai/vanilla/utils"
 import { initReactI18next } from "react-i18next"
 import { z } from "zod"
 import { zodI18nMap } from "zod-i18n-map"
 import translation from "zod-i18n-map/locales/zh-CN/zod.json"
 
+import { store } from "~/store"
+
 import en from "./locales/en.json"
 import zh from "./locales/zh.json"
+
+/**
+ * @public
+ */
+export const languageAtom = atomWithStorage<Lang>("language", "zh", undefined, {
+  getOnInit: true,
+})
 
 const resources = {
   en: {
@@ -18,20 +28,19 @@ const resources = {
 }
 
 export type Lang = keyof typeof resources
-export const supportedLanguages = Object.keys(resources) as Lang[]
+export const supportedLanguages = Object.keys(resources)
 
-i18n
+i18next
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem("i18currentLang") ?? "zh",
+    lng: store.get(languageAtom),
     fallbackLng: "zh",
     interpolation: {
       // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
       escapeValue: false,
       skipOnVariables: false,
     },
-    /* cSpell: disable-next-line */
     supportedLngs: supportedLanguages,
   })
   .then(() => {
@@ -41,9 +50,6 @@ i18n
     console.error("init i18n error", err)
   })
 
-export const getCurrentLanguage = () => i18n.language as Lang
-
-export const changeLanguage = (lang: Lang) => {
-  window.localStorage.setItem("i18currentLang", lang)
-  return i18n.changeLanguage(lang)
-}
+i18next.on("languageChanged", (lng) => {
+  store.set(languageAtom, lng as Lang)
+})

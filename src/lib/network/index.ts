@@ -1,7 +1,8 @@
 import { $fetch } from "ofetch"
 import { toast } from "sonner"
 
-import { clearToken, getToken, goLogin, isTokenValid, setToken } from "~/store"
+import { goLogin } from "~/store/location"
+import { clearToken, getToken, isTokenValid, setToken } from "~/store/token"
 
 type OutputType<T> =
   | {

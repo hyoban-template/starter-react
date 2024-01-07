@@ -1,3 +1,4 @@
+import i18next from "i18next"
 import { useTranslation } from "react-i18next"
 
 import {
@@ -7,17 +8,17 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip"
 
-import { changeLanguage, getCurrentLanguage, supportedLanguages } from "."
+import { supportedLanguages } from "."
 import { cn } from "../utils"
 
-import type { Lang } from "."
-
 const onClick = () => {
-  const currentLang = getCurrentLanguage()
-  const nextLang = supportedLanguages[
-    (supportedLanguages.indexOf(currentLang) + 1) % supportedLanguages.length
-  ] as Lang
-  void changeLanguage(nextLang)
+  const currentLang = i18next.language
+
+  const nextLang =
+    supportedLanguages[
+      (supportedLanguages.indexOf(currentLang) + 1) % supportedLanguages.length
+    ]
+  return i18next.changeLanguage(nextLang)
 }
 
 export function LanguageSwitch({ className }: { className?: string }) {
