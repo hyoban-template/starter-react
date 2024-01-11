@@ -1,12 +1,13 @@
 import { StrictMode, Suspense } from "react"
 import { createRoot } from "react-dom/client"
+import { RouterProvider } from "react-router-dom"
 
-import { Routes } from "./routes"
+import { router } from "./router"
 
 createRoot(document.querySelector("#root")!).render(
   <StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes />
+    <Suspense fallback="Loading...">
+      <RouterProvider router={router} />
     </Suspense>
   </StrictMode>,
 )
