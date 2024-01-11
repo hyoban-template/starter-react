@@ -13,6 +13,7 @@
   "typescript.preferences.autoImportFileExcludePatterns": [
     "lucide-react",
     "react-day-picker",
-    "@radix-ui/*"
+    "@radix-ui/*",
+    "react-router-dom"
   ]
 }

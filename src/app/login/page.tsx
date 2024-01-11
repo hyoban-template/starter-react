@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useSetAtom } from "jotai"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
-import { useNavigate } from "react-router-dom"
 import { z } from "zod"
 
 import { MyInput } from "~/components/my-input"
@@ -16,6 +16,7 @@ import {
 } from "~/components/ui/form"
 import { Utility } from "~/components/utility"
 import { myFetch } from "~/lib/network"
+import { replaceLocationAtom } from "~/router"
 
 const loginInputSchema = z.object({
   username: z.string().min(1),
@@ -36,12 +37,14 @@ export default function LoginPage() {
     },
   })
 
-  const navigate = useNavigate()
+  const navigate = useSetAtom(replaceLocationAtom)
 
   const onSubmit = form.handleSubmit((data) => {
     myFetch<LoginOutput, LoginInput>(["/api/login", data])
       .then(() => {
-        navigate("/")
+        navigate({
+          pathname: "/",
+        })
       })
       .catch(() => {})
   })

@@ -1,5 +1,5 @@
+import { useAtomValue, useSetAtom } from "jotai"
 import { useMemo } from "react"
-import { Link, useLocation, useNavigate } from "react-router-dom"
 
 import {
   Accordion,
@@ -8,6 +8,9 @@ import {
   AccordionTrigger,
 } from "~/components/ui/accordion"
 import { cn } from "~/lib/utils"
+import { locationAtom, replaceLocationAtom } from "~/router"
+
+import { Link } from "./link"
 
 export type NavItem = {
   label: string
@@ -39,7 +42,7 @@ function recursiveSearch(
 }
 
 function useCurrentNav(nav: NavItem[] = []): CurrentNav | undefined {
-  const { pathname } = useLocation()
+  const { pathname } = useAtomValue(locationAtom)
 
   const currentNav = useMemo(
     () => recursiveSearch(nav, pathname),
@@ -61,15 +64,18 @@ function NavGroup({
   item: NavItem
   currentNav?: CurrentNav
 }) {
-  const { pathname } = useLocation()
-  const navigate = useNavigate()
+  const { pathname } = useAtomValue(locationAtom)
+  const navigate = useSetAtom(replaceLocationAtom)
 
   const handleGroupClick = () => {
     const itemTarget = item.disabled === true ? undefined : item.href
     const firstSubItemTarget =
       item.items?.[0]?.disabled === true ? undefined : item.items?.[0]?.href
     const navTarget = pathname === itemTarget ? firstSubItemTarget : itemTarget
-    if (navTarget) navigate(navTarget)
+    if (navTarget)
+      navigate({
+        pathname: navTarget,
+      })
   }
 
   return (
@@ -105,7 +111,7 @@ function NavGroup({
               <div className="flex items-center gap-x-2">
                 {!!subItem.icon && <i className={cn(subItem.icon)} />}
                 {subItem.href ? (
-                  <Link to={subItem.href} className="text-sm grow">
+                  <Link href={subItem.href} className="text-sm grow">
                     {subItem.label}
                   </Link>
                 ) : (
