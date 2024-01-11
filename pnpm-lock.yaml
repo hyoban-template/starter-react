@@ -77,6 +77,9 @@ dependencies:
   jotai-tanstack-query:
     specifier: ^0.8.1
     version: 0.8.1(@tanstack/query-core@5.17.9)(jotai@2.6.1)(wonka@6.3.4)
+  jotai-tanstack-table:
+    specifier: ^0.0.1
+    version: 0.0.1(@tanstack/table-core@8.11.3)(jotai@2.6.1)
   lucide-react:
     specifier: ^0.309.0
     version: 0.309.0(react@18.2.0)
@@ -4791,6 +4794,16 @@ packages:
       '@tanstack/query-core': 5.17.9
       jotai: 2.6.1(@types/react@18.2.47)(react@18.2.0)
       wonka: 6.3.4
+    dev: false
+
+  /jotai-tanstack-table@0.0.1(@tanstack/table-core@8.11.3)(jotai@2.6.1):
+    resolution: {integrity: sha512-TQzuZA+MCmTHQAhZ1C4xowloVIXeUALdSwIdBT6sStZjt+DTh+ugYp+zmTiLo2Hg3fP7zz7S6IhGrMbl4RLAFA==}
+    peerDependencies:
+      '@tanstack/table-core': '>=8.0.0'
+      jotai: '>=2.0.0'
+    dependencies:
+      '@tanstack/table-core': 8.11.3
+      jotai: 2.6.1(@types/react@18.2.47)(react@18.2.0)
     dev: false
 
   /jotai@2.6.1(@types/react@18.2.47)(react@18.2.0):

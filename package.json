@@ -45,6 +45,7 @@
     "jotai-effect": "^0.2.3",
     "jotai-location": "^0.5.2",
     "jotai-tanstack-query": "^0.8.1",
+    "jotai-tanstack-table": "^0.0.1",
     "lucide-react": "^0.309.0",
     "ofetch": "^1.3.3",
     "react": "^18.2.0",

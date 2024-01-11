@@ -1,8 +1,13 @@
+import { getCoreRowModel } from "@tanstack/react-table"
 import { atomWithHash } from "jotai-location"
-import { useAtom } from "jotai/react"
+import { atomWithTable } from "jotai-tanstack-table"
+import { useAtom, useAtomValue } from "jotai/react"
 
-import { DataTable } from "~/components/data-table"
+import { DataTableBody } from "~/components/data-table/body"
+import { DataTableHeader } from "~/components/data-table/header"
+import { DataTablePagination } from "~/components/data-table/pagination"
 import { Input } from "~/components/ui/input"
+import { Table, TableBody } from "~/components/ui/table"
 
 import type { ColumnDef } from "@tanstack/react-table"
 
@@ -45,9 +50,19 @@ const columns: ColumnDef<Payment>[] = [
 ]
 
 const searchAtom = atomWithHash("search", "")
+const tableAtom = atomWithTable((get) => ({
+  data: payments.filter((payment) => {
+    const search = get(searchAtom)
+    if (!search) return true
+    return payment.email.includes(search)
+  }),
+  columns,
+  getCoreRowModel: getCoreRowModel<Payment>(),
+}))
 
 export default function Page() {
   const [search, setSearch] = useAtom(searchAtom)
+  const table = useAtomValue(tableAtom)
   return (
     <div className="space-y-10">
       <Input
@@ -58,7 +73,19 @@ export default function Page() {
         placeholder="Search payments"
         className="w-96"
       />
-      <DataTable columns={columns} data={payments} />
+      <div className="relative space-y-4">
+        <div className="rounded-md border">
+          <Table>
+            <DataTableHeader table={table} />
+            <TableBody>
+              <DataTableBody table={table} />
+            </TableBody>
+          </Table>
+        </div>
+        <div className="my-6">
+          <DataTablePagination table={table} />
+        </div>
+      </div>
     </div>
   )
 }
