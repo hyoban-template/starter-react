@@ -17,7 +17,9 @@ export default function AutoFormInput({
   isRequired,
   fieldConfigItem,
   fieldProps,
+  zodInputProps,
 }: AutoFormInputComponentProps) {
+  const { className } = zodInputProps
   const { showLabel: _showLabel, ...fieldPropsWithoutShowLabel } = fieldProps
   const showLabel = _showLabel === undefined ? true : _showLabel
   const showFilePreview =
@@ -26,7 +28,7 @@ export default function AutoFormInput({
     !!fieldPropsWithoutShowLabel.value
 
   return (
-    <FormItem>
+    <FormItem className={className}>
       {showLabel ? (
         <FormLabel>
           {label}

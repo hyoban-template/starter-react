@@ -16,11 +16,13 @@ export default function AutoFormArray({
   field,
   fieldConfigItem,
   fieldProps,
+  zodInputProps,
 }: AutoFormInputComponentProps) {
+  const { className } = zodInputProps
   const { ref: _ref, ...fieldPropsWithoutRef } = fieldProps
 
   return (
-    <FormItem className="">
+    <FormItem className={className}>
       <div className="space-y-1 leading-none">
         <FormLabel>
           {label}

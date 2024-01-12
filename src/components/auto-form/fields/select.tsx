@@ -27,7 +27,9 @@ export default function AutoFormEnum({
   field,
   fieldConfigItem,
   zodItem,
+  zodInputProps,
 }: AutoFormInputComponentProps) {
+  const { className } = zodInputProps
   const baseValues = (getBaseSchema(zodItem) as unknown as z.ZodEnum<any>)._def
     .values
 
@@ -43,7 +45,7 @@ export default function AutoFormEnum({
   }
 
   return (
-    <FormItem>
+    <FormItem className={className}>
       <FormLabel>
         {label}
         {isRequired ? <span className="text-destructive"> *</span> : null}

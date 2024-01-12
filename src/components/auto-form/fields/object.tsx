@@ -26,6 +26,8 @@ function DefaultParent({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
 
+const validCols = ["col-span-1", "col-span-2", "col-span-3", "col-span-4"]
+
 export default function AutoFormObject<
   SchemaType extends z.ZodObject<any, any>,
 >({
@@ -45,7 +47,7 @@ export default function AutoFormObject<
   return (
     <Accordion
       type="multiple"
-      className="space-y-5"
+      className="grid grid-cols-4 gap-5"
       defaultValue={shapeKeys.map((name) => name)}
     >
       {shapeKeys.map((name) => {
@@ -57,10 +59,16 @@ export default function AutoFormObject<
             ? t(`schema.${name}` as ParseKeys)
             : beautifyObjectName(name))
         const key = [...path, name].join(".")
+        const fieldConfigItem: FieldConfigItem = fieldConfig?.[name] ?? {}
 
         if (zodBaseType === "ZodObject") {
+          const { cols } = fieldConfigItem
           return (
-            <AccordionItem value={name} key={key}>
+            <AccordionItem
+              value={name}
+              key={key}
+              className={`${validCols[(cols ?? 4) - 1]}`}
+            >
               <AccordionTrigger>{itemName}</AccordionTrigger>
               <AccordionContent className="p-2">
                 <AutoFormObject
@@ -78,7 +86,6 @@ export default function AutoFormObject<
           )
         }
 
-        const fieldConfigItem: FieldConfigItem = fieldConfig?.[name] ?? {}
         const zodInputProps = zodToHtmlInputProps(item)
         const isRequired =
           zodInputProps.required ||
@@ -113,7 +120,12 @@ export default function AutoFormObject<
                 <ParentElement key={`${key}.parent`}>
                   <Suspense fallback={<Loading>From filed {itemName}</Loading>}>
                     <InputComponent
-                      zodInputProps={zodInputProps}
+                      zodInputProps={{
+                        ...zodInputProps,
+                        className: `${zodInputProps.className ?? ""} ${
+                          validCols[(fieldConfigItem.cols ?? 4) - 1]
+                        }`,
+                      }}
                       field={field}
                       fieldConfigItem={fieldConfigItem}
                       label={itemName}

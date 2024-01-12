@@ -9,6 +9,7 @@ import {
   FormMessage,
 } from "~/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group"
+import { cn } from "~/lib/utils"
 
 import type { AutoFormInputComponentProps } from "../types"
 import type * as z from "zod"
@@ -19,11 +20,13 @@ export default function AutoFormRadioGroup({
   field,
   zodItem,
   fieldProps,
+  zodInputProps,
 }: AutoFormInputComponentProps) {
+  const { className } = zodInputProps
   const values = (zodItem as unknown as z.ZodEnum<any>)._def.values
 
   return (
-    <FormItem className="space-y-3">
+    <FormItem className={cn("space-y-3", className)}>
       <FormLabel>
         {label}
         {isRequired ? <span className="text-destructive"> *</span> : null}

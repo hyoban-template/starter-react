@@ -16,6 +16,8 @@ export type FieldConfigItem = {
   renderParent?: (props: {
     children: React.ReactNode
   }) => React.ReactElement | null
+
+  cols?: 1 | 2 | 3 | 4
 }
 
 export type FieldConfig<SchemaType extends z.infer<z.ZodObject<any, any>>> = {

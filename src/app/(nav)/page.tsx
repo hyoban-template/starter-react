@@ -27,15 +27,15 @@ const formSchema = z.object({
       message: "Password must be at least 8 characters.",
     }),
 
-  favouriteNumber: z.coerce // When using numbers and dates, you must use coerce
+  favoriteNumber: z.coerce // When using numbers and dates, you must use coerce
     .number({
-      invalid_type_error: "Favourite number must be a number.",
+      invalid_type_error: "Favorite number must be a number.",
     })
     .min(1, {
-      message: "Favourite number must be at least 1.",
+      message: "Favorite number must be at least 1.",
     })
     .max(10, {
-      message: "Favourite number must be at most 10.",
+      message: "Favorite number must be at most 10.",
     })
     .default(5) // You can set a default value
     .optional(),
@@ -72,7 +72,11 @@ export default function Page() {
       // You can add additional config for each field
       // to customize the UI
       fieldConfig={{
+        username: {
+          cols: 2,
+        },
         password: {
+          cols: 2,
           // Use "inputProps" to pass props to the input component
           // You can use any props that the component accepts
           inputProps: {
@@ -80,9 +84,9 @@ export default function Page() {
             placeholder: "••••••••",
           },
         },
-        favouriteNumber: {
+        favoriteNumber: {
           // Set a "description" that will be shown below the field
-          description: "Your favourite number between 1 and 10.",
+          description: "Your favorite number between 1 and 10.",
         },
         acceptTerms: {
           inputProps: {

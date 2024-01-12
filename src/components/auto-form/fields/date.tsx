@@ -17,9 +17,11 @@ export default function AutoFormDate({
   field,
   fieldConfigItem,
   fieldProps,
+  zodInputProps,
 }: AutoFormInputComponentProps) {
+  const { className } = zodInputProps
   return (
-    <FormItem>
+    <FormItem className={className}>
       <FormLabel>
         {label}
         {isRequired ? <span className="text-destructive"> *</span> : null}
