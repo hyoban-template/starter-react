@@ -74,12 +74,16 @@ export default defineConfig({
       plugins: [
         [
           "@swc-jotai/debug-label",
-          { atomNames: ["atomDark", "atomWithSuspenseQuery"] },
+          {
+            atomNames: [
+              "atomDark",
+              "atomWithQuery",
+              "atomWithSuspenseQuery",
+              "atomWithLocation",
+            ],
+          },
         ],
-        [
-          "@swc-jotai/react-refresh",
-          { atomNames: ["atomDark", "atomWithSuspenseQuery"] },
-        ],
+        ["@swc-jotai/react-refresh", {}],
       ],
     }),
     UnoCSS(),
