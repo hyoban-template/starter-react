@@ -40,6 +40,9 @@ const formSchema = z.object({
     .default(5) // You can set a default value
     .optional(),
 
+  // Date will show a date picker
+  birthday: z.coerce.date().optional(),
+
   acceptTerms: z
     .boolean()
     .describe("Accept terms and conditions.")
@@ -47,9 +50,6 @@ const formSchema = z.object({
       message: "You must accept the terms and conditions.",
       path: ["acceptTerms"],
     }),
-
-  // Date will show a date picker
-  birthday: z.coerce.date().optional(),
 
   sendMeMails: z.boolean().optional(),
 
@@ -113,6 +113,12 @@ export default function Page() {
           fieldType: "switch",
         },
       }}
+      groups={[
+        {
+          label: "Personal information",
+          fields: ["favoriteNumber", "birthday"],
+        },
+      ]}
       onSubmit={(values) => {
         toast(JSON.stringify(values, null, 2))
       }}

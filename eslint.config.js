@@ -81,11 +81,12 @@ export default [
     rules: {
       ...eslintPluginUnicorn.configs["flat/recommended"].rules,
       "unicorn/prevent-abbreviations": "off",
+      "unicorn/catch-error-name": "off",
       // https://github.com/sindresorhus/meta/discussions/7
       "unicorn/no-null": "off",
       // https://github.com/orgs/web-infra-dev/discussions/10
       "unicorn/prefer-top-level-await": "off",
-      "unicorn/catch-error-name": "off",
+      "unicorn/no-array-reduce": "off",
     },
   },
   // React Hooks rules

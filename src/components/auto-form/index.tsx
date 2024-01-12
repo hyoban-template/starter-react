@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { zodResolver } from "@hookform/resolvers/zod"
-import React from "react"
+import React, { useMemo } from "react"
 import { useForm } from "react-hook-form"
 
 import { Form } from "~/components/ui/form"
@@ -28,6 +29,7 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
   fieldConfig,
   children,
   className,
+  groups,
 }: {
   formSchema: SchemaType
   defaultValues?: DefaultValues<z.infer<SchemaType>>
@@ -38,10 +40,62 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
   fieldConfig?: FieldConfig<z.infer<SchemaType>>
   children?: React.ReactNode
   className?: string
+  groups?: {
+    label: string
+    fields: (keyof z.infer<SchemaType>)[]
+  }[]
 }) {
-  const objectFormSchema = getObjectFormSchema(formSchema)
+  const objectFormSchema = useMemo(
+    () => getObjectFormSchema(formSchema),
+    [formSchema],
+  )
+  const shapeKeys = useMemo(
+    () => Object.keys(objectFormSchema.shape),
+    [objectFormSchema],
+  )
+  const groupedKeys = useMemo(
+    () =>
+      shapeKeys
+        .reduce<(string[] | Record<string, string[]>)[]>((acc, key) => {
+          const group = groups?.find((group) => group.fields.includes(key))
+          if (group) {
+            const groupInGroupedKeys = acc.find(
+              (groupedKey) =>
+                typeof groupedKey === "object" &&
+                Object.keys(groupedKey)[0] === group.label,
+            ) as Record<string, string[]> | undefined
+            if (groupInGroupedKeys) {
+              groupInGroupedKeys[group.label]?.push(key)
+            } else {
+              acc.push({
+                [group.label]: [key],
+              })
+            }
+          } else {
+            if (Array.isArray(acc.at(-1))) {
+              ;(acc.at(-1) as string[]).push(key)
+            } else {
+              acc.push([key])
+            }
+          }
+          return acc
+        }, [])
+        .flatMap((group) => {
+          return Array.isArray(group)
+            ? {
+                label: "",
+                fields: group,
+              }
+            : {
+                label: Object.keys(group)[0],
+                fields: Object.values(group).flat(),
+              }
+        }),
+    [groups, shapeKeys],
+  )
+
   const defaultValues: DefaultValues<z.infer<typeof objectFormSchema>> =
-    getDefaultValues(objectFormSchema)
+    useMemo(() => getDefaultValues(objectFormSchema), [objectFormSchema])
 
   const form = useForm<z.infer<typeof objectFormSchema>>({
     resolver: zodResolver(formSchema),
@@ -79,11 +133,16 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
         className={cn("space-y-5", className)}
       >
         <React.Suspense fallback={<Loading>AutoForm</Loading>}>
-          <AutoFormObject
-            schema={objectFormSchema}
-            form={form}
-            fieldConfig={fieldConfig}
-          />
+          {groupedKeys.map((group) => (
+            <AutoFormObject
+              schema={objectFormSchema}
+              form={form}
+              fieldConfig={fieldConfig}
+              key={group.label || JSON.stringify(group.fields)}
+              group={group.label}
+              include={group.fields}
+            />
+          ))}
         </React.Suspense>
         {children}
       </form>
