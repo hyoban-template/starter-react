@@ -8,6 +8,8 @@
   - [unocss-preset-shadcn](https://github.com/hyoban/unocss-preset-shadcn)
   - [auto-form](https://github.com/vantezzen/auto-form)
 - State Management via [Jotai](https://github.com/pmndrs/jotai)
+  - [jotai-tanstack-query](https://github.com/jotaijs/jotai-tanstack-query) and [ofetch](https://github.com/unjs/ofetch), [is-network-error](https://github.com/sindresorhus/is-network-error) for Data Fetching
+  - [jotai-location](https://github.com/jotaijs/jotai-location) for navigating
 - [UnoCSS](https://github.com/unocss/unocss) - the instant on-demand atomic CSS engine
 - [Iconify](https://iconify.design) - use icons from any icon sets [🔍Icônes](https://icones.netlify.app/) [with classes](https://unocss.dev/presets/icons)
 - [I18n ready](./src/lib/i18n/locales) with [react-i18next](https://github.com/i18next/react-i18next)
