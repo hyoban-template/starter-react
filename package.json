@@ -41,6 +41,7 @@
     "clsx": "^2.1.0",
     "date-fns": "^3.2.0",
     "i18next": "^23.7.16",
+    "is-network-error": "^1.0.1",
     "jotai": "^2.6.1",
     "jotai-dark": "^0.2.3",
     "jotai-effect": "^0.2.3",

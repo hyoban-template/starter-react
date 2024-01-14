@@ -1,4 +1,5 @@
 import { atomWithLocation } from "jotai-location"
+import React from "react"
 import { createBrowserRouter, Outlet, redirect } from "react-router-dom"
 
 import type { ComponentType, FC, PropsWithChildren } from "react"
@@ -20,11 +21,7 @@ const globLayouts = Object.entries(
     return {
       path: routePath === "" ? "/" : routePath,
       children: [] as RouteObject[],
-      element: (
-        <Module>
-          <Outlet />
-        </Module>
-      ),
+      element: React.createElement(Module, {}, React.createElement(Outlet, {})),
       // above is for react-router-dom
       originalPath: path,
       originalFolder: path.replace(/\/layout.tsx/, ""),
