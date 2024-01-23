@@ -7,20 +7,10 @@ import reactHooks from "eslint-plugin-react-hooks"
 import reactRefresh from "eslint-plugin-react-refresh"
 import eslintPluginUnicorn from "eslint-plugin-unicorn"
 
-const isInEditor = !!(
-  (process.env.VSCODE_PID || process.env.JETBRAINS_IDE) &&
-  !process.env.CI
-)
-
 export default [
   // don't lint js files
   {
-    ignores: [
-      "**/*.js",
-      "**/*.cjs",
-      "**/*.mjs",
-      ...(isInEditor ? [] : ["src/components/ui/**/*.tsx"]),
-    ],
+    ignores: ["**/*.js", "**/*.cjs", "**/*.mjs"],
   },
   {
     files: ["src/**/*.{ts,tsx}"],
@@ -107,11 +97,7 @@ export default [
     },
   },
   {
-    ignores: [
-      // https://nextjs.org/docs/getting-started/project-structure#routing-files
-      "src/app/**/{layout,page,loding,not-found,error,global-error,route,template,default}.tsx",
-      "src/components/auto-form/fields/**/*.tsx",
-    ],
+    // in main config for TSX/JSX source files
     plugins: {
       "react-refresh": reactRefresh,
     },
@@ -120,8 +106,16 @@ export default [
         "warn",
         { allowConstantExport: true },
       ],
-
-      // disable export * and enum
+    },
+  },
+  {
+    ignores: [
+      // https://nextjs.org/docs/getting-started/project-structure#routing-files
+      "src/app/**/{layout,page,loading,not-found,error,global-error,template,default}.tsx",
+      "src/components/auto-form/fields/**/*.tsx",
+    ],
+    rules: {
+      // disable export *
       "no-restricted-syntax": [
         "error",
         {
