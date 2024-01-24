@@ -23,8 +23,7 @@
     "preview": "vite preview",
     "start": "node .output/server/index.mjs",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "eslint --max-warnings 0 .",
+    "lint": "prettier --check . && eslint --max-warnings 0 .",
     "typecheck": "tsc",
     "knip": "knip",
     "release": "release-it"
