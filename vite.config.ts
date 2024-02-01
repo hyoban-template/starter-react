@@ -19,18 +19,18 @@ export default defineConfig({
     TsconfigPaths(),
     React({
       plugins: [
-        [
-          "@swc-jotai/debug-label",
-          {
-            atomNames: [
-              "atomDark",
-              "atomWithQuery",
-              "atomWithSuspenseQuery",
-              "atomWithLocation",
-            ],
-          },
-        ],
-        ["@swc-jotai/react-refresh", {}],
+        // [
+        //   "@swc-jotai/debug-label",
+        //   {
+        //     atomNames: [
+        //       "atomDark",
+        //       "atomWithQuery",
+        //       "atomWithSuspenseQuery",
+        //       "atomWithLocation",
+        //     ],
+        //   },
+        // ],
+        // ["@swc-jotai/react-refresh", {}],
       ],
     }),
     UnoCSS(),
