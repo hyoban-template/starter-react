@@ -1,4 +1,4 @@
-/* eslint-disable @eslint-react/jsx/no-complicated-conditional-rendering */
+/* eslint-disable @eslint-react/no-complicated-conditional-rendering */
 import { TableCell, TableRow } from "~/components/ui/table"
 
 import { Loading } from "../loading"
