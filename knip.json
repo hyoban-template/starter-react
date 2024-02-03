@@ -9,8 +9,6 @@
     "@iconify-json/mdi",
     "@iconify-json/simple-icons",
     "@eslint/eslintrc",
-    "@swc-jotai/debug-label",
-    "@swc-jotai/react-refresh",
     "virtual:uno.css"
   ],
   "entry": [

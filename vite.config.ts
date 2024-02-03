@@ -1,4 +1,4 @@
-import React from "@vitejs/plugin-react-swc"
+import React from "@vitejs/plugin-react"
 import UnoCSS from "unocss/vite"
 import { defineConfig, loadEnv } from "vite"
 import Checker from "vite-plugin-checker"
@@ -18,20 +18,21 @@ export default defineConfig({
   plugins: [
     TsconfigPaths(),
     React({
-      plugins: [
-        // [
-        //   "@swc-jotai/debug-label",
-        //   {
-        //     atomNames: [
-        //       "atomDark",
-        //       "atomWithQuery",
-        //       "atomWithSuspenseQuery",
-        //       "atomWithLocation",
-        //     ],
-        //   },
-        // ],
-        // ["@swc-jotai/react-refresh", {}],
-      ],
+      babel: {
+        presets: [
+          [
+            "jotai/babel/preset",
+            {
+              customAtomNames: [
+                "atomDark",
+                "atomWithQuery",
+                "atomWithSuspenseQuery",
+                "atomWithLocation",
+              ],
+            },
+          ],
+        ],
+      },
     }),
     UnoCSS(),
     NitroDeploy({
