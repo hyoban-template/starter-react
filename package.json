@@ -53,6 +53,7 @@
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@release-it/conventional-changelog": "^8.0.1",
+    "@t3-oss/env-core": "^0.8.0",
     "@tanstack/query-core": "^5.18.1",
     "@tanstack/react-table": "^8.11.8",
     "@tanstack/table-core": "^8.11.8",
