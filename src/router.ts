@@ -1,3 +1,5 @@
+import { createElement, lazy, Suspense } from "react"
+
 import type { Route } from "joter"
 import type { FC, PropsWithChildren } from "react"
 
@@ -42,9 +44,9 @@ if (!globLayouts.some((i) => i.originalPath === "./app/layout.tsx")) {
 }
 
 const globRoutes = Object.entries(
-  import.meta.glob<FC>("./app/**/page.tsx", { eager: true, import: "default" }),
+  import.meta.glob<{ default: FC }>("./app/**/page.tsx"),
 )
-  .map(([path, Component]) => {
+  .map(([path, load]) => {
     const routePath = path
       .replace("./app", "")
       // remove /page.tsx or /layout.tsx
@@ -55,9 +57,11 @@ const globRoutes = Object.entries(
       .replaceAll(/\[\.{3}(.*)]/g, "*")
       // replace [id] with :id
       .replaceAll(/\[([^\]]+)]/g, ":$1")
+    const Component = lazy(load)
     return {
       path: routePath === "" ? "/" : routePath,
-      component: Component,
+      component: () =>
+        createElement(Suspense, { fallback: null }, createElement(Component)),
       originalPath: path,
       originalFolder: path.replace(/\/page.tsx/, ""),
       folderLevel: path.split("/").length - 1,
