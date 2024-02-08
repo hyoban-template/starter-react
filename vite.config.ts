@@ -61,7 +61,7 @@ export default defineConfig(async ({ mode }) => {
       rollupOptions: {
         output: {
           manualChunks: {
-            react: ["react", "react-dom", "react-router-dom"],
+            react: ["react", "react-dom"],
             zod: ["zod"],
           },
         },

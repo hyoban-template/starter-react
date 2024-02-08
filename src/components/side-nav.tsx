@@ -1,4 +1,4 @@
-import { useAtomValue, useSetAtom } from "jotai"
+import { useNavigate, usePathname } from "joter"
 import { useMemo } from "react"
 
 import {
@@ -8,7 +8,6 @@ import {
   AccordionTrigger,
 } from "~/components/ui/accordion"
 import { cn } from "~/lib/utils"
-import { locationAtom, replaceLocationAtom } from "~/router"
 
 import { Link } from "./link"
 
@@ -42,7 +41,7 @@ function recursiveSearch(
 }
 
 function useCurrentNav(nav: NavItem[] = []): CurrentNav | undefined {
-  const { pathname } = useAtomValue(locationAtom)
+  const pathname = usePathname()
 
   const currentNav = useMemo(
     () => recursiveSearch(nav, pathname),
@@ -64,8 +63,8 @@ function NavGroup({
   item: NavItem
   currentNav?: CurrentNav
 }) {
-  const { pathname } = useAtomValue(locationAtom)
-  const navigate = useSetAtom(replaceLocationAtom)
+  const pathname = usePathname()
+  const navigate = useNavigate()
 
   const handleGroupClick = () => {
     const itemTarget = item.disabled === true ? undefined : item.href

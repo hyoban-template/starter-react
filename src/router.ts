@@ -1,9 +1,5 @@
-import { atomWithLocation } from "jotai-location"
-import React from "react"
-import { createBrowserRouter, Outlet, redirect } from "react-router-dom"
-
-import type { ComponentType, FC, PropsWithChildren } from "react"
-import type { RouteObject } from "react-router-dom"
+import type { Route } from "joter"
+import type { FC, PropsWithChildren } from "react"
 
 const globLayouts = Object.entries(
   import.meta.glob<FC<PropsWithChildren>>("./app/**/layout.tsx", {
@@ -20,9 +16,8 @@ const globLayouts = Object.entries(
       .replace(/\/\(.*\)/, "")
     return {
       path: routePath === "" ? "/" : routePath,
-      children: [] as RouteObject[],
-      element: React.createElement(Module, {}, React.createElement(Outlet, {})),
-      // above is for react-router-dom
+      children: [] as Route[],
+      component: Module,
       originalPath: path,
       originalFolder: path.replace(/\/layout.tsx/, ""),
       folderLevel: path.split("/").length - 1,
@@ -33,7 +28,7 @@ const globLayouts = Object.entries(
           .filter((i) => i !== "app" && !i.startsWith("(")).length - 1,
       routeGroups: path.split("/").filter((i) => i.startsWith("(")),
       isLayout: true,
-    }
+    } satisfies Route & Record<string, unknown>
   })
   .sort((a, b) => {
     if (a.routeLevel !== b.routeLevel) {
@@ -47,7 +42,7 @@ if (!globLayouts.some((i) => i.originalPath === "./app/layout.tsx")) {
 }
 
 const globRoutes = Object.entries(
-  import.meta.glob("./app/**/page.tsx", { import: "default" }),
+  import.meta.glob<FC>("./app/**/page.tsx", { eager: true, import: "default" }),
 )
   .map(([path, Component]) => {
     const routePath = path
@@ -62,21 +57,7 @@ const globRoutes = Object.entries(
       .replaceAll(/\[([^\]]+)]/g, ":$1")
     return {
       path: routePath === "" ? "/" : routePath,
-      lazy: async () => {
-        return {
-          Component: (await Component()) as ComponentType,
-        }
-      },
-      // TODO: add your loader here
-      loader: ({ request }: { request: Request }) => {
-        const token = window.localStorage.getItem("token")
-        const isLogin = token && token !== '""'
-        const url = new URL(request.url)
-        if (isLogin && url.pathname === "/login") return redirect("/")
-        if (!isLogin && url.pathname !== "/login") return redirect("/login")
-        return null
-      },
-      // above is for react-router-dom
+      component: Component,
       originalPath: path,
       originalFolder: path.replace(/\/page.tsx/, ""),
       folderLevel: path.split("/").length - 1,
@@ -86,7 +67,7 @@ const globRoutes = Object.entries(
           // exclude (xxx), it's a route group
           .filter((i) => i !== "app" && !i.startsWith("(")).length - 1,
       routeGroups: path.split("/").filter((i) => i.startsWith("(")),
-    }
+    } satisfies Route & Record<string, unknown>
   })
   // layout first, then by level
   // if both are layout, then by level
@@ -133,50 +114,4 @@ for (const layout of globLayouts) {
   }
 }
 
-export const router = createBrowserRouter([globLayouts.at(-1)!])
-
-type Location = {
-  pathname?: string
-  searchParams?: URLSearchParams
-}
-
-const getLocation = (): Location => {
-  return {
-    pathname: router.state.location.pathname,
-    searchParams: new URLSearchParams(router.state.location.search),
-  }
-}
-
-const applyLocation = (
-  location: Location,
-  options?: { replace?: boolean },
-): void => {
-  const replace = options?.replace ?? false
-  if (!location.pathname) return
-  router
-    .navigate(location.pathname, {
-      replace,
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-}
-
-const subscribe = (callback: () => void) => {
-  return router.subscribe(callback)
-}
-
-export const locationAtom = atomWithLocation({
-  getLocation,
-  applyLocation,
-  subscribe,
-})
-/**
- * The set function of this atom will replace the current location instead of pushing a new one.
- */
-export const replaceLocationAtom = atomWithLocation({
-  replace: true,
-  getLocation,
-  applyLocation,
-  subscribe,
-})
+export const routes = globLayouts.at(-1)!

@@ -145,15 +145,15 @@ devDependencies:
   jotai-effect:
     specifier: ^0.5.0
     version: 0.5.0(jotai@2.6.4)
-  jotai-location:
-    specifier: ^0.5.2
-    version: 0.5.2(jotai@2.6.4)
   jotai-tanstack-query:
     specifier: ^0.8.5
     version: 0.8.5(@tanstack/query-core@5.18.1)(jotai@2.6.4)(wonka@6.3.4)
   jotai-tanstack-table:
     specifier: ^0.0.1
     version: 0.0.1(@tanstack/table-core@8.11.8)(jotai@2.6.4)
+  joter:
+    specifier: ^0.1.0
+    version: 0.1.0(jotai@2.6.4)(react-dom@18.2.0)(react@18.2.0)
   knip:
     specifier: ^4.4.0
     version: 4.4.0(@types/node@20.11.16)(typescript@5.3.3)
@@ -184,9 +184,6 @@ devDependencies:
   react-resizable-panels:
     specifier: ^2.0.3
     version: 2.0.3(react-dom@18.2.0)(react@18.2.0)
-  react-router-dom:
-    specifier: ^6.22.0
-    version: 6.22.0(react-dom@18.2.0)(react@18.2.0)
   react-twc:
     specifier: ^1.4.1
     version: 1.4.1(@types/react@18.2.55)(react@18.2.0)
@@ -2919,11 +2916,6 @@ packages:
       conventional-recommended-bump: 9.0.0
       release-it: 17.0.3(typescript@5.3.3)
       semver: 7.5.4
-    dev: true
-
-  /@remix-run/router@1.15.0:
-    resolution: {integrity: sha512-HOil5aFtme37dVQTB6M34G95kPM3MMuqSmIRVCC52eKV+Y/tGSqw9P3rWhlAx6A+mz+MoX+XxsGsNJbaI5qCgQ==}
-    engines: {node: '>=14.0.0'}
     dev: true
 
   /@rollup/plugin-alias@5.1.0(rollup@4.6.1):
@@ -6816,14 +6808,6 @@ packages:
       jotai: 2.6.4(@types/react@18.2.55)(react@18.2.0)
     dev: true
 
-  /jotai-location@0.5.2(jotai@2.6.4):
-    resolution: {integrity: sha512-4S9hDh1wYp4SG4Laq3+Xd0GdW7jwnWlbEuL8U22kv3wUZW892n6gXlNhwU0LaoXnWoGG0gtjSLBuFm5iodFKLg==}
-    peerDependencies:
-      jotai: '>=1.11.0'
-    dependencies:
-      jotai: 2.6.4(@types/react@18.2.55)(react@18.2.0)
-    dev: true
-
   /jotai-tanstack-query@0.8.5(@tanstack/query-core@5.18.1)(jotai@2.6.4)(wonka@6.3.4):
     resolution: {integrity: sha512-cFq+1sE7Qkt7Kh9Db2KE8LXdbPiGwCiy8S5YSEnjUDxF59A4XhoXTDJBuPiMIA1dD1/yMsNKr1ADfN5CvscYZw==}
     peerDependencies:
@@ -6860,6 +6844,18 @@ packages:
     dependencies:
       '@types/react': 18.2.55
       react: 18.2.0
+    dev: true
+
+  /joter@0.1.0(jotai@2.6.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-y4NlY2uaFK0vDSbcyN83vztgcRtv02XZOdW3JWNHJN74jTCKU+WEEuh31ez/vyCXExs8elwxoKjmcZPwUhV22A==}
+    peerDependencies:
+      jotai: '>=2.0.0'
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+    dependencies:
+      jotai: 2.6.4(@types/react@18.2.55)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /js-tokens@4.0.0:
@@ -8464,29 +8460,6 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /react-router-dom@6.22.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-z2w+M4tH5wlcLmH3BMMOMdrtrJ9T3oJJNsAlBJbwk+8Syxd5WFJ7J5dxMEW0/GEXD1BBis4uXRrNIz3mORr0ag==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-      react-dom: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.15.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.22.0(react@18.2.0)
-    dev: true
-
-  /react-router@6.22.0(react@18.2.0):
-    resolution: {integrity: sha512-q2yemJeg6gw/YixRlRnVx6IRJWZD6fonnfZhN1JIOhV2iJCPeRNSH3V1ISwHf+JWcESzLC3BOLD1T07tmO5dmg==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.15.0
-      react: 18.2.0
     dev: true
 
   /react-style-singleton@2.2.1(@types/react@18.2.55)(react@18.2.0):

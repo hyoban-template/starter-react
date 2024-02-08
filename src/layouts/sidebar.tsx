@@ -15,6 +15,7 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip"
 import { Utility } from "~/components/utility"
+import { goToLogin } from "~/store/location"
 
 import type { NavItem } from "~/components/side-nav"
 import type { PropsWithChildren } from "react"
@@ -47,7 +48,7 @@ export function SidebarLayout({
                   className="i-lucide-log-out"
                   onClick={() => {
                     window.localStorage.removeItem("token")
-                    window.location.reload()
+                    goToLogin()
                   }}
                 ></TooltipTrigger>
                 <TooltipContent>{t("auth.logout")}</TooltipContent>

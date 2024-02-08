@@ -1,5 +1,5 @@
 import { getCoreRowModel } from "@tanstack/react-table"
-import { atomWithHash } from "jotai-location"
+import { atom } from "jotai"
 import { atomWithTable } from "jotai-tanstack-table"
 import { useAtom, useAtomValue } from "jotai/react"
 
@@ -49,7 +49,7 @@ const columns: ColumnDef<Payment>[] = [
   },
 ]
 
-const searchAtom = atomWithHash("search", "")
+const searchAtom = atom("")
 const tableAtom = atomWithTable((get) => ({
   data: payments.filter((payment) => {
     const search = get(searchAtom)
