@@ -70,6 +70,7 @@ export default [
     ...eslintPluginUnicorn.configs["flat/recommended"],
     rules: {
       ...eslintPluginUnicorn.configs["flat/recommended"].rules,
+      // we should not restrict how we name our variables
       "unicorn/prevent-abbreviations": "off",
       "unicorn/catch-error-name": "off",
       // https://github.com/sindresorhus/meta/discussions/7
@@ -93,6 +94,8 @@ export default [
     ...react.configs.all,
     rules: {
       ...react.configs.all.rules,
+      // handled by unicorn/filename-case
+      // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/filename-case.md
       "@eslint-react/naming-convention/filename": "off",
     },
   },
@@ -115,7 +118,7 @@ export default [
       "src/components/auto-form/fields/**/*.tsx",
     ],
     rules: {
-      // disable export *
+      // disable export * and export default
       "no-restricted-syntax": [
         "error",
         {
