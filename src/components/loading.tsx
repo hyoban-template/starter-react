@@ -1,4 +1,4 @@
-import { cn } from "~/lib/utils"
+import { cn } from '~/lib/utils'
 
 export function Loading({
   className,
@@ -11,15 +11,15 @@ export function Loading({
   if (!center && !children)
     return (
       <div
-        className={cn("i-lucide-loader-2 animate-spin w-5 h-5", className)}
+        className={cn('i-lucide-loader-2 animate-spin w-5 h-5', className)}
       />
     )
 
   return (
     <div
       className={cn(
-        "flex gap-4 items-center",
-        center && "h-full justify-center",
+        'flex gap-4 items-center',
+        center && 'h-full justify-center',
       )}
     >
       <Loading className={className} />

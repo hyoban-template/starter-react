@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import AutoFormInput from "./input"
+import AutoFormInput from './input'
 
-import type { AutoFormInputComponentProps } from "../types"
+import type { AutoFormInputComponentProps } from '../types'
 
 export default function AutoFormNumber({
   fieldProps,
@@ -10,7 +10,7 @@ export default function AutoFormNumber({
   return (
     <AutoFormInput
       fieldProps={{
-        type: "number",
+        type: 'number',
         ...fieldProps,
       }}
       {...props}

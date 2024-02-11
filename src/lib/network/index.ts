@@ -1,18 +1,18 @@
-import isNetworkError from "is-network-error"
-import { $fetch } from "ofetch"
-import { toast } from "sonner"
+import isNetworkError from 'is-network-error'
+import { $fetch } from 'ofetch'
+import { toast } from 'sonner'
 
-import { goToLogin } from "~/store/location"
-import { clearToken, getToken, isTokenValid, setToken } from "~/store/token"
+import { goToLogin } from '~/store/location'
+import { clearToken, getToken, isTokenValid, setToken } from '~/store/token'
 
 type OutputType<T> =
   | {
-      err: string
-    }
+    err: string
+  }
   | {
-      err: null
-      data: T
-    }
+    err: null
+    data: T
+  }
 
 export async function myFetch<
   Output extends Record<string, unknown>,
@@ -20,7 +20,7 @@ export async function myFetch<
 >([url, params]: [string, Input]) {
   try {
     const res = await $fetch<OutputType<Output>>(url, {
-      method: "POST",
+      method: 'POST',
       body: params,
       ...(isTokenValid()
         ? {
@@ -30,25 +30,26 @@ export async function myFetch<
           }
         : {}),
     })
-    if (!("data" in res)) {
+    if (!('data' in res)) {
       toast.error(res.err)
-      if (res.err === "NO_LOGIN") {
+      if (res.err === 'NO_LOGIN') {
         clearToken()
         goToLogin()
       }
       throw new Error(res.err)
     }
     if (
-      "token" in res.data &&
-      typeof res.data.token === "string" &&
-      res.data.token.length > 0
+      'token' in res.data
+      && typeof res.data.token === 'string'
+      && res.data.token.length > 0
     ) {
       setToken(res.data.token)
     }
     return res.data
-  } catch (error) {
+  }
+  catch (error) {
     if (isNetworkError(error)) {
-      toast.error("Network error")
+      toast.error('Network error')
     }
     throw error
   }

@@ -1,9 +1,29 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Enable the ESlint flat config support
+  // "eslint.experimental.useFlatConfig": true,
 
-  "eslint.experimental.useFlatConfig": true,
-  "eslint.validate": ["typescript", "typescriptreact"],
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    { "rule": "@stylistic/*", "severity": "off" },
+  ],
+
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  ],
 
   "i18n-ally.localesPaths": ["src/lib/i18n/locales"],
   "i18n-ally.keystyle": "nested",

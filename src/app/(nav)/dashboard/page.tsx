@@ -1,59 +1,60 @@
-import { getCoreRowModel } from "@tanstack/react-table"
-import { atom } from "jotai"
-import { atomWithTable } from "jotai-tanstack-table"
-import { useAtom, useAtomValue } from "jotai/react"
+import { getCoreRowModel } from '@tanstack/react-table'
+import { atom } from 'jotai'
+import { atomWithTable } from 'jotai-tanstack-table'
+import { useAtom, useAtomValue } from 'jotai/react'
 
-import { DataTableBody } from "~/components/data-table/body"
-import { DataTableHeader } from "~/components/data-table/header"
-import { DataTablePagination } from "~/components/data-table/pagination"
-import { Input } from "~/components/ui/input"
-import { Table, TableBody } from "~/components/ui/table"
+import { DataTableBody } from '~/components/data-table/body'
+import { DataTableHeader } from '~/components/data-table/header'
+import { DataTablePagination } from '~/components/data-table/pagination'
+import { Input } from '~/components/ui/input'
+import { Table, TableBody } from '~/components/ui/table'
 
-import type { ColumnDef } from "@tanstack/react-table"
+import type { ColumnDef } from '@tanstack/react-table'
 
 type Payment = {
   id: string
   amount: number
-  status: "pending" | "processing" | "success" | "failed"
+  status: 'pending' | 'processing' | 'success' | 'failed'
   email: string
 }
 
 const payments: Payment[] = [
   {
-    id: "728ed52f",
+    id: '728ed52f',
     amount: 100,
-    status: "pending",
-    email: "m@example.com",
+    status: 'pending',
+    email: 'm@example.com',
   },
   {
-    id: "489e1d42",
+    id: '489e1d42',
     amount: 125,
-    status: "processing",
-    email: "example@gmail.com",
+    status: 'processing',
+    email: 'example@gmail.com',
   },
   // ...
 ]
 
-const columns: ColumnDef<Payment>[] = [
+const columns: Array<ColumnDef<Payment>> = [
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: 'status',
+    header: 'Status',
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: 'email',
+    header: 'Email',
   },
   {
-    accessorKey: "amount",
-    header: "Amount",
+    accessorKey: 'amount',
+    header: 'Amount',
   },
 ]
 
-const searchAtom = atom("")
-const tableAtom = atomWithTable((get) => ({
+const searchAtom = atom('')
+const tableAtom = atomWithTable(get => ({
   data: payments.filter((payment) => {
     const search = get(searchAtom)
-    if (!search) return true
+    if (!search)
+      return true
     return payment.email.includes(search)
   }),
   columns,

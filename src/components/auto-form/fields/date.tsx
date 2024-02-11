@@ -5,11 +5,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/ui/form"
+} from '~/components/ui/form'
 
-import { DatePicker } from "../../ui/date-picker"
+import { DatePicker } from '../../ui/date-picker'
 
-import type { AutoFormInputComponentProps } from "../types"
+import type { AutoFormInputComponentProps } from '../types'
 
 export default function AutoFormDate({
   label,
@@ -33,9 +33,11 @@ export default function AutoFormDate({
           {...fieldProps}
         />
       </FormControl>
-      {fieldConfigItem.description ? (
-        <FormDescription>{fieldConfigItem.description}</FormDescription>
-      ) : null}
+      {fieldConfigItem.description
+        ? (
+          <FormDescription>{fieldConfigItem.description}</FormDescription>
+          )
+        : null}
       <FormMessage />
     </FormItem>
   )

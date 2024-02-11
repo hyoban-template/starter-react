@@ -1,10 +1,10 @@
-import { defaultLocationAtom } from "joter"
+import { defaultLocationAtom } from 'joter'
 
-import { store } from "."
+import { store } from '.'
 
 export function goToLogin() {
   store.set(defaultLocationAtom, {
-    pathname: "/login",
+    pathname: '/login',
     internalReplacing: true,
   })
 }

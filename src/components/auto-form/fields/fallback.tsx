@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import AutoFormInput from "./input"
+import AutoFormInput from './input'
 
-import type { AutoFormInputComponentProps } from "../types"
+import type { AutoFormInputComponentProps } from '../types'
 
 export default function AutoFormFallback({
   fieldProps,

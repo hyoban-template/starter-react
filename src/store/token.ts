@@ -1,8 +1,8 @@
-import { atomWithStorage } from "jotai/vanilla/utils"
+import { atomWithStorage } from 'jotai/vanilla/utils'
 
-import { store } from "."
+import { store } from '.'
 
-const tokenAtom = atomWithStorage("token", "", undefined, {
+const tokenAtom = atomWithStorage('token', '', undefined, {
   getOnInit: true,
 })
 export function isTokenValid() {
@@ -15,5 +15,5 @@ export function setToken(token: string) {
   store.set(tokenAtom, token)
 }
 export function clearToken() {
-  store.set(tokenAtom, "")
+  store.set(tokenAtom, '')
 }

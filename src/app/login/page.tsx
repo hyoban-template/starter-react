@@ -1,11 +1,11 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useNavigate } from "joter"
-import { useForm } from "react-hook-form"
-import { useTranslation } from "react-i18next"
-import { z } from "zod"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from 'joter'
+import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
+import { z } from 'zod'
 
-import { MyInput } from "~/components/my-input"
-import { Button } from "~/components/ui/button"
+import { MyInput } from '~/components/my-input'
+import { Button } from '~/components/ui/button'
 import {
   Form,
   FormControl,
@@ -13,9 +13,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/ui/form"
-import { Utility } from "~/components/utility"
-import { myFetch } from "~/lib/network"
+} from '~/components/ui/form'
+import { Utility } from '~/components/utility'
+import { myFetch } from '~/lib/network'
 
 const loginInputSchema = z.object({
   username: z.string().min(1),
@@ -30,8 +30,8 @@ export default function LoginPage() {
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginInputSchema),
     defaultValues: {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
       remember: false,
     },
   })
@@ -39,19 +39,21 @@ export default function LoginPage() {
   const navigate = useNavigate()
 
   const onSubmit = form.handleSubmit((data) => {
-    myFetch<LoginOutput, LoginInput>(["/api/login", data])
+    myFetch<LoginOutput, LoginInput>(['/api/login', data])
       .then(() => {
         navigate({
-          pathname: "/",
+          pathname: '/',
         })
       })
-      .catch(() => {})
+      .catch((err) => {
+        console.error(err)
+      })
   })
 
   return (
     <>
       <h2 className="text-2xl font-bold text-center mb-4">
-        {t("auth.header")}
+        {t('auth.header')}
       </h2>
       <Form {...form}>
         <form onSubmit={onSubmit} className="space-y-8 min-w-18rem">
@@ -60,11 +62,11 @@ export default function LoginPage() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("auth.username")}</FormLabel>
+                <FormLabel>{t('auth.username')}</FormLabel>
                 <FormControl>
                   <MyInput
                     iconClassName="i-lucide-user"
-                    placeholder={t("auth.input-username")}
+                    placeholder={t('auth.input-username')}
                     {...field}
                   />
                 </FormControl>
@@ -77,12 +79,12 @@ export default function LoginPage() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel> {t("auth.password")}</FormLabel>
+                <FormLabel>{t('auth.password')}</FormLabel>
                 <FormControl>
                   <MyInput
                     iconClassName="i-lucide-key"
                     type="password"
-                    placeholder={t("auth.input-password")}
+                    placeholder={t('auth.input-password')}
                     {...field}
                   />
                 </FormControl>
@@ -91,7 +93,7 @@ export default function LoginPage() {
             )}
           />
           <Button type="submit" className="w-full">
-            {t("auth.login")}
+            {t('auth.login')}
           </Button>
         </form>
       </Form>

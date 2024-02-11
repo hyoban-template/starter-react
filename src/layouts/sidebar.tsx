@@ -1,27 +1,27 @@
-import { useAtomValue } from "jotai"
-import { atomWithStorage } from "jotai/utils"
-import { useTranslation } from "react-i18next"
+import { useAtomValue } from 'jotai'
+import { atomWithStorage } from 'jotai/utils'
+import { useTranslation } from 'react-i18next'
 
-import { SideNav } from "~/components/side-nav"
+import { SideNav } from '~/components/side-nav'
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "~/components/ui/resizable"
+} from '~/components/ui/resizable'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "~/components/ui/tooltip"
-import { Utility } from "~/components/utility"
-import { goToLogin } from "~/store/location"
+} from '~/components/ui/tooltip'
+import { Utility } from '~/components/utility'
+import { goToLogin } from '~/store/location'
 
-import type { NavItem } from "~/components/side-nav"
-import type { PropsWithChildren } from "react"
+import type { NavItem } from '~/components/side-nav'
+import type { PropsWithChildren } from 'react'
 
 const resizablePanelLayoutAtom = atomWithStorage<number[]>(
-  "resizable-panel-layout",
+  'resizable-panel-layout',
   [20, 80],
 )
 
@@ -47,11 +47,12 @@ export function SidebarLayout({
                 <TooltipTrigger
                   className="i-lucide-log-out"
                   onClick={() => {
-                    window.localStorage.removeItem("token")
+                    window.localStorage.removeItem('token')
                     goToLogin()
                   }}
-                ></TooltipTrigger>
-                <TooltipContent>{t("auth.logout")}</TooltipContent>
+                >
+                </TooltipTrigger>
+                <TooltipContent>{t('auth.logout')}</TooltipContent>
               </Tooltip>
             </TooltipProvider>
           </Utility>

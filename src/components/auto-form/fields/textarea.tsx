@@ -4,10 +4,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/ui/form"
-import { Textarea } from "~/components/ui/textarea"
+} from '~/components/ui/form'
+import { Textarea } from '~/components/ui/textarea'
 
-import type { AutoFormInputComponentProps } from "../types"
+import type { AutoFormInputComponentProps } from '../types'
 
 export default function AutoFormTextarea({
   label,
@@ -26,9 +26,11 @@ export default function AutoFormTextarea({
       <FormControl>
         <Textarea {...fieldProps} />
       </FormControl>
-      {fieldConfigItem.description ? (
-        <FormDescription>{fieldConfigItem.description}</FormDescription>
-      ) : null}
+      {fieldConfigItem.description
+        ? (
+          <FormDescription>{fieldConfigItem.description}</FormDescription>
+          )
+        : null}
       <FormMessage />
     </FormItem>
   )

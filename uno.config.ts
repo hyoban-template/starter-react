@@ -1,6 +1,6 @@
-import { defineConfig, presetIcons, presetTypography, presetUno } from "unocss"
-import presetAnimations from "unocss-preset-animations"
-import { builtinColors, presetShadcn } from "unocss-preset-shadcn"
+import { defineConfig, presetIcons, presetTypography, presetUno } from 'unocss'
+import presetAnimations from 'unocss-preset-animations'
+import { builtinColors, presetShadcn } from 'unocss-preset-shadcn'
 
 export default defineConfig({
   presets: [
@@ -10,6 +10,6 @@ export default defineConfig({
     }),
     presetTypography(),
     presetAnimations(),
-    presetShadcn(builtinColors.map((c) => ({ color: c }))),
+    presetShadcn(builtinColors.map(c => ({ color: c }))),
   ],
 })

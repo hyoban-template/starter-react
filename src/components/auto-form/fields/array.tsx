@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import { CheckboxGroup } from "~/components/checkbox-group"
+import { CheckboxGroup } from '~/components/checkbox-group'
 import {
   FormControl,
   FormDescription,
   FormItem,
   FormLabel,
-} from "~/components/ui/form"
+} from '~/components/ui/form'
 
-import type { AutoFormInputComponentProps } from "../types"
+import type { AutoFormInputComponentProps } from '../types'
 
 export default function AutoFormArray({
   label,
@@ -28,16 +28,17 @@ export default function AutoFormArray({
           {label}
           {isRequired ? <span className="text-destructive"> *</span> : null}
         </FormLabel>
-        {fieldConfigItem.description ? (
-          <FormDescription>{fieldConfigItem.description}</FormDescription>
-        ) : null}
+        {fieldConfigItem.description
+          ? (
+            <FormDescription>{fieldConfigItem.description}</FormDescription>
+            )
+          : null}
       </div>
       <FormControl>
         <CheckboxGroup
           options={
             Array.isArray(fieldConfigItem.inputProps?.options)
-              ? // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-                fieldConfigItem.inputProps?.options
+              ? fieldConfigItem.inputProps.options
               : []
           }
           checked={Array.isArray(field.value) ? field.value : []}

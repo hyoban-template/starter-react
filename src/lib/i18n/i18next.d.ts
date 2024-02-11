@@ -1,14 +1,14 @@
 // import the original type declarations
-import "i18next"
+import 'i18next'
 
 // import all namespaces (for the default language, only)
-import type zh from "./locales/zh.json"
+import type zh from './locales/zh.json'
 
-declare module "i18next" {
+declare module 'i18next' {
   // Extend CustomTypeOptions
-  interface CustomTypeOptions {
+  type CustomTypeOptions = {
     // custom namespace type, if you changed it
-    defaultNS: "fallback"
+    defaultNS: 'fallback'
     // custom resources type
     resources: {
       fallback: typeof zh

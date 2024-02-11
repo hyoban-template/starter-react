@@ -7,10 +7,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/ui/form"
-import { Input } from "~/components/ui/input"
+} from '~/components/ui/form'
+import { Input } from '~/components/ui/input'
 
-import type { AutoFormInputComponentProps } from "../types"
+import type { AutoFormInputComponentProps } from '../types'
 
 export default function AutoFormInput({
   label,
@@ -22,19 +22,21 @@ export default function AutoFormInput({
   const { className } = zodInputProps
   const { showLabel: _showLabel, ...fieldPropsWithoutShowLabel } = fieldProps
   const showLabel = _showLabel === undefined ? true : _showLabel
-  const showFilePreview =
-    fieldPropsWithoutShowLabel.type === "file" &&
-    typeof fieldPropsWithoutShowLabel.value === "string" &&
-    !!fieldPropsWithoutShowLabel.value
+  const showFilePreview
+    = fieldPropsWithoutShowLabel.type === 'file'
+    && typeof fieldPropsWithoutShowLabel.value === 'string'
+    && !!fieldPropsWithoutShowLabel.value
 
   return (
     <FormItem className={className}>
-      {showLabel ? (
-        <FormLabel>
-          {label}
-          {isRequired ? <span className="text-destructive"> *</span> : null}
-        </FormLabel>
-      ) : null}
+      {showLabel
+        ? (
+          <FormLabel>
+            {label}
+            {isRequired ? <span className="text-destructive"> *</span> : null}
+          </FormLabel>
+          )
+        : null}
       <FormControl>
         <>
           {showFilePreview && (
@@ -47,12 +49,12 @@ export default function AutoFormInput({
             type="text"
             {...fieldPropsWithoutShowLabel}
             value={
-              fieldPropsWithoutShowLabel.type === "file"
+              fieldPropsWithoutShowLabel.type === 'file'
                 ? undefined
                 : fieldPropsWithoutShowLabel.value
             }
             onChange={(e) => {
-              if (fieldPropsWithoutShowLabel.type === "file") {
+              if (fieldPropsWithoutShowLabel.type === 'file') {
                 fieldPropsWithoutShowLabel.onChange?.(e.target.files)
                 return
               }
@@ -61,9 +63,11 @@ export default function AutoFormInput({
           />
         </>
       </FormControl>
-      {fieldConfigItem.description ? (
-        <FormDescription>{fieldConfigItem.description}</FormDescription>
-      ) : null}
+      {fieldConfigItem.description
+        ? (
+          <FormDescription>{fieldConfigItem.description}</FormDescription>
+          )
+        : null}
       <FormMessage />
     </FormItem>
   )

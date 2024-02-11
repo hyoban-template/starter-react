@@ -1,11 +1,9 @@
 {
   "recommendations": [
     "streetsidesoftware.code-spell-checker",
-    "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
     "lokalise.i18n-ally",
     "antfu.iconify",
-    "esbenp.prettier-vscode",
     "antfu.unocss"
   ]
 }

@@ -7,19 +7,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/ui/form"
+} from '~/components/ui/form'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "~/components/ui/select"
+} from '~/components/ui/select'
 
-import { getBaseSchema } from "../utils"
+import { getBaseSchema } from '../utils'
 
-import type { AutoFormInputComponentProps } from "../types"
-import type * as z from "zod"
+import type { AutoFormInputComponentProps } from '../types'
+import type * as z from 'zod'
 
 export default function AutoFormEnum({
   label,
@@ -33,15 +33,15 @@ export default function AutoFormEnum({
   const baseValues = (getBaseSchema(zodItem) as unknown as z.ZodEnum<any>)._def
     .values
 
-  const values: [string, string][] = Array.isArray(baseValues)
-    ? baseValues.map((value) => [value, value])
+  const values: Array<[string, string]> = Array.isArray(baseValues)
+    ? baseValues.map(value => [value, value])
     : Object.entries(baseValues).map(([value, label]) => [
-        label as string,
-        value,
-      ])
+      label as string,
+      value,
+    ])
 
   function findItem(value: any) {
-    return values.find((item) => item[0] === value)
+    return values.find(item => item[0] === value)
   }
 
   return (
@@ -57,7 +57,7 @@ export default function AutoFormEnum({
               className="w-full"
               placeholder={fieldConfigItem.inputProps?.placeholder}
             >
-              {field.value ? findItem(field.value)?.[1] : "Select an option"}
+              {field.value ? findItem(field.value)?.[1] : 'Select an option'}
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
@@ -69,9 +69,11 @@ export default function AutoFormEnum({
           </SelectContent>
         </Select>
       </FormControl>
-      {fieldConfigItem.description ? (
-        <FormDescription>{fieldConfigItem.description}</FormDescription>
-      ) : null}
+      {fieldConfigItem.description
+        ? (
+          <FormDescription>{fieldConfigItem.description}</FormDescription>
+          )
+        : null}
       <FormMessage />
     </FormItem>
   )

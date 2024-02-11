@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "joter"
+import { Link as RouterLink } from 'joter'
 
 /**
  * same as html <a>
@@ -6,7 +6,7 @@ import { Link as RouterLink } from "joter"
 export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 function isExternalLink(href?: string) {
-  return href?.startsWith("http") ?? false
+  return href?.startsWith('http') ?? false
 }
 
 export function Link(props: LinkProps) {
@@ -14,5 +14,5 @@ export function Link(props: LinkProps) {
   if (isExternalLink(href)) {
     return <a {...props} target="_blank" rel="noopener noreferrer" />
   }
-  return <RouterLink {...rest} href={href ?? ""} />
+  return <RouterLink {...rest} href={href ?? ''} />
 }

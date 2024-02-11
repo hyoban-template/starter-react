@@ -14,11 +14,6 @@
 - [Iconify](https://iconify.design) - use icons from any icon sets [🔍Icônes](https://icones.netlify.app/) [with classes](https://unocss.dev/presets/icons)
 - [I18n ready](./src/lib/i18n/locales) with [react-i18next](https://github.com/i18next/react-i18next)
 
-### Coding Style
-
-- [TypeScript](https://github.com/microsoft/TypeScript) + [ESLint](https://github.com/eslint/eslint) with [config preset](https://planet-matrix.github.io/tech-docs/code-lint)
-- [Prettier](https://github.com/prettier/prettier) with [config preset](https://planet-matrix.github.io/tech-docs/code-format)
-
 ## Try it now
 
 ### GitHub Template

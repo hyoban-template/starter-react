@@ -1,17 +1,17 @@
-import React from "@vitejs/plugin-react"
-import UnoCSS from "unocss/vite"
-import { defineConfig, loadEnv } from "vite"
-import NitroDeploy from "vite-plugin-nitro-deploy"
-import TsconfigPaths from "vite-tsconfig-paths"
+import React from '@vitejs/plugin-react'
+import UnoCSS from 'unocss/vite'
+import { defineConfig, loadEnv } from 'vite'
+import NitroDeploy from 'vite-plugin-nitro-deploy'
+import TsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig(async ({ mode }) => {
   const env = loadEnv(mode, process.cwd())
-  // @ts-expect-error
+  // @ts-expect-error type mismatch
   import.meta.env = env
-  await import("./src/env")
+  await import('./src/env')
 
-  const proxyPath = env["VITE_PROXY_PATH"]
-  const proxyTarget = env["VITE_PROXY_TARGET"]
+  const proxyPath = env['VITE_PROXY_PATH']
+  const proxyTarget = env['VITE_PROXY_TARGET']
 
   return {
     plugins: [
@@ -20,13 +20,13 @@ export default defineConfig(async ({ mode }) => {
         babel: {
           presets: [
             [
-              "jotai/babel/preset",
+              'jotai/babel/preset',
               {
                 customAtomNames: [
-                  "atomDark",
-                  "atomWithQuery",
-                  "atomWithSuspenseQuery",
-                  "atomWithLocation",
+                  'atomDark',
+                  'atomWithQuery',
+                  'atomWithSuspenseQuery',
+                  'atomWithLocation',
                 ],
               },
             ],
@@ -53,8 +53,8 @@ export default defineConfig(async ({ mode }) => {
       rollupOptions: {
         output: {
           manualChunks: {
-            react: ["react", "react-dom"],
-            zod: ["zod"],
+            react: ['react', 'react-dom'],
+            zod: ['zod'],
           },
         },
       },

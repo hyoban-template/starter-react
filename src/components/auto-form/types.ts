@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { INPUT_COMPONENTS } from "./config"
-import type { ControllerRenderProps, FieldValues } from "react-hook-form"
-import type * as z from "zod"
+import type { INPUT_COMPONENTS } from './config'
+import type { ControllerRenderProps, FieldValues } from 'react-hook-form'
+import type * as z from 'zod'
 
 export type FieldConfigItem = {
   description?: React.ReactNode
   inputProps?: React.InputHTMLAttributes<HTMLInputElement> & {
     showLabel?: boolean
-    options?: { label: string; value: any }[]
+    options?: Array<{ label: string, value: any }>
   }
   fieldType?:
     | keyof typeof INPUT_COMPONENTS

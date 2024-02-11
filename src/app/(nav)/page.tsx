@@ -1,41 +1,41 @@
-import { toast } from "sonner"
-import { z } from "zod"
+import { toast } from 'sonner'
+import { z } from 'zod'
 
-import { AutoForm } from "~/components/auto-form"
-import { Button } from "~/components/ui/button"
+import { AutoForm } from '~/components/auto-form'
+import { Button } from '~/components/ui/button'
 
 // Define your form schema using zod
 const formSchema = z.object({
   username: z
     .string({
-      required_error: "Username is required.",
+      required_error: 'Username is required.',
     })
     // You can use zod's built-in validation as normal
     .min(2, {
-      message: "Username must be at least 2 characters.",
+      message: 'Username must be at least 2 characters.',
     }),
 
   password: z
     .string({
-      required_error: "Password is required.",
+      required_error: 'Password is required.',
     })
     // Use the "describe" method to set the label
     // If no label is set, the field name will be used
     // and un-camel-cased
-    .describe("Your secure password")
+    .describe('Your secure password')
     .min(8, {
-      message: "Password must be at least 8 characters.",
+      message: 'Password must be at least 8 characters.',
     }),
 
   favoriteNumber: z.coerce // When using numbers and dates, you must use coerce
     .number({
-      invalid_type_error: "Favorite number must be a number.",
+      invalid_type_error: 'Favorite number must be a number.',
     })
     .min(1, {
-      message: "Favorite number must be at least 1.",
+      message: 'Favorite number must be at least 1.',
     })
     .max(10, {
-      message: "Favorite number must be at most 10.",
+      message: 'Favorite number must be at most 10.',
     })
     .default(5) // You can set a default value
     .optional(),
@@ -45,16 +45,16 @@ const formSchema = z.object({
 
   acceptTerms: z
     .boolean()
-    .describe("Accept terms and conditions.")
-    .refine((value) => value, {
-      message: "You must accept the terms and conditions.",
-      path: ["acceptTerms"],
+    .describe('Accept terms and conditions.')
+    .refine(value => value, {
+      message: 'You must accept the terms and conditions.',
+      path: ['acceptTerms'],
     }),
 
   sendMeMails: z.boolean().optional(),
 
   // Enum will show a select
-  color: z.enum(["red", "green", "blue"]),
+  color: z.enum(['red', 'green', 'blue']),
 
   // Create sub-objects to create accordion sections
   address: z.object({
@@ -80,13 +80,13 @@ export default function Page() {
           // Use "inputProps" to pass props to the input component
           // You can use any props that the component accepts
           inputProps: {
-            type: "password",
-            placeholder: "••••••••",
+            type: 'password',
+            placeholder: '••••••••',
           },
         },
         favoriteNumber: {
           // Set a "description" that will be shown below the field
-          description: "Your favorite number between 1 and 10.",
+          description: 'Your favorite number between 1 and 10.',
         },
         acceptTerms: {
           inputProps: {
@@ -95,7 +95,8 @@ export default function Page() {
           // You can use JSX in the description
           description: (
             <>
-              I agree to the{" "}
+              I agree to the
+              {' '}
               <span className="text-primary underline">
                 terms and conditions
               </span>
@@ -105,18 +106,18 @@ export default function Page() {
         },
 
         birthday: {
-          description: "We need your birthday to send you a gift.",
+          description: 'We need your birthday to send you a gift.',
         },
 
         sendMeMails: {
           // Booleans use a checkbox by default, you can use a switch instead
-          fieldType: "switch",
+          fieldType: 'switch',
         },
       }}
       groups={[
         {
-          label: "Personal information",
-          fields: ["favoriteNumber", "birthday"],
+          label: 'Personal information',
+          fields: ['favoriteNumber', 'birthday'],
         },
       ]}
       onSubmit={(values) => {
@@ -134,8 +135,10 @@ export default function Page() {
       All children passed to the form will be rendered below the form.
       */}
       <p className="text-gray-500 text-sm">
-        By submitting this form, you agree to our{" "}
-        <span className="text-primary underline">terms and conditions</span>.
+        By submitting this form, you agree to our
+        {' '}
+        <span className="text-primary underline">terms and conditions</span>
+        .
       </p>
     </AutoForm>
   )

@@ -1,17 +1,17 @@
-import * as React from "react"
+import * as React from 'react'
 
-import { cn } from "~/lib/utils"
+import { cn } from '~/lib/utils'
 
-import { Checkbox } from "./ui/checkbox"
-import { Label } from "./ui/label"
+import { Checkbox } from './ui/checkbox'
+import { Label } from './ui/label'
 
-import type { CheckedState } from "@radix-ui/react-checkbox"
+import type { CheckedState } from '@radix-ui/react-checkbox'
 
 export type CheckboxGroupProps<T extends string | number> = {
-  options: {
+  options: Array<{
     label: string
     value: T
-  }[]
+  }>
   checked: T[]
   onCheckedChange: (checked: T[]) => void
   defaultCheckedAll?: boolean
@@ -26,22 +26,23 @@ export function CheckboxGroup<T extends string | number>(
     options,
     checked: value,
     onCheckedChange: onChange,
-    className = "",
+    className = '',
     defaultCheckedAll = false,
-    checkAllText = "Check All",
+    checkAllText = 'Check All',
   } = props
 
-  const allChecked: CheckedState =
-    value.length === options.length
+  const allChecked: CheckedState
+    = value.length === options.length
       ? true
-      : value.length === 0
-        ? false
-        : "indeterminate"
+      : (value.length === 0
+          ? false
+          : 'indeterminate')
 
   const handleAllCheckedChange = (checked: boolean) => {
     if (checked) {
-      onChange(options.map((option) => option.value))
-    } else {
+      onChange(options.map(option => option.value))
+    }
+    else {
       onChange([])
     }
   }
@@ -58,7 +59,7 @@ export function CheckboxGroup<T extends string | number>(
   }, [defaultCheckedAll, options.length])
 
   return (
-    <div className={cn("flex items-center flex-wrap gap-2", className)}>
+    <div className={cn('flex items-center flex-wrap gap-2', className)}>
       <Checkbox
         checked={allChecked}
         onCheckedChange={handleAllCheckedChange}
@@ -66,15 +67,16 @@ export function CheckboxGroup<T extends string | number>(
       />
       <Label htmlFor="check-all">{checkAllText}</Label>
 
-      {options.map((option) => (
+      {options.map(option => (
         <span key={String(option.value)} className="flex items-center gap-2">
           <Checkbox
             checked={value.includes(option.value)}
             onCheckedChange={(checked) => {
               if (checked) {
                 onChange([...value, option.value])
-              } else {
-                onChange(value.filter((v) => v !== option.value))
+              }
+              else {
+                onChange(value.filter(v => v !== option.value))
               }
             }}
             id={String(option.value)}
@@ -87,4 +89,4 @@ export function CheckboxGroup<T extends string | number>(
   )
 }
 
-CheckboxGroup.displayName = "CheckboxGroup"
+CheckboxGroup.displayName = 'CheckboxGroup'

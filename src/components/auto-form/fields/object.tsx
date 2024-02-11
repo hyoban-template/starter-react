@@ -2,32 +2,31 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { exists, t } from "i18next"
-import { Suspense } from "react"
+import { exists, t } from 'i18next'
+import { Suspense } from 'react'
 
-import { Loading } from "~/components/loading"
+import { Loading } from '~/components/loading'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "~/components/ui/accordion"
-import { FormField } from "~/components/ui/form"
-import { cn } from "~/lib/utils"
+} from '~/components/ui/accordion'
+import { FormField } from '~/components/ui/form'
+import { cn } from '~/lib/utils'
 
-import { DEFAULT_ZOD_HANDLERS, INPUT_COMPONENTS } from "../config"
-import { beautifyObjectName, getBaseType, zodToHtmlInputProps } from "../utils"
+import { DEFAULT_ZOD_HANDLERS, INPUT_COMPONENTS } from '../config'
+import { beautifyObjectName, getBaseType, zodToHtmlInputProps } from '../utils'
 
-import type { FieldConfig, FieldConfigItem } from "../types"
-import type { ParseKeys } from "i18next"
-import type { useForm } from "react-hook-form"
-import type * as z from "zod"
+import type { FieldConfig, FieldConfigItem } from '../types'
+import type { useForm } from 'react-hook-form'
+import type * as z from 'zod'
 
 function DefaultParent({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
 
-const validCols = ["col-span-1", "col-span-2", "col-span-3", "col-span-4"]
+const validCols = ['col-span-1', 'col-span-2', 'col-span-3', 'col-span-4']
 
 export default function AutoFormObject<
   SchemaType extends z.ZodObject<any, any>,
@@ -57,26 +56,27 @@ export default function AutoFormObject<
   return (
     <Accordion
       type="multiple"
-      className={cn("grid grid-cols-4 gap-5", className)}
-      defaultValue={shapeKeys.map((name) => name)}
+      className={cn('grid grid-cols-4 gap-5', className)}
+      defaultValue={shapeKeys.map(name => name)}
     >
       {shapeKeys
         .filter((name) => {
-          if (include) return include.includes(name)
+          if (include)
+            return include.includes(name)
           return true
         })
         .map((name) => {
           const item = shape[name] as z.ZodAny
           const zodBaseType = getBaseType(item)
-          const itemName =
-            item._def.description ??
-            (exists(`schema.${name}`)
-              ? t(`schema.${name}` as ParseKeys)
+          const itemName
+            = item._def.description
+            ?? (exists(`schema.${name}`)
+              ? t(`schema.${name}`)
               : beautifyObjectName(name))
-          const key = [...(path ?? []), name].join(".")
+          const key = [...(path ?? []), name].join('.')
           const fieldConfigItem: FieldConfigItem = fieldConfig?.[name] ?? {}
 
-          if (zodBaseType === "ZodObject") {
+          if (zodBaseType === 'ZodObject') {
             const { cols } = fieldConfigItem
             return (
               <AccordionItem
@@ -92,7 +92,7 @@ export default function AutoFormObject<
                     fieldConfig={
                       (fieldConfig?.[name] ?? {}) as FieldConfig<
                         z.infer<typeof item>
-                      >
+                    >
                     }
                     path={[...(path ?? []), name]}
                   />
@@ -102,10 +102,10 @@ export default function AutoFormObject<
           }
 
           const zodInputProps = zodToHtmlInputProps(item)
-          const isRequired =
-            zodInputProps.required ||
-            fieldConfigItem.inputProps?.required ||
-            false
+          const isRequired
+            = zodInputProps.required
+            ?? fieldConfigItem.inputProps?.required
+            ?? false
 
           return (
             <FormField
@@ -113,33 +113,38 @@ export default function AutoFormObject<
               name={key}
               key={key}
               render={({ field }) => {
-                const inputType =
-                  fieldConfigItem.fieldType ??
-                  DEFAULT_ZOD_HANDLERS[zodBaseType] ??
-                  "fallback"
+                const inputType
+                  = fieldConfigItem.fieldType
+                  ?? DEFAULT_ZOD_HANDLERS[zodBaseType]
+                  ?? 'fallback'
 
-                const InputComponent =
-                  typeof inputType === "function"
+                const InputComponent
+                  = typeof inputType === 'function'
                     ? inputType
                     : INPUT_COMPONENTS[inputType]
                 if (!InputComponent)
                   throw new Error(
                     `Invalid input type ${
-                      typeof inputType === "string" ? inputType : ""
+                      typeof inputType === 'string' ? inputType : ''
                     }`,
                   )
-                const ParentElement =
-                  fieldConfigItem.renderParent ?? DefaultParent
+                const ParentElement
+                  = fieldConfigItem.renderParent ?? DefaultParent
 
                 return (
                   <ParentElement key={`${key}.parent`}>
                     <Suspense
-                      fallback={<Loading>From filed {itemName}</Loading>}
+                      fallback={(
+                        <Loading>
+                          From filed
+                          {itemName}
+                        </Loading>
+                      )}
                     >
                       <InputComponent
                         zodInputProps={{
                           ...zodInputProps,
-                          className: `${zodInputProps.className ?? ""} ${
+                          className: `${zodInputProps.className ?? ''} ${
                             validCols[(fieldConfigItem.cols ?? 4) - 1]
                           }`,
                         }}
@@ -154,7 +159,7 @@ export default function AutoFormObject<
                           ...fieldConfigItem.inputProps,
                           value: fieldConfigItem.inputProps?.defaultValue
                             ? undefined
-                            : field.value ?? "",
+                            : field.value ?? '',
                         }}
                       />
                     </Suspense>

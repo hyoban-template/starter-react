@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Checkbox } from "~/components/ui/checkbox"
+import { Checkbox } from '~/components/ui/checkbox'
 import {
   FormControl,
   FormDescription,
   FormItem,
   FormLabel,
-} from "~/components/ui/form"
-import { cn } from "~/lib/utils"
+} from '~/components/ui/form'
+import { cn } from '~/lib/utils'
 
-import type { AutoFormInputComponentProps } from "../types"
+import type { AutoFormInputComponentProps } from '../types'
 
 export default function AutoFormCheckbox({
   label,
@@ -22,7 +22,7 @@ export default function AutoFormCheckbox({
   return (
     <FormItem
       className={cn(
-        "flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4",
+        'flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4',
         className,
       )}
     >
@@ -38,9 +38,11 @@ export default function AutoFormCheckbox({
           {label}
           {isRequired ? <span className="text-destructive"> *</span> : null}
         </FormLabel>
-        {fieldConfigItem.description ? (
-          <FormDescription>{fieldConfigItem.description}</FormDescription>
-        ) : null}
+        {fieldConfigItem.description
+          ? (
+            <FormDescription>{fieldConfigItem.description}</FormDescription>
+            )
+          : null}
       </div>
     </FormItem>
   )
