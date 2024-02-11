@@ -96,7 +96,6 @@
     "unocss-preset-animations": "^1.0.1",
     "unocss-preset-shadcn": "^0.2.3",
     "vite": "^5.1.1",
-    "vite-plugin-checker": "^0.6.4",
     "vite-plugin-nitro-deploy": "^0.0.19",
     "vite-tsconfig-paths": "^4.3.1",
     "wonka": "^6.3.4",
