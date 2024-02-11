@@ -4,11 +4,11 @@ import { $fetch } from "ofetch"
 import { Suspense } from "react"
 
 import { Loading } from "~/components/loading"
-import { twx } from "~/lib/utils"
+import { twc } from "~/lib/utils"
 
 import type { Getter } from "jotai"
 
-const Card = twx.div`rounded-lg border bg-card text-card-foreground shadow-sm p-4`
+const Card = twc.div`rounded-lg border bg-card text-card-foreground shadow-sm p-4`
 
 const idAtom = atom(1)
 const userAtom = atomWithSuspenseQuery((get: Getter) => ({

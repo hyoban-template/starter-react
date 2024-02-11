@@ -8,4 +8,4 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const twx = createTwc({ compose: cn })
+export const twc = createTwc({ compose: cn })
