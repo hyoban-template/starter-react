@@ -85,7 +85,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.js', '*.jsx', '*.mjs', '*.cjs', '*.config.ts'],
+      files: ['*.js', '*.jsx', '*.mjs', '*.cjs', './*.config.ts'],
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
     },
     // for React
