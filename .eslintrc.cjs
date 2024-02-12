@@ -1,16 +1,23 @@
-// ni -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-unicorn @stylistic/eslint-plugin eslint-plugin-antfu
+// https://gist.github.com/hyoban/5e2270371d743ddb10b4f427017babc3
+// ni -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-unicorn @stylistic/eslint-plugin eslint-plugin-antfu eslint-plugin-jsonc
 // ni -D @eslint-react/eslint-plugin eslint-plugin-react-hooks
 // ni -D @next/eslint-plugin-next
 module.exports = {
   env: {
+    es6: true,
+    browser: true,
     node: true,
   },
+  reportUnusedDisableDirectives: true,
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/strict-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:unicorn/recommended',
     'plugin:@stylistic/recommended-extends',
+    'plugin:jsonc/recommended-with-json',
+    'plugin:jsonc/recommended-with-jsonc',
+    'plugin:jsonc/recommended-with-json5',
     // for React
     'plugin:@eslint-react/all-legacy',
     'plugin:react-hooks/recommended',
@@ -22,7 +29,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   root: true,
-  ignorePatterns: ['node_modules', 'dist'],
+  ignorePatterns: ['!.vscode', '!.github', 'node_modules', 'dist', 'output', 'out'],
   rules: {
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-restricted-syntax': [
@@ -85,8 +92,19 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.js', '*.jsx', '*.mjs', '*.cjs', './*.config.ts'],
+      files: ['*.js', '*.jsx', '*.mjs', '*.cjs', '*.json', '*.json5', '*.jsonc', './*.config.ts'],
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
+      rules: {
+        '@typescript-eslint/consistent-type-assertions': 'off',
+      },
+    },
+    {
+      files: ['*.json', '*.json5', '*.jsonc'],
+      parser: 'jsonc-eslint-parser',
+      rules: {
+        'jsonc/auto': 'error',
+        'jsonc/no-comments': 'off',
+      },
     },
     // for React
     {
@@ -94,8 +112,8 @@ module.exports = {
       excludedFiles: [
         // https://nextjs.org/docs/getting-started/project-structure#routing-files
         'src/app/**/{layout,page,loading,not-found,error,global-error,route,template,default}.tsx',
+        '*.config.{js,cjs,mjs,ts}',
         'src/components/auto-form/fields/**/*.tsx',
-        '*.config.ts',
       ],
       rules: {
         // disable export * and export default
