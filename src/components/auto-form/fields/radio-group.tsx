@@ -2,6 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import type * as z from 'zod'
+
 import {
   FormControl,
   FormItem,
@@ -12,7 +14,6 @@ import { RadioGroup, RadioGroupItem } from '~/components/ui/radio-group'
 import { cn } from '~/lib/utils'
 
 import type { AutoFormInputComponentProps } from '../types'
-import type * as z from 'zod'
 
 export default function AutoFormRadioGroup({
   label,

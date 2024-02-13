@@ -4,6 +4,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { exists, t } from 'i18next'
 import { Suspense } from 'react'
+import type { useForm } from 'react-hook-form'
+import type * as z from 'zod'
 
 import { Loading } from '~/components/loading'
 import {
@@ -16,11 +18,8 @@ import { FormField } from '~/components/ui/form'
 import { cn } from '~/lib/utils'
 
 import { DEFAULT_ZOD_HANDLERS, INPUT_COMPONENTS } from '../config'
-import { beautifyObjectName, getBaseType, zodToHtmlInputProps } from '../utils'
-
 import type { FieldConfig, FieldConfigItem } from '../types'
-import type { useForm } from 'react-hook-form'
-import type * as z from 'zod'
+import { beautifyObjectName, getBaseType, zodToHtmlInputProps } from '../utils'
 
 function DefaultParent({ children }: { children: React.ReactNode }) {
   return <>{children}</>

@@ -1,9 +1,9 @@
 /* eslint-disable @eslint-react/no-complicated-conditional-rendering */
+import type { Table } from '@tanstack/react-table'
+
 import { TableCell, TableRow } from '~/components/ui/table'
 
 import { Loading } from '../loading'
-
-import type { Table } from '@tanstack/react-table'
 
 export function DataTableLoading<TData>({
   table,

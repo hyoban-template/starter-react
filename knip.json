@@ -4,13 +4,7 @@
     "type": true,
     "interface": true
   },
-  "ignoreDependencies": [
-    "@iconify-json/lucide",
-    "@iconify-json/mdi",
-    "@iconify-json/simple-icons",
-    "@eslint/eslintrc",
-    "virtual:uno.css"
-  ],
+  "ignoreDependencies": ["@iconify-json/lucide", "virtual:uno.css"],
   "entry": [
     "*.config.{js,ts}",
     "src/main.tsx",

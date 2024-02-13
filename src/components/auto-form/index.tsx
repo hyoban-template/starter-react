@@ -2,18 +2,17 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useMemo } from 'react'
+import type { DefaultValues } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
+import type { z } from 'zod'
 
 import { Form } from '~/components/ui/form'
 import { cn } from '~/lib/utils'
 
 import { Loading } from '../loading'
-import { getDefaultValues, getObjectFormSchema } from './utils'
-
 import type { FieldConfig } from './types'
 import type { ZodObjectOrWrapped } from './utils'
-import type { DefaultValues } from 'react-hook-form'
-import type { z } from 'zod'
+import { getDefaultValues, getObjectFormSchema } from './utils'
 
 const AutoFormObject = React.lazy(() =>
   import('./fields/object').then(mod => ({ default: mod.default })),

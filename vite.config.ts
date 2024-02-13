@@ -10,8 +10,8 @@ export default defineConfig(async ({ mode }) => {
   import.meta.env = env
   await import('./src/env')
 
-  const proxyPath = env['VITE_PROXY_PATH']
-  const proxyTarget = env['VITE_PROXY_TARGET']
+  const proxyPath = env.VITE_PROXY_PATH!
+  const proxyTarget = env.VITE_PROXY_TARGET!
 
   return {
     plugins: [

@@ -1,15 +1,14 @@
+import type { ColumnDef } from '@tanstack/react-table'
 import { getCoreRowModel } from '@tanstack/react-table'
 import { atom } from 'jotai'
-import { atomWithTable } from 'jotai-tanstack-table'
 import { useAtom, useAtomValue } from 'jotai/react'
+import { atomWithTable } from 'jotai-tanstack-table'
 
 import { DataTableBody } from '~/components/data-table/body'
 import { DataTableHeader } from '~/components/data-table/header'
 import { DataTablePagination } from '~/components/data-table/pagination'
 import { Input } from '~/components/ui/input'
 import { Table, TableBody } from '~/components/ui/table'
-
-import type { ColumnDef } from '@tanstack/react-table'
 
 type Payment = {
   id: string

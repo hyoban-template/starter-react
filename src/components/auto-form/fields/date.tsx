@@ -8,7 +8,6 @@ import {
 } from '~/components/ui/form'
 
 import { DatePicker } from '../../ui/date-picker'
-
 import type { AutoFormInputComponentProps } from '../types'
 
 export default function AutoFormDate({

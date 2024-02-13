@@ -1,3 +1,4 @@
+import type { Getter } from 'jotai'
 import { atom, useAtomValue } from 'jotai'
 import { atomWithSuspenseQuery } from 'jotai-tanstack-query'
 import { $fetch } from 'ofetch'
@@ -5,8 +6,6 @@ import { Suspense } from 'react'
 
 import { Loading } from '~/components/loading'
 import { twc } from '~/lib/utils'
-
-import type { Getter } from 'jotai'
 
 const Card = twc.div`rounded-lg border bg-card text-card-foreground shadow-sm p-4`
 

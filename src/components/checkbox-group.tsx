@@ -1,11 +1,10 @@
+import type { CheckedState } from '@radix-ui/react-checkbox'
 import * as React from 'react'
 
 import { cn } from '~/lib/utils'
 
 import { Checkbox } from './ui/checkbox'
 import { Label } from './ui/label'
-
-import type { CheckedState } from '@radix-ui/react-checkbox'
 
 export type CheckboxGroupProps<T extends string | number> = {
   options: Array<{

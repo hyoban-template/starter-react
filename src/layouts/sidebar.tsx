@@ -1,7 +1,9 @@
 import { useAtomValue } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
+import type { PropsWithChildren } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import type { NavItem } from '~/components/side-nav'
 import { SideNav } from '~/components/side-nav'
 import {
   ResizableHandle,
@@ -16,9 +18,6 @@ import {
 } from '~/components/ui/tooltip'
 import { Utility } from '~/components/utility'
 import { goToLogin } from '~/store/location'
-
-import type { NavItem } from '~/components/side-nav'
-import type { PropsWithChildren } from 'react'
 
 const resizablePanelLayoutAtom = atomWithStorage<number[]>(
   'resizable-panel-layout',

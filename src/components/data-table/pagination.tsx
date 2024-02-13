@@ -1,3 +1,4 @@
+import type { Table } from '@tanstack/react-table'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '~/components/ui/button'
@@ -8,8 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '~/components/ui/select'
-
-import type { Table } from '@tanstack/react-table'
 
 type DataTablePaginationProps<TData> = {
   table: Table<TData>

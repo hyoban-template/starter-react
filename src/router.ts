@@ -1,7 +1,6 @@
-import { createElement, lazy, Suspense } from 'react'
-
 import type { Route } from 'joter'
 import type { FC, PropsWithChildren } from 'react'
+import { createElement, lazy, Suspense } from 'react'
 
 const globLayouts = Object.entries(
   import.meta.glob<FC<PropsWithChildren>>('./app/**/layout.tsx', {

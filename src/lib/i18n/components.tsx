@@ -8,8 +8,8 @@ import {
   TooltipTrigger,
 } from '~/components/ui/tooltip'
 
-import { supportedLanguages } from '.'
 import { cn } from '../utils'
+import { supportedLanguages } from '.'
 
 function onClick() {
   const currentLang = i18next.language

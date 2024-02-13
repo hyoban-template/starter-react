@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import type * as z from 'zod'
+
 import {
   FormControl,
   FormDescription,
@@ -16,10 +18,8 @@ import {
   SelectValue,
 } from '~/components/ui/select'
 
-import { getBaseSchema } from '../utils'
-
 import type { AutoFormInputComponentProps } from '../types'
-import type * as z from 'zod'
+import { getBaseSchema } from '../utils'
 
 export default function AutoFormEnum({
   label,

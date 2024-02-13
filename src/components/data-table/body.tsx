@@ -1,8 +1,7 @@
+import type { Table } from '@tanstack/react-table'
 import { flexRender } from '@tanstack/react-table'
 
 import { TableCell, TableRow } from '~/components/ui/table'
-
-import type { Table } from '@tanstack/react-table'
 
 export function DataTableBody<TData>({ table }: { table: Table<TData> }) {
   return table.getRowModel().rows.length > 0
