@@ -4,11 +4,10 @@ import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
 import eslintReact from '@eslint-react/eslint-plugin'
 import stylistic from '@stylistic/eslint-plugin'
-import { defu } from 'defu'
-import gitignore from 'eslint-config-flat-gitignore'
+import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
+import * as eslintPluginImport from 'eslint-plugin-import'
 import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import tseslint from 'typescript-eslint'
@@ -19,88 +18,19 @@ const GLOB_SRC = '**/*.?([cm])[jt]s?(x)'
 const GLOB_JS = '**/*.?([cm])js'
 const GLOB_JSX = '**/*.?([cm])jsx'
 
-const GLOB_EXCLUDE = [
-  '**/node_modules',
-  '**/dist',
-  '**/package-lock.json',
-  '**/yarn.lock',
-  '**/pnpm-lock.yaml',
-  '**/bun.lockb',
-
-  '**/output',
-  '**/coverage',
-  '**/temp',
-  '**/.temp',
-  '**/tmp',
-  '**/.tmp',
-  '**/.history',
-  '**/.vitepress/cache',
-  '**/.nuxt',
-  '**/.next',
-  '**/.vercel',
-  '**/.changeset',
-  '**/.idea',
-  '**/.cache',
-  '**/.output',
-  '**/.vite-inspect',
-
-  '**/CHANGELOG*.md',
-  '**/*.min.*',
-  '**/LICENSE*',
-  '**/__snapshots__',
-  '**/auto-import?(s).d.ts',
-  '**/components.d.ts',
-]
-
-function createFlatConfig(config) {
-  if (Array.isArray(config)) {
-    return config.map(element => createFlatConfig(element))
-  }
-
-  const configKeys = Object.keys(config)
-  if (configKeys.length === 1 && configKeys[0] === 'ignores')
-    return config
-
-  if (!config?.files) {
-    return {
-      ...config,
-      files: [GLOB_SRC],
-    }
-  }
-  return config
-}
-
-export default createFlatConfig([
-  defu(
+export default config(
+  {},
+  [
     {
-      ignores: GLOB_EXCLUDE,
-    },
-    gitignore({
-      files: [
-        '.gitignore',
-        '.eslintignore',
-      ],
-      strict: false,
-    }),
-  ),
-  defu(
-    {
-      name: 'Basic JavaScript rules',
       rules: {
         'prefer-template': 'error',
         'no-console': ['warn', { allow: ['warn', 'error'] }],
       },
     },
     js.configs.recommended,
-  ),
-  defu(
-    {
-      name: 'Stylistic rules for formatting',
-    },
-    stylistic.configs['recommended-flat'],
-  ),
+  ],
+  stylistic.configs['recommended-flat'],
   {
-    name: 'Antfu rules',
     plugins: {
       antfu: eslintPluginAntfu,
     },
@@ -108,15 +38,10 @@ export default createFlatConfig([
       'antfu/consistent-list-newline': 'error',
       'antfu/if-newline': 'error',
       'antfu/top-level-function': 'error',
-
-      'antfu/import-dedupe': 'error',
-      'antfu/no-import-dist': 'error',
-      'antfu/no-import-node-modules-by-path': 'error',
     },
   },
-  defu(
+  [
     {
-      name: 'Unicorn rules',
       rules: {
         // we should not restrict how we name our variables
         'unicorn/prevent-abbreviations': 'off',
@@ -129,20 +54,28 @@ export default createFlatConfig([
       },
     },
     eslintPluginUnicorn.configs['flat/recommended'],
-  ),
+  ],
   {
-    name: 'Simple import sort',
+    name: 'Import sort',
     plugins: {
       'simple-import-sort': simpleImportSort,
+      'import': eslintPluginImport,
     },
     rules: {
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
+      'import/first': 'error',
+      'import/newline-after-import': 'error',
+      'import/no-duplicates': 'error',
+      'antfu/import-dedupe': 'error',
+
+      'antfu/no-import-dist': 'error',
+      'antfu/no-import-node-modules-by-path': 'error',
     },
   },
-  defu(
+  [
     {
-      name: 'TypeScript rules',
+      files: [GLOB_SRC],
       languageOptions: {
         parserOptions: {
           project: true,
@@ -189,42 +122,34 @@ export default createFlatConfig([
     },
     ...tseslint.configs.stylisticTypeChecked,
     ...tseslint.configs.recommendedTypeChecked,
-  ),
-  defu(
+  ],
+  [
     {
-      name: 'Disable type check rules for JavaScript files',
-      files: [GLOB_JS, GLOB_JSX],
-    },
-    tseslint.configs.disableTypeChecked,
-  ),
-  defu(
-    {
-      name: 'React rules',
       rules: {
         // handled by unicorn/filename-case
         // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/filename-case.md
         '@eslint-react/naming-convention/filename': 'off',
+        // Requires type information
+        '@eslint-react/no-leaked-conditional-rendering': 'error',
       },
     },
     eslintReact.configs.all,
-  ),
+  ],
   {
-    name: 'React hooks rules',
     plugins: {
       'react-hooks': reactHooks,
     },
     rules: reactHooks.configs.recommended.rules,
   },
-  {
-    name: 'React refresh rules',
-    plugins: {
-      'react-refresh': reactRefresh,
+  [
+    {
+      name: 'Disable type check rules for JavaScript files',
+      files: [GLOB_JS, GLOB_JSX],
+      rules: {
+        // Requires type information
+        '@eslint-react/no-leaked-conditional-rendering': 'off',
+      },
     },
-    rules: {
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-    },
-  },
-])
+    tseslint.configs.disableTypeChecked,
+  ],
+)
