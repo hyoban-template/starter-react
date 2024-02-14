@@ -69,8 +69,8 @@ export default config(
     },
   },
   [
-    ...tseslint.configs.stylisticTypeChecked,
     ...tseslint.configs.strictTypeChecked,
+    ...tseslint.configs.stylisticTypeChecked,
     {
       languageOptions: {
         parserOptions: {
