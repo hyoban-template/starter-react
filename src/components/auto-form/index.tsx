@@ -55,6 +55,7 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
   const groupedKeys = useMemo(
     () =>
       shapeKeys
+        // eslint-disable-next-line unicorn/no-array-reduce
         .reduce<Array<string[] | Record<string, string[]>>>((acc, key) => {
           const group = groups?.find(group => group.fields.includes(key))
           if (group) {
