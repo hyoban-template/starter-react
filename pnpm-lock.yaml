@@ -146,8 +146,8 @@ devDependencies:
     specifier: ^14.0.5
     version: 14.0.5(i18next@23.8.2)(react-dom@18.2.0)(react@18.2.0)
   react-resizable-panels:
-    specifier: ^2.0.8
-    version: 2.0.8(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.0.9
+    version: 2.0.9(react-dom@18.2.0)(react@18.2.0)
   react-twc:
     specifier: ^1.4.1
     version: 1.4.1(@types/react@18.2.55)(react@18.2.0)
@@ -7718,15 +7718,14 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.2.55)(react@18.2.0)
     dev: true
 
-  /react-resizable-panels@2.0.8(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-iAazXPOZJcH7wF9V0S7VoloXoDvz1UZqkcGjz4tCF6vxZjA9hkccns5ItXPxrJ5m+qZOARaf8OczYi9C+eZr7g==}
+  /react-resizable-panels@2.0.9(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZylBvs7oG7Y/INWw3oYGolqgpFvoPW8MPeg9l1fURDeKpxrmUuCHBUmPj47BdZ11MODImu3kZYXG85rbySab7w==}
     peerDependencies:
       react: ^16.14.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      stacking-order: 1.0.1
     dev: true
 
   /react-style-singleton@2.2.1(@types/react@18.2.55)(react@18.2.0):
@@ -8388,10 +8387,6 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       minipass: 7.0.4
-    dev: true
-
-  /stacking-order@1.0.1:
-    resolution: {integrity: sha512-IxD2jw+DDiQ3FaXr6QcvSt5uE2vDWBYcC7bbCWfI5R9kEoj8Zgi4rFwPXALOjTtE96iIdZjcJFLQVr7r7xIdAA==}
     dev: true
 
   /standard-as-callback@2.1.0:
