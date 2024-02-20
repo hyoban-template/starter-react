@@ -2,10 +2,7 @@
   "name": "@planet-matrix/starter-react",
   "type": "module",
   "version": "0.0.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/planet-matrix/starter-react.git"
-  },
+  "repository": "planet-matrix/starter-react",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
@@ -18,14 +15,14 @@
     "bin.mjs"
   ],
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "start": "node .output/server/index.mjs",
-    "lint": "eslint .",
-    "typecheck": "tsc",
+    "dev": "vite",
     "knip": "knip",
-    "release": "release-it"
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "release": "release-it",
+    "start": "node .output/server/index.mjs",
+    "typecheck": "tsc"
   },
   "release-it": {
     "git": {
@@ -71,7 +68,7 @@
     "clsx": "^2.1.0",
     "date-fns": "^3.3.1",
     "eslint": "^8.56.0",
-    "eslint-config-hyoban": "^0.1.3",
+    "eslint-config-hyoban": "^0.1.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "i18next": "^23.9.0",
     "is-network-error": "^1.0.1",
