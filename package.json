@@ -73,7 +73,7 @@
     "eslint": "^8.56.0",
     "eslint-config-hyoban": "^0.1.3",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "i18next": "^23.8.2",
+    "i18next": "^23.9.0",
     "is-network-error": "^1.0.1",
     "jotai": "^2.6.4",
     "jotai-dark": "^0.2.4",
