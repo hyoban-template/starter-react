@@ -1,13 +1,20 @@
 {
-  "[javascript][javascriptreact][typescript][typescriptreact]": {
-    "editor.formatOnSave": false
-  },
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
   "eslint.experimental.useFlatConfig": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "mdx",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "github-actions-workflow",
+    "css"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
@@ -18,7 +25,8 @@
     { "rule": "import/first", "severity": "off" },
     { "rule": "import/newline-after-import", "severity": "off" },
     { "rule": "import/no-duplicates", "severity": "off" },
-    { "rule": "antfu/import-dedupe", "severity": "off" }
+    { "rule": "antfu/import-dedupe", "severity": "off" },
+    { "rule": "format/prettier", "severity": "off" }
   ],
 
   "i18n-ally.localesPaths": ["src/lib/i18n/locales"],
