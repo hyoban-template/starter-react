@@ -99,7 +99,7 @@
     "unocss-preset-animations": "^1.0.1",
     "unocss-preset-shadcn": "^0.2.3",
     "vite": "^5.1.2",
-    "vite-plugin-nitro-deploy": "^0.0.19",
+    "vite-plugin-nitro-deploy": "^0.0.20",
     "vite-tsconfig-paths": "^4.3.1",
     "wonka": "^6.3.4",
     "zod": "^3.22.4",
