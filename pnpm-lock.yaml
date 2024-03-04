@@ -182,8 +182,8 @@ devDependencies:
     specifier: ^5.1.2
     version: 5.1.2(@types/node@20.11.17)
   vite-plugin-nitro-deploy:
-    specifier: ^0.0.19
-    version: 0.0.19(vite@5.1.2)
+    specifier: ^0.0.20
+    version: 0.0.20(vite@5.1.2)
   vite-tsconfig-paths:
     specifier: ^4.3.1
     version: 4.3.1(typescript@5.3.3)(vite@5.1.2)
@@ -9629,8 +9629,8 @@ packages:
       semver: 7.6.0
     dev: true
 
-  /vite-plugin-nitro-deploy@0.0.19(vite@5.1.2):
-    resolution: {integrity: sha512-cbNiZmKd1f6vpBXL8mUZxiDEWP3CW8XRzfL2053tf/SJZZRJUYGOL9JdyhRuVyPt1hFcgvM4Q+FsenXQysA8cg==}
+  /vite-plugin-nitro-deploy@0.0.20(vite@5.1.2):
+    resolution: {integrity: sha512-75/Z1x9F0jKsrbqdd2hK8Sfi1mhvWjSB6FDblEQdkO094r3XCYGmcXiWm0z3Qgf6/0vFNGsH6LS3AdQ3C9l9vQ==}
     peerDependencies:
       vite: ^5.0.0
     dependencies:
