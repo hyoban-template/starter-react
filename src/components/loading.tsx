@@ -8,12 +8,13 @@ export function Loading({
   className?: string
   center?: boolean
 }>) {
-  if (!center && !children)
+  if (!center && !children) {
     return (
       <div
         className={cn('i-lucide-loader-2 animate-spin w-5 h-5', className)}
       />
     )
+  }
 
   return (
     <div

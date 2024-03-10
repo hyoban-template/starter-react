@@ -24,7 +24,7 @@ export default function AutoFormRadioGroup({
   zodInputProps,
 }: AutoFormInputComponentProps) {
   const { className } = zodInputProps
-  const values = (zodItem as unknown as z.ZodEnum<any>)._def.values
+  const { values } = (zodItem as unknown as z.ZodEnum<any>)._def
 
   return (
     <FormItem className={cn('space-y-3', className)}>

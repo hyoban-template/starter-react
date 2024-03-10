@@ -15,6 +15,7 @@ import type { ZodObjectOrWrapped } from './utils'
 import { getDefaultValues, getObjectFormSchema } from './utils'
 
 const AutoFormObject = React.lazy(() =>
+  // eslint-disable-next-line github/no-then
   import('./fields/object').then(mod => ({ default: mod.default })),
 )
 
@@ -74,12 +75,11 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
             }
           }
           else {
-            if (Array.isArray(acc.at(-1))) {
+            if (Array.isArray(acc.at(-1)))
               (acc.at(-1) as string[]).push(key)
-            }
-            else {
+
+            else
               acc.push([key])
-            }
           }
           return acc
         }, [])
@@ -114,9 +114,8 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     const parsedValues = formSchema.safeParse(values)
-    if (parsedValues.success) {
+    if (parsedValues.success)
       onSubmitProp?.(parsedValues.data)
-    }
   }
 
   return (
@@ -129,9 +128,8 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
           const values = form.getValues()
           onValuesChangeProp?.(values)
           const parsedValues = formSchema.safeParse(values)
-          if (parsedValues.success) {
+          if (parsedValues.success)
             onParsedValuesChange?.(parsedValues.data)
-          }
         }}
         className={cn('space-y-5', className)}
       >

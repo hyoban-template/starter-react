@@ -20,8 +20,7 @@ const MyInput = React.forwardRef<HTMLInputElement, MyInputProps>(
               'text-muted-foreground absolute inset-0 top-1/2 -translate-y-1/2 left-2',
               iconClassName,
             )}
-          >
-          </span>
+          />
         </div>
         )
       : (

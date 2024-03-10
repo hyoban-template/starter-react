@@ -21,7 +21,7 @@ export function DataTablePagination<TData>({
 
   return (
     <div className="flex items-center justify-between px-2">
-      <div className="grow"></div>
+      <div className="grow" />
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className="flex items-center space-x-2">
           <p className="text-sm font-medium">
@@ -61,7 +61,7 @@ export function DataTablePagination<TData>({
             disabled={!table.getCanPreviousPage()}
           >
             <span className="sr-only">Go to first page</span>
-            <span className="h-4 w-4 i-lucide-arrow-left"></span>
+            <span className="h-4 w-4 i-lucide-arrow-left" />
           </Button>
           <Button
             variant="outline"
@@ -72,7 +72,7 @@ export function DataTablePagination<TData>({
             disabled={!table.getCanPreviousPage()}
           >
             <span className="sr-only">Go to previous page</span>
-            <span className="h-4 w-4 i-lucide-chevron-left"></span>
+            <span className="h-4 w-4 i-lucide-chevron-left" />
           </Button>
           <Button
             variant="outline"
@@ -83,7 +83,7 @@ export function DataTablePagination<TData>({
             disabled={!table.getCanNextPage()}
           >
             <span className="sr-only">Go to next page</span>
-            <span className="h-4 w-4 i-lucide-chevron-right"></span>
+            <span className="h-4 w-4 i-lucide-chevron-right" />
           </Button>
           <Button
             variant="outline"
@@ -94,7 +94,7 @@ export function DataTablePagination<TData>({
             disabled={!table.getCanNextPage()}
           >
             <span className="sr-only">Go to last page</span>
-            <span className="h-4 w-4 i-lucide-arrow-right"></span>
+            <span className="h-4 w-4 i-lucide-arrow-right" />
           </Button>
         </div>
       </div>

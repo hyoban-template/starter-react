@@ -11,8 +11,8 @@ function isExternalLink(href?: string) {
 
 export function Link(props: LinkProps) {
   const { href, ...rest } = props
-  if (isExternalLink(href)) {
+  if (isExternalLink(href))
     return <a {...props} target="_blank" rel="noopener noreferrer" />
-  }
+
   return <RouterLink {...rest} href={href ?? ''} />
 }

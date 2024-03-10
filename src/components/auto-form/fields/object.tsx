@@ -121,12 +121,13 @@ export default function AutoFormObject<
                   = typeof inputType === 'function'
                     ? inputType
                     : INPUT_COMPONENTS[inputType]
-                if (!InputComponent)
+                if (!InputComponent) {
                   throw new Error(
                     `Invalid input type ${
                       typeof inputType === 'string' ? inputType : ''
                     }`,
                   )
+                }
                 const ParentElement
                   = fieldConfigItem.renderParent ?? DefaultParent
 

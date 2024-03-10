@@ -27,14 +27,13 @@ function recursiveSearch(
   pathname: string | undefined,
 ): [NavItem | undefined, string[]] {
   for (const item of nav) {
-    if (item.href === pathname) {
+    if (item.href === pathname)
       return [item, []]
-    }
+
     if (item.items) {
       const cur = recursiveSearch(item.items, pathname)
-      if (cur[0]) {
+      if (cur[0])
         return [cur[0], [item.label, ...cur[1]]]
-      }
     }
   }
   return [undefined, []]
@@ -71,10 +70,11 @@ function NavGroup({
     const firstSubItemTarget
       = item.items?.[0]?.disabled === true ? undefined : item.items?.[0]?.href
     const navTarget = pathname === itemTarget ? firstSubItemTarget : itemTarget
-    if (navTarget)
+    if (navTarget) {
       navigate({
         pathname: navTarget,
       })
+    }
   }
 
   return (

@@ -32,15 +32,14 @@ const globLayouts = Object.entries(
     } satisfies Route & Record<string, unknown>
   })
   .sort((a, b) => {
-    if (a.routeLevel !== b.routeLevel) {
+    if (a.routeLevel !== b.routeLevel)
       return b.routeLevel - a.routeLevel
-    }
+
     return b.folderLevel - a.folderLevel
   })
 
-if (!globLayouts.some(i => i.originalPath === './app/layout.tsx')) {
+if (!globLayouts.some(i => i.originalPath === './app/layout.tsx'))
   throw new Error('No root layout found')
-}
 
 const globRoutes = Object.entries(
   import.meta.glob<{ default: FC }>('./app/**/page.tsx'),
@@ -88,33 +87,30 @@ function isArrayElementsEqual(a: unknown[], b: unknown[]) {
 
 for (const route of globRoutes) {
   const parent = globLayouts.find((i) => {
-    if (i.routeGroups.length > 0 || route.routeGroups.length > 0) {
+    if (i.routeGroups.length > 0 || route.routeGroups.length > 0)
       return isArrayElementsEqual(i.routeGroups, route.routeGroups)
-    }
 
     return i.path === route.path || route.path.startsWith(i.path)
   })
-  if (parent) {
+  if (parent)
     parent.children.push(route)
-  }
 }
 
 for (const layout of globLayouts) {
-  if (layout.path === '/' && layout.routeGroups.length === 0) {
+  if (layout.path === '/' && layout.routeGroups.length === 0)
     continue
-  }
+
   const parent = globLayouts.find((i) => {
-    if (i === layout) {
+    if (i === layout)
       return false
-    }
-    if (i.routeGroups.length > 0) {
+
+    if (i.routeGroups.length > 0)
       return isArrayElementsEqual(i.routeGroups, layout.routeGroups)
-    }
+
     return i.path === layout.path || layout.path.startsWith(i.path)
   })
-  if (parent) {
+  if (parent)
     parent.children.push(layout)
-  }
 }
 
 export const routes = globLayouts.at(-1)!

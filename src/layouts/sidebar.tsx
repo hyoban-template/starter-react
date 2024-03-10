@@ -49,8 +49,7 @@ export function SidebarLayout({
                     window.localStorage.removeItem('token')
                     goToLogin()
                   }}
-                >
-                </TooltipTrigger>
+                />
                 <TooltipContent>{t('auth.logout')}</TooltipContent>
               </Tooltip>
             </TooltipProvider>

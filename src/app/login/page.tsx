@@ -39,15 +39,15 @@ export default function LoginPage() {
   const navigate = useNavigate()
 
   const onSubmit = form.handleSubmit((data) => {
-    myFetch<LoginOutput, LoginInput>(['/api/login', data])
-      .then(() => {
-        navigate({
-          pathname: '/',
-        })
-      })
-      .catch((err) => {
+    void (async () => {
+      try {
+        await myFetch<LoginOutput, LoginInput>(['/api/login', data])
+        navigate({ pathname: '/' })
+      }
+      catch (err) {
         console.error(err)
-      })
+      }
+    })()
   })
 
   return (

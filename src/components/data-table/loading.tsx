@@ -12,7 +12,7 @@ export function DataTableLoading<TData>({
   table: Table<TData>
   isLoading: boolean
 }) {
-  const columns = table.options.columns
+  const { columns } = table.options
   const isEmpty = table.getRowModel().rows.length === 0
   if (!isLoading && !isEmpty)
     return null

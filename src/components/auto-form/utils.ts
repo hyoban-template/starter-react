@@ -30,12 +30,12 @@ export function beautifyObjectName(string: string) {
 export function getBaseSchema<
   ChildType extends z.ZodAny | z.AnyZodObject = z.ZodAny,
 >(schema: ChildType | z.ZodEffects<ChildType>): ChildType {
-  if ('innerType' in schema._def) {
+  if ('innerType' in schema._def)
     return getBaseSchema(schema._def.innerType as ChildType)
-  }
-  if ('schema' in schema._def) {
+
+  if ('schema' in schema._def)
     return getBaseSchema(schema._def.schema)
-  }
+
   return schema as ChildType
 }
 
@@ -55,9 +55,8 @@ function getDefaultValueInZodStack(schema: z.ZodAny): any {
     z.ZodNumber | z.ZodString
   >
 
-  if (typedSchema._def.typeName === 'ZodDefault') {
+  if (typedSchema._def.typeName === 'ZodDefault')
     return typedSchema._def.defaultValue()
-  }
 
   if ('innerType' in typedSchema._def) {
     return getDefaultValueInZodStack(
@@ -96,9 +95,8 @@ export function getDefaultValues<Schema extends z.ZodObject<any, any>>(
     }
     else {
       const defaultValue = getDefaultValueInZodStack(item)
-      if (defaultValue !== undefined) {
+      if (defaultValue !== undefined)
         defaultValues[key as keyof DefaultValuesType] = defaultValue
-      }
     }
   }
 
@@ -147,20 +145,18 @@ export function zodToHtmlInputProps(
 
   for (const check of checks) {
     if (check.kind === 'min') {
-      if (type === 'ZodString') {
+      if (type === 'ZodString')
         inputProps.minLength = check.value
-      }
-      else {
+
+      else
         inputProps.min = check.value
-      }
     }
     if (check.kind === 'max') {
-      if (type === 'ZodString') {
+      if (type === 'ZodString')
         inputProps.maxLength = check.value
-      }
-      else {
+
+      else
         inputProps.max = check.value
-      }
     }
   }
 

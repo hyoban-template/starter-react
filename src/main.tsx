@@ -7,7 +7,7 @@ import { routes } from './router'
 createRoot(document.querySelector('#root')!).render(
   <StrictMode>
     <Suspense fallback="Loading...">
-      <Router routes={routes}></Router>
+      <Router routes={routes} />
     </Suspense>
   </StrictMode>,
 )

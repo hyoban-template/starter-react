@@ -30,8 +30,7 @@ export function LanguageSwitch({ className }: { className?: string }) {
         <TooltipTrigger
           className={cn('i-lucide-languages', className)}
           onClick={onClick}
-        >
-        </TooltipTrigger>
+        />
         <TooltipContent>{t('common.change-language')}</TooltipContent>
       </Tooltip>
     </TooltipProvider>

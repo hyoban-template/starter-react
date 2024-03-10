@@ -42,15 +42,15 @@ export async function myFetch<
       'token' in res.data
       && typeof res.data.token === 'string'
       && res.data.token.length > 0
-    ) {
+    )
       setToken(res.data.token)
-    }
+
     return res.data
   }
   catch (error) {
-    if (isNetworkError(error)) {
+    if (isNetworkError(error))
       toast.error('Network error')
-    }
+
     throw error
   }
 }

@@ -56,8 +56,7 @@ export function ThemeSwitch() {
             >
               <span
                 className={cn('w-[0.8rem] h-[0.8rem] rounded-full', colorClass)}
-              >
-              </span>
+              />
               {color}
             </Button>
           )

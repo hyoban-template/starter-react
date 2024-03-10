@@ -38,12 +38,11 @@ export function CheckboxGroup<T extends string | number>(
           : 'indeterminate')
 
   const handleAllCheckedChange = (checked: boolean) => {
-    if (checked) {
+    if (checked)
       onChange(options.map(option => option.value))
-    }
-    else {
+
+    else
       onChange([])
-    }
   }
 
   const onAllCheckedChange = React.useRef<typeof handleAllCheckedChange>(
@@ -52,9 +51,8 @@ export function CheckboxGroup<T extends string | number>(
   onAllCheckedChange.current = handleAllCheckedChange
 
   React.useEffect(() => {
-    if (defaultCheckedAll) {
+    if (defaultCheckedAll)
       onAllCheckedChange.current(true)
-    }
   }, [defaultCheckedAll, options.length])
 
   return (
@@ -71,12 +69,11 @@ export function CheckboxGroup<T extends string | number>(
           <Checkbox
             checked={value.includes(option.value)}
             onCheckedChange={(checked) => {
-              if (checked) {
+              if (checked)
                 onChange([...value, option.value])
-              }
-              else {
+
+              else
                 onChange(value.filter(v => v !== option.value))
-              }
             }}
             id={String(option.value)}
             value={option.value as string}
