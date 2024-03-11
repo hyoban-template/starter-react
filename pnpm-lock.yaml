@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^0.9.2
     version: 0.9.2(typescript@5.4.2)(zod@3.22.4)
   '@tanstack/query-core':
-    specifier: ^5.25.0
-    version: 5.25.0
+    specifier: ^5.26.3
+    version: 5.26.3
   '@tanstack/react-table':
     specifier: ^8.13.2
     version: 8.13.2(react-dom@18.2.0)(react@18.2.0)
@@ -114,7 +114,7 @@ devDependencies:
     version: 0.6.0(jotai@2.7.0)
   jotai-tanstack-query:
     specifier: ^0.8.5
-    version: 0.8.5(@tanstack/query-core@5.25.0)(jotai@2.7.0)(wonka@6.3.4)
+    version: 0.8.5(@tanstack/query-core@5.26.3)(jotai@2.7.0)(wonka@6.3.4)
   jotai-tanstack-table:
     specifier: ^0.0.1
     version: 0.0.1(@tanstack/table-core@8.13.2)(jotai@2.7.0)
@@ -2805,8 +2805,8 @@ packages:
       zod: 3.22.4
     dev: true
 
-  /@tanstack/query-core@5.25.0:
-    resolution: {integrity: sha512-vlobHP64HTuSE68lWF1mEhwSRC5Q7gaT+a/m9S+ItuN+ruSOxe1rFnR9j0ACWQ314BPhBEVKfBQ6mHL0OWfdbQ==}
+  /@tanstack/query-core@5.26.3:
+    resolution: {integrity: sha512-kKv7VHIleC7cwpMS3M63mWUFFbdiRo7JZMVUyZ4z/79RZoAi7/vGTVkCrnNqyKl+zwBRkumYL+eiYtyShGZd0A==}
     dev: true
 
   /@tanstack/react-table@8.13.2(react-dom@18.2.0)(react@18.2.0):
@@ -4725,7 +4725,7 @@ packages:
       has-property-descriptors: 1.0.1
       has-proto: 1.0.1
       has-symbols: 1.0.3
-      hasown: 2.0.0
+      hasown: 2.0.1
       internal-slot: 1.0.6
       is-array-buffer: 3.0.2
       is-callable: 1.2.7
@@ -4856,7 +4856,7 @@ packages:
     dependencies:
       get-intrinsic: 1.2.2
       has-tostringtag: 1.0.0
-      hasown: 2.0.0
+      hasown: 2.0.1
     dev: true
 
   /es-set-tostringtag@2.0.3:
@@ -5934,7 +5934,7 @@ packages:
       function-bind: 1.1.2
       has-proto: 1.0.1
       has-symbols: 1.0.3
-      hasown: 2.0.0
+      hasown: 2.0.1
     dev: true
 
   /get-intrinsic@1.2.4:
@@ -6296,13 +6296,6 @@ packages:
     resolution: {integrity: sha512-8Rf9Y83NBReMnx0gFzA8JImQACstCYWUplepDa9xprwwtmgEZUF0h/i5xSA625zB/I37EtrswSST6OXxwaaIJQ==}
     dev: true
 
-  /hasown@2.0.0:
-    resolution: {integrity: sha512-vUptKVTpIJhcczKBbgnS+RtcuYMB8+oNzPK2/Hp3hanz8JmpATdmmgLgSaadVREkDm+e2giHwY3ZRkyjSIDDFA==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      function-bind: 1.1.2
-    dev: true
-
   /hasown@2.0.1:
     resolution: {integrity: sha512-1/th4MHjnwncwXsIW6QMzlvYL9kG5e/CpVvLRZe4XPa8TOUNbCELqmvhDmnkNsAjwaG4+I8gJJL0JBvTTLO9qA==}
     engines: {node: '>= 0.4'}
@@ -6509,7 +6502,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       get-intrinsic: 1.2.2
-      hasown: 2.0.0
+      hasown: 2.0.1
       side-channel: 1.0.4
     dev: true
 
@@ -6640,7 +6633,7 @@ packages:
   /is-core-module@2.13.1:
     resolution: {integrity: sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==}
     dependencies:
-      hasown: 2.0.0
+      hasown: 2.0.1
     dev: true
 
   /is-date-object@1.0.5:
@@ -7052,14 +7045,14 @@ packages:
       jotai: 2.7.0(@types/react@18.2.64)(react@18.2.0)
     dev: true
 
-  /jotai-tanstack-query@0.8.5(@tanstack/query-core@5.25.0)(jotai@2.7.0)(wonka@6.3.4):
+  /jotai-tanstack-query@0.8.5(@tanstack/query-core@5.26.3)(jotai@2.7.0)(wonka@6.3.4):
     resolution: {integrity: sha512-cFq+1sE7Qkt7Kh9Db2KE8LXdbPiGwCiy8S5YSEnjUDxF59A4XhoXTDJBuPiMIA1dD1/yMsNKr1ADfN5CvscYZw==}
     peerDependencies:
       '@tanstack/query-core': '*'
       jotai: '>=2.0.0'
       wonka: ^6.3.4
     dependencies:
-      '@tanstack/query-core': 5.25.0
+      '@tanstack/query-core': 5.26.3
       jotai: 2.7.0(@types/react@18.2.64)(react@18.2.0)
       wonka: 6.3.4
     dev: true
