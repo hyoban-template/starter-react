@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.51.0)
   '@iconify-json/lucide':
-    specifier: ^1.1.172
-    version: 1.1.172
+    specifier: ^1.1.173
+    version: 1.1.173
   '@radix-ui/react-accordion':
     specifier: ^1.1.2
     version: 1.1.2(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
@@ -1074,8 +1074,8 @@ packages:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
     dev: true
 
-  /@iconify-json/lucide@1.1.172:
-    resolution: {integrity: sha512-D7O4Z/Sx9xYVtkx5EcNpe6B5btZwEH9Fxf2KQh9nwFgOGGXdTuOB2Sh0AHfR6K3eCQ63Uhvz/4MzaIyUoixPQw==}
+  /@iconify-json/lucide@1.1.173:
+    resolution: {integrity: sha512-ddmsd9pI0m4Edl2R8RbznPXU75H18yvaUR/HidzP04LzV+saL8/sXYI30BRY6UK+VrpfOKZR/U+6Z9miePDW3A==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
