@@ -28,7 +28,7 @@ function UserData() {
   )
 }
 
-export function Component() {
+export function AnalyticsPage() {
   return (
     <Card>
       <Suspense fallback={<Loading />}>

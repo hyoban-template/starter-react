@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'wouter'
 import { z } from 'zod'
 
 import { MyInput } from '~/components/my-input'
@@ -15,7 +16,6 @@ import {
 } from '~/components/ui/form'
 import { Utility } from '~/components/utility'
 import { myFetch } from '~/lib/network'
-import { useNavigate } from '~/router'
 
 const loginInputSchema = z.object({
   username: z.string().min(1),
@@ -25,7 +25,7 @@ const loginInputSchema = z.object({
 type LoginInput = z.infer<typeof loginInputSchema>
 interface LoginOutput { [key: string]: unknown, token: string }
 
-export function Component() {
+export function LoginPage() {
   const { t } = useTranslation()
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginInputSchema),
@@ -36,13 +36,13 @@ export function Component() {
     },
   })
 
-  const navigate = useNavigate()
+  const [, navigate] = useLocation()
 
   const onSubmit = form.handleSubmit((data) => {
     void (async () => {
       try {
         await myFetch<LoginOutput, LoginInput>(['/api/login', data])
-        navigate({ pathname: '/' })
+        navigate('/', { replace: true })
       }
       catch (err) {
         console.error(err)

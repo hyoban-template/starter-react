@@ -78,7 +78,6 @@
     "react-hook-form": "^7.51.4",
     "react-i18next": "^14.1.1",
     "react-resizable-panels": "^2.0.19",
-    "react-router-dom": "^6.23.1",
     "react-twc": "^1.4.1",
     "release-it": "^17.2.1",
     "release-it-pnpm": "^4.5.1",
@@ -92,6 +91,7 @@
     "vite-plugin-nitro-deploy": "^0.0.20",
     "vite-tsconfig-paths": "^4.3.2",
     "wonka": "^6.3.4",
+    "wouter": "^3.1.3",
     "zod": "^3.23.8",
     "zod-i18n-map": "^2.27.0"
   }

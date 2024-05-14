@@ -60,7 +60,7 @@ const tableAtom = atomWithTable(get => ({
   getCoreRowModel: getCoreRowModel<Payment>(),
 }))
 
-export function Component() {
+export function DashboardPage() {
   const [search, setSearch] = useAtom(searchAtom)
   const table = useAtomValue(tableAtom)
   return (
