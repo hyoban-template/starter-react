@@ -1,13 +1,13 @@
-import { Router } from 'joter'
 import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom'
 
-import { routes } from './router'
+import { router } from './router'
 
 createRoot(document.querySelector('#root')!).render(
   <StrictMode>
     <Suspense fallback="Loading...">
-      <Router routes={routes} />
+      <RouterProvider router={router} />
     </Suspense>
   </StrictMode>,
 )

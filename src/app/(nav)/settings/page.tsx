@@ -1,5 +1,5 @@
 import { ThemeSwitch } from '~/components/theme-switch'
 
-export default function SettingsPage() {
+export function Component() {
   return <ThemeSwitch />
 }

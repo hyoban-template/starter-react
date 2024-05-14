@@ -1,4 +1,4 @@
-import { Link as RouterLink } from 'joter'
+import { Link as RouterLink } from 'react-router-dom'
 
 /**
  * same as html <a>
@@ -14,5 +14,5 @@ export function Link(props: LinkProps) {
   if (isExternalLink(href))
     return <a {...props} target="_blank" rel="noopener noreferrer" />
 
-  return <RouterLink {...rest} href={href ?? ''} />
+  return <RouterLink {...rest} to={href ?? ''} />
 }

@@ -31,7 +31,7 @@ const navAtom = atom((get) => {
   ]
 })
 
-export default function Layout({ children }: React.PropsWithChildren) {
+export function HomeLayout({ children }: { children: React.ReactNode }) {
   const nav = useAtomValue(navAtom)
   return <SidebarLayout nav={nav}>{children}</SidebarLayout>
 }

@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigate } from 'joter'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
@@ -16,6 +15,7 @@ import {
 } from '~/components/ui/form'
 import { Utility } from '~/components/utility'
 import { myFetch } from '~/lib/network'
+import { useNavigate } from '~/router'
 
 const loginInputSchema = z.object({
   username: z.string().min(1),
@@ -23,9 +23,9 @@ const loginInputSchema = z.object({
   remember: z.boolean(),
 })
 type LoginInput = z.infer<typeof loginInputSchema>
-interface LoginOutput { token: string }
+interface LoginOutput { [key: string]: unknown, token: string }
 
-export default function LoginPage() {
+export function Component() {
   const { t } = useTranslation()
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginInputSchema),

@@ -9,7 +9,7 @@ import { TailwindIndicator } from '~/components/tailwind-indicator'
 import { useDark } from '~/hooks/use-dark'
 import { store } from '~/store'
 
-export default function Layout({ children }: React.PropsWithChildren) {
+export function GlobalLayout({ children }: { children: React.ReactNode }) {
   const { theme } = useDark()
   return (
     <Provider store={store}>

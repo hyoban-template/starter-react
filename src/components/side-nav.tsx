@@ -1,4 +1,3 @@
-import { useNavigate, usePathname } from 'joter'
 import { useMemo } from 'react'
 
 import {
@@ -8,6 +7,7 @@ import {
   AccordionTrigger,
 } from '~/components/ui/accordion'
 import { cn } from '~/lib/utils'
+import { useNavigate, usePathname } from '~/router'
 
 import { Link } from './link'
 
