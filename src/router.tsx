@@ -61,6 +61,9 @@ function subscribe(callback: () => void) {
   return router.subscribe(callback)
 }
 
+/**
+ * @public
+ */
 export const locationAtom = atomWithLocation({
   getLocation,
   applyLocation,
@@ -68,6 +71,7 @@ export const locationAtom = atomWithLocation({
 })
 /**
  * The set function of this atom will replace the current location instead of pushing a new one.
+ * @public
  */
 export const replaceLocationAtom = atomWithLocation({
   replace: true,
@@ -76,18 +80,30 @@ export const replaceLocationAtom = atomWithLocation({
   subscribe,
 })
 
+/**
+ * @public
+ */
 export function useLocation() {
   return useAtomValue(locationAtom)
 }
 
+/**
+ * @public
+ */
 export function usePathname() {
   return useAtomValue(locationAtom).pathname
 }
 
+/**
+ * @public
+ */
 export function useSearchParams() {
   return useAtomValue(locationAtom).searchParams
 }
 
+/**
+ * @public
+ */
 export function useNavigate() {
   const pushLocation = useSetAtom(locationAtom)
   const replaceLocation = useSetAtom(replaceLocationAtom)

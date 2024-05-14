@@ -4,7 +4,11 @@
     "type": true,
     "interface": true
   },
-  "ignoreDependencies": ["@iconify-json/lucide", "virtual:uno.css"],
+  "ignoreDependencies": [
+    "@iconify-json/lucide",
+    "release-it-pnpm",
+    "virtual:uno.css"
+  ],
   "entry": [
     "*.config.{js,ts}",
     "src/main.tsx",
