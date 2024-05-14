@@ -29,18 +29,6 @@
     "start": "node .output/server/index.mjs",
     "typecheck": "tsc"
   },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}"
-    },
-    "hooks": {
-      "before:init": [
-        "pnpm run lint",
-        "pnpm run typecheck",
-        "pnpm run build"
-      ]
-    }
-  },
   "dependencies": {
     "dotenv": "^16.4.5"
   },
@@ -91,6 +79,7 @@
     "react-resizable-panels": "^2.0.19",
     "react-twc": "^1.4.1",
     "release-it": "^17.2.1",
+    "release-it-pnpm": "^4.5.1",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.3.0",
     "typescript": "^5.4.5",
