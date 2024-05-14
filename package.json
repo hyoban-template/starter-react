@@ -27,6 +27,7 @@
     "preview": "vite preview",
     "release": "release-it",
     "start": "node .output/server/index.mjs",
+    "test": "echo 'we have no tests'",
     "typecheck": "tsc"
   },
   "dependencies": {
