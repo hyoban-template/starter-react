@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import { CheckboxGroup } from '~/components/checkbox-group'
 import {
   FormControl,

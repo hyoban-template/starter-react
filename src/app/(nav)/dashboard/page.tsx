@@ -10,11 +10,11 @@ import { DataTablePagination } from '~/components/data-table/pagination'
 import { Input } from '~/components/ui/input'
 import { Table, TableBody } from '~/components/ui/table'
 
-type Payment = {
-  id: string
-  amount: number
-  status: 'pending' | 'processing' | 'success' | 'failed'
-  email: string
+interface Payment {
+  id: string,
+  amount: number,
+  status: 'pending' | 'processing' | 'success' | 'failed',
+  email: string,
 }
 
 const payments: Payment[] = [

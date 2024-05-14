@@ -6,7 +6,7 @@ import type { InputProps } from './ui/input'
 import { Input } from './ui/input'
 
 export type MyInputProps = {
-  iconClassName?: string | undefined
+  iconClassName?: string | undefined,
 } & InputProps
 
 const MyInput = React.forwardRef<HTMLInputElement, MyInputProps>(

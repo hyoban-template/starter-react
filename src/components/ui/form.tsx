@@ -9,11 +9,11 @@ import { cn } from '~/lib/utils'
 
 const Form = FormProvider
 
-type FormFieldContextValue<
+interface FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> = {
-  name: TName
+> {
+  name: TName,
 }
 
 const FormFieldContext = React.createContext<FormFieldContextValue | null>(null)
@@ -59,8 +59,8 @@ function useFormField() {
   }
 }
 
-type FormItemContextValue = {
-  id: string
+interface FormItemContextValue {
+  id: string,
 }
 
 const FormItemContext = React.createContext<FormItemContextValue>(

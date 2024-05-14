@@ -6,16 +6,16 @@ import { cn } from '~/lib/utils'
 import { Checkbox } from './ui/checkbox'
 import { Label } from './ui/label'
 
-export type CheckboxGroupProps<T extends string | number> = {
+export interface CheckboxGroupProps<T extends string | number> {
   options: Array<{
-    label: string
-    value: T
-  }>
-  checked: T[]
-  onCheckedChange: (checked: T[]) => void
-  defaultCheckedAll?: boolean
-  checkAllText?: string
-  className?: string
+    label: string,
+    value: T,
+  }>,
+  checked: T[],
+  onCheckedChange: (checked: T[]) => void,
+  defaultCheckedAll?: boolean,
+  checkAllText?: string,
+  className?: string,
 }
 
 export function CheckboxGroup<T extends string | number>(

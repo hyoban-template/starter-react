@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { exists, t } from 'i18next'
 import { Suspense } from 'react'
@@ -30,13 +27,13 @@ const validCols = ['col-span-1', 'col-span-2', 'col-span-3', 'col-span-4']
 export default function AutoFormObject<
   SchemaType extends z.ZodObject<any, any>,
 >(props: {
-  schema: SchemaType
-  form: ReturnType<typeof useForm>
-  fieldConfig?: FieldConfig<z.infer<SchemaType>>
-  path?: string[]
-  group?: string
-  include?: string[]
-  className?: string
+  schema: SchemaType,
+  form: ReturnType<typeof useForm>,
+  fieldConfig?: FieldConfig<z.infer<SchemaType>>,
+  path?: string[],
+  group?: string,
+  include?: string[],
+  className?: string,
 }) {
   const { schema, form, fieldConfig, path, group, include, className } = props
   const { shape } = schema

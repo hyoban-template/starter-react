@@ -11,13 +11,13 @@ import { cn } from '~/lib/utils'
 
 import { Link } from './link'
 
-export type NavItem = {
-  label: string
-  description?: string | null
-  href?: string
-  icon?: string
-  items?: NavItem[]
-  disabled?: boolean
+export interface NavItem {
+  label: string,
+  description?: string | null,
+  href?: string,
+  icon?: string,
+  items?: NavItem[],
+  disabled?: boolean,
 }
 
 export type CurrentNav = NavItem & { parentLabel: string[] }
@@ -59,8 +59,8 @@ function NavGroup({
   item,
   currentNav,
 }: {
-  item: NavItem
-  currentNav?: CurrentNav
+  item: NavItem,
+  currentNav?: CurrentNav,
 }) {
   const pathname = usePathname()
   const navigate = useNavigate()
@@ -131,8 +131,8 @@ export function SideNav({
   className,
   nav,
 }: {
-  nav?: NavItem[]
-  className?: string
+  nav?: NavItem[],
+  className?: string,
 }) {
   const currentNav = useCurrentNav(nav)
   return (

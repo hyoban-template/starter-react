@@ -14,8 +14,8 @@ import { cn } from '~/lib/utils'
 export const DatePicker = forwardRef<
   HTMLDivElement,
   {
-    date?: Date
-    setDate: (date?: Date) => void
+    date?: Date,
+    setDate: (date?: Date) => void,
   }
       >(function DatePickerCmp({ date, setDate }, ref) {
         return (

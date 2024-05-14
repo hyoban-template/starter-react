@@ -5,8 +5,8 @@ export function Loading({
   center,
   children,
 }: React.PropsWithChildren<{
-  className?: string
-  center?: boolean
+  className?: string,
+  center?: boolean,
 }>) {
   if (!center && !children) {
     return (

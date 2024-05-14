@@ -6,14 +6,14 @@ import type zh from './locales/zh.json'
 
 declare module 'i18next' {
   // Extend CustomTypeOptions
-  type CustomTypeOptions = {
+  interface CustomTypeOptions {
     // custom namespace type, if you changed it
-    defaultNS: 'fallback'
+    defaultNS: 'fallback',
     // custom resources type
     resources: {
-      fallback: typeof zh
-    }
+      fallback: typeof zh,
+    },
     // other
-    returnNull: false
+    returnNull: false,
   }
 }

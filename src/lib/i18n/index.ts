@@ -1,4 +1,3 @@
-/* eslint-disable github/no-then */
 import i18next from 'i18next'
 import { atomWithStorage } from 'jotai/vanilla/utils'
 import { initReactI18next } from 'react-i18next'

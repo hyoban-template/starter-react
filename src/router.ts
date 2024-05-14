@@ -12,7 +12,7 @@ const globLayouts = Object.entries(
     const routePath = path
       .replace('./app', '')
       // remove /page.tsx or /layout.tsx
-      .replace(/(\/page|\/layout).tsx/, '')
+      .replace(/(?:\/page|\/layout).tsx/, '')
       // remove (xxx) in path, it's a route group
       .replace(/\/\(.*\)/, '')
     return {
@@ -48,13 +48,13 @@ const globRoutes = Object.entries(
     const routePath = path
       .replace('./app', '')
       // remove /page.tsx or /layout.tsx
-      .replace(/(\/page|\/layout).tsx/, '')
+      .replace(/(?:\/page|\/layout).tsx/, '')
       // remove (xxx) in path, it's a route group
       .replace(/\/\(.*\)/, '')
       // replace [...something] with *
-      .replaceAll(/\[\.{3}(.*)]/g, '*')
+      .replaceAll(/\[\.{3}.*\]/g, '*')
       // replace [id] with :id
-      .replaceAll(/\[([^\]]+)]/g, ':$1')
+      .replaceAll(/\[([^\]]+)\]/g, ':$1')
     const Component = lazy(load)
     return {
       path: routePath === '' ? '/' : routePath,

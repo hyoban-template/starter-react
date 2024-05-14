@@ -4,21 +4,21 @@ import type * as z from 'zod'
 
 import type { INPUT_COMPONENTS } from './config'
 
-export type FieldConfigItem = {
-  description?: React.ReactNode
+export interface FieldConfigItem {
+  description?: React.ReactNode,
   inputProps?: React.InputHTMLAttributes<HTMLInputElement> & {
-    showLabel?: boolean
-    options?: Array<{ label: string, value: any }>
-  }
+    showLabel?: boolean,
+    options?: Array<{ label: string, value: any }>,
+  },
   fieldType?:
     | keyof typeof INPUT_COMPONENTS
-    | React.FC<AutoFormInputComponentProps>
+    | React.FC<AutoFormInputComponentProps>,
 
   renderParent?: (props: {
-    children: React.ReactNode
-  }) => React.ReactElement | null
+    children: React.ReactNode,
+  }) => React.ReactElement | null,
 
-  cols?: 1 | 2 | 3 | 4
+  cols?: 1 | 2 | 3 | 4,
 }
 
 export type FieldConfig<SchemaType extends z.infer<z.ZodObject<any, any>>> = {
@@ -31,12 +31,12 @@ export type FieldConfig<SchemaType extends z.infer<z.ZodObject<any, any>>> = {
 /**
  * A FormInput component can handle a specific Zod type (e.g. "ZodBoolean")
  */
-export type AutoFormInputComponentProps = {
-  zodInputProps: React.InputHTMLAttributes<HTMLInputElement>
-  field: ControllerRenderProps<FieldValues, any>
-  fieldConfigItem: FieldConfigItem
-  label: string
-  isRequired: boolean
-  fieldProps: any
-  zodItem: z.ZodAny
+export interface AutoFormInputComponentProps {
+  zodInputProps: React.InputHTMLAttributes<HTMLInputElement>,
+  field: ControllerRenderProps<FieldValues, any>,
+  fieldConfigItem: FieldConfigItem,
+  label: string,
+  isRequired: boolean,
+  fieldProps: any,
+  zodItem: z.ZodAny,
 }

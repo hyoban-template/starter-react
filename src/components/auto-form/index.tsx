@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useMemo } from 'react'
@@ -15,7 +14,6 @@ import type { ZodObjectOrWrapped } from './utils'
 import { getDefaultValues, getObjectFormSchema } from './utils'
 
 const AutoFormObject = React.lazy(() =>
-  // eslint-disable-next-line github/no-then
   import('./fields/object').then(mod => ({ default: mod.default })),
 )
 
@@ -31,19 +29,19 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
   className,
   groups,
 }: {
-  formSchema: SchemaType
-  defaultValues?: DefaultValues<z.infer<SchemaType>>
-  values?: Partial<z.infer<SchemaType>>
-  onValuesChange?: (values: Partial<z.infer<SchemaType>>) => void
-  onParsedValuesChange?: (values: Partial<z.infer<SchemaType>>) => void
-  onSubmit?: (values: z.infer<SchemaType>) => void
-  fieldConfig?: FieldConfig<z.infer<SchemaType>>
-  children?: React.ReactNode
-  className?: string
+  formSchema: SchemaType,
+  defaultValues?: DefaultValues<z.infer<SchemaType>>,
+  values?: Partial<z.infer<SchemaType>>,
+  onValuesChange?: (values: Partial<z.infer<SchemaType>>) => void,
+  onParsedValuesChange?: (values: Partial<z.infer<SchemaType>>) => void,
+  onSubmit?: (values: z.infer<SchemaType>) => void,
+  fieldConfig?: FieldConfig<z.infer<SchemaType>>,
+  children?: React.ReactNode,
+  className?: string,
   groups?: Array<{
-    label: string
-    fields: Array<keyof z.infer<SchemaType>>
-  }>
+    label: string,
+    fields: Array<keyof z.infer<SchemaType>>,
+  }>,
 }) {
   const objectFormSchema = useMemo(
     () => getObjectFormSchema(formSchema),
@@ -56,7 +54,7 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
   const groupedKeys = useMemo(
     () =>
       shapeKeys
-        // eslint-disable-next-line unicorn/no-array-reduce
+
         .reduce<Array<string[] | Record<string, string[]>>>((acc, key) => {
           const group = groups?.find(group => group.fields.includes(key))
           if (group) {

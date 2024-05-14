@@ -7,11 +7,11 @@ import { clearToken, getToken, isTokenValid, setToken } from '~/store/token'
 
 type OutputType<T> =
   | {
-    err: string
+    err: string,
   }
   | {
-    err: null
-    data: T
+    err: null,
+    data: T,
   }
 
 export async function myFetch<

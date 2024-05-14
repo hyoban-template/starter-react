@@ -28,7 +28,7 @@ export function SidebarLayout({
   children,
   nav,
 }: PropsWithChildren<{
-  nav?: NavItem[]
+  nav?: NavItem[],
 }>) {
   const { t } = useTranslation()
   const defaultLayout = useAtomValue(resizablePanelLayoutAtom)

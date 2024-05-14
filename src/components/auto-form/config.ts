@@ -3,7 +3,7 @@ import { lazy } from 'react'
 export const INPUT_COMPONENTS = Object.fromEntries(
   Object.entries(
     import.meta.glob<{
-      default: React.ComponentType
+      default: React.ComponentType,
     }>('./fields/*.tsx'),
   ).map(([key, value]) => [
     key.replace('./fields/', '').replace('.tsx', ''),

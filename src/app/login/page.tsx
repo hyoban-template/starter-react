@@ -23,7 +23,7 @@ const loginInputSchema = z.object({
   remember: z.boolean(),
 })
 type LoginInput = z.infer<typeof loginInputSchema>
-type LoginOutput = { token: string }
+interface LoginOutput { token: string }
 
 export default function LoginPage() {
   const { t } = useTranslation()
