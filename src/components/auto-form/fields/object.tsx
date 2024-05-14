@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { ParseKeys } from 'i18next'
 import { exists, t } from 'i18next'
 import { Suspense } from 'react'
 import type { useForm } from 'react-hook-form'
@@ -67,7 +68,7 @@ export default function AutoFormObject<
           const itemName
             = item._def.description
             ?? (exists(`schema.${name}`)
-              ? t(`schema.${name}`)
+              ? t(`schema.${name}` as ParseKeys)
               : beautifyObjectName(name))
           const key = [...(path ?? []), name].join('.')
           const fieldConfigItem: FieldConfigItem = fieldConfig?.[name] ?? {}
