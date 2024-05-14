@@ -6,13 +6,11 @@
   },
   "ignoreDependencies": [
     "@iconify-json/lucide",
-    "release-it-pnpm",
     "virtual:uno.css"
   ],
   "entry": [
-    "*.config.{js,ts}",
+    "uno.config.ts",
     "src/main.tsx",
-    "src/app/**/{layout,page,loding,not-found,error,global-error,route,template,default}.tsx",
     "src/components/ui/*.tsx",
     "src/components/auto-form/fields/*.tsx",
     "src/components/data-table/*.tsx"
