@@ -5,7 +5,7 @@ import { Route, Switch } from 'wouter'
 
 import { HomeLayout } from '~/app/(nav)/layout'
 import { GlobalLayout } from '~/app/layout'
-import LoginLayout from '~/app/login/layout'
+import { LoginLayout } from '~/app/login/layout'
 import { LoginPage } from '~/app/login/page'
 
 const HomePage = lazy(() => import('~/app/(nav)/page').then(module => ({ default: module.HomePage })))
