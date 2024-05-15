@@ -38,6 +38,9 @@ export default defineConfig(async ({ mode }) => {
         nitro: {
           enabled: true,
         },
+        nginx: {
+          enabled: true,
+        },
       }),
     ],
     server: {
