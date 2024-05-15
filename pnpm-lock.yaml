@@ -63,6 +63,9 @@ importers:
       '@tanstack/table-core':
         specifier: ^8.17.3
         version: 8.17.3
+      '@total-typescript/tsconfig':
+        specifier: ^1.0.4
+        version: 1.0.4
       '@types/node':
         specifier: ^20.12.12
         version: 20.12.12
@@ -1610,6 +1613,9 @@ packages:
 
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
+
+  '@total-typescript/tsconfig@1.0.4':
+    resolution: {integrity: sha512-fO4ctMPGz1kOFOQ4RCPBRBfMy3gDn+pegUfrGyUFRMv/Rd0ZM3/SHH3hFCYG4u6bPLG8OlmOGcBLDexvyr3A5w==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -6765,6 +6771,8 @@ snapshots:
   '@tanstack/table-core@8.17.3': {}
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
+
+  '@total-typescript/tsconfig@1.0.4': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
