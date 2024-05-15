@@ -2,6 +2,7 @@ import { useAtomValue } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 import type { PropsWithChildren } from 'react'
 import { useTranslation } from 'react-i18next'
+import { navigate } from 'wouter/use-browser-location'
 
 import type { NavItem } from '~/components/side-nav'
 import { SideNav } from '~/components/side-nav'
@@ -17,7 +18,6 @@ import {
   TooltipTrigger,
 } from '~/components/ui/tooltip'
 import { Utility } from '~/components/utility'
-import { goToLogin } from '~/store/location'
 
 const resizablePanelLayoutAtom = atomWithStorage<number[]>(
   'resizable-panel-layout',
@@ -47,7 +47,7 @@ export function SidebarLayout({
                   className="i-lucide-log-out"
                   onClick={() => {
                     window.localStorage.removeItem('token')
-                    goToLogin()
+                    navigate('/login', { replace: true })
                   }}
                 />
                 <TooltipContent>{t('auth.logout')}</TooltipContent>

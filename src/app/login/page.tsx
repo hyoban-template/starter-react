@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { useLocation } from 'wouter'
+import { navigate } from 'wouter/use-browser-location'
 import { z } from 'zod'
 
 import { MyInput } from '~/components/my-input'
@@ -35,8 +35,6 @@ export function LoginPage() {
       remember: false,
     },
   })
-
-  const [, navigate] = useLocation()
 
   const onSubmit = form.handleSubmit((data) => {
     void (async () => {

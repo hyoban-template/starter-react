@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useLocation } from 'wouter'
-import { usePathname } from 'wouter/use-browser-location'
+import { navigate, usePathname } from 'wouter/use-browser-location'
 
 import {
   Accordion,
@@ -63,7 +63,7 @@ function NavGroup({
   item: NavItem,
   currentNav?: CurrentNav,
 }) {
-  const [pathname, navigate] = useLocation()
+  const [pathname] = useLocation()
 
   const handleGroupClick = () => {
     const itemTarget = item.disabled === true ? undefined : item.href

@@ -1,8 +1,8 @@
 import isNetworkError from 'is-network-error'
 import { $fetch } from 'ofetch'
 import { toast } from 'sonner'
+import { navigate } from 'wouter/use-browser-location'
 
-import { goToLogin } from '~/store/location'
 import { clearToken, getToken, isTokenValid, setToken } from '~/store/token'
 
 type OutputType<T> =
@@ -34,7 +34,7 @@ export async function myFetch<
       toast.error(res.err)
       if (res.err === 'NO_LOGIN') {
         clearToken()
-        goToLogin()
+        navigate('/login', { replace: true })
       }
       throw new Error(res.err)
     }
