@@ -1,0 +1,22 @@
+diff --git a/esm/use-browser-location.js b/esm/use-browser-location.js
+index 543cfae46a927ccc68c0e11dce0ad9bf3a877d7f..596b85c2190501db7b37232e8880abf20c277ade 100644
+--- a/esm/use-browser-location.js
++++ b/esm/use-browser-location.js
+@@ -80,4 +80,4 @@ if (typeof history !== "undefined" && typeof window[patchKey] === "undefined") {
+   Object.defineProperty(window, patchKey, { value: true });
+ }
+ 
+-export { navigate, useBrowserLocation, useHistoryState, useLocationProperty, usePathname, useSearch };
++export { navigate, subscribeToLocationUpdates, useBrowserLocation, useHistoryState, useLocationProperty, usePathname, useSearch };
+diff --git a/types/use-browser-location.d.ts b/types/use-browser-location.d.ts
+index 6485d76ecc9d6006ceb67520c1c41843f8e7d4c8..02909f806dc641960fe1424825f372bf892b845a 100644
+--- a/types/use-browser-location.d.ts
++++ b/types/use-browser-location.d.ts
+@@ -1,5 +1,7 @@
+ import { Path, SearchString } from "./location-hook.js";
+ 
++export const subscribeToLocationUpdates: (callback: () => void) => () => void;
++
+ type Primitive = string | number | bigint | boolean | null | undefined | symbol;
+ export const useLocationProperty: <S extends Primitive>(
+   fn: () => S,
