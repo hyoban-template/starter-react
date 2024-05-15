@@ -5,9 +5,7 @@ import { $fetch } from 'ofetch'
 import { Suspense } from 'react'
 
 import { Loading } from '~/components/loading'
-import { twc } from '~/lib/utils'
-
-const Card = twc.div`rounded-lg border bg-card text-card-foreground shadow-sm p-4`
+import { Card } from '~/components/ui/card'
 
 const idAtom = atom(1)
 const userAtom = atomWithSuspenseQuery((get: Getter) => ({

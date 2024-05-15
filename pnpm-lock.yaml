@@ -13,8 +13,8 @@ importers:
         version: 16.4.5
     devDependencies:
       '@hookform/resolvers':
-        specifier: ^3.3.4
-        version: 3.3.4(react-hook-form@7.51.4(react@18.3.1))
+        specifier: ^3.4.0
+        version: 3.4.0(react-hook-form@7.51.4(react@18.3.1))
       '@iconify-json/lucide':
         specifier: ^1.1.187
         version: 1.1.187
@@ -58,11 +58,11 @@ importers:
         specifier: ^5.36.0
         version: 5.36.0
       '@tanstack/react-table':
-        specifier: ^8.17.0
-        version: 8.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^8.17.3
+        version: 8.17.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/table-core':
-        specifier: ^8.16.0
-        version: 8.16.0
+        specifier: ^8.17.3
+        version: 8.17.3
       '@types/node':
         specifier: ^20.12.12
         version: 20.12.12
@@ -116,10 +116,10 @@ importers:
         version: 0.8.5(@tanstack/query-core@5.36.0)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1))(wonka@6.3.4)
       jotai-tanstack-table:
         specifier: ^0.0.1
-        version: 0.0.1(@tanstack/table-core@8.16.0)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1))
+        version: 0.0.1(@tanstack/table-core@8.17.3)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1))
       knip:
-        specifier: ^5.15.1
-        version: 5.15.1(@types/node@20.12.12)(typescript@5.4.5)
+        specifier: ^5.16.0
+        version: 5.16.0(@types/node@20.12.12)(typescript@5.4.5)
       lucide-react:
         specifier: ^0.378.0
         version: 0.378.0(react@18.3.1)
@@ -144,9 +144,6 @@ importers:
       react-resizable-panels:
         specifier: ^2.0.19
         version: 2.0.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-twc:
-        specifier: ^1.4.1
-        version: 1.4.1(@types/react@18.3.2)(react@18.3.1)
       release-it:
         specifier: ^17.2.1
         version: 17.2.1(typescript@5.4.5)
@@ -717,8 +714,8 @@ packages:
   '@floating-ui/utils@0.1.6':
     resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
 
-  '@hookform/resolvers@3.3.4':
-    resolution: {integrity: sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==}
+  '@hookform/resolvers@3.4.0':
+    resolution: {integrity: sha512-+oAqK3okmoEDnvUkJ3N/mvNMeeMv5Apgy1jkoRmlaaAF4vBgcJs9tHvtXU7VE4DvPosvAUUkPOaNFunzt1dbgA==}
     peerDependencies:
       react-hook-form: ^7.0.0
 
@@ -1600,15 +1597,15 @@ packages:
   '@tanstack/query-core@5.36.0':
     resolution: {integrity: sha512-B5BD3pg/mztDR36i77hGcyySKKeYrbM5mnogOROTBi1SUml5ByRK7PGUUl16vvubvQC+mSnqziFG/VIy/DE3FQ==}
 
-  '@tanstack/react-table@8.17.0':
-    resolution: {integrity: sha512-LSJxTDzlKGs8EN7/UHB1l3yLR9HUIxoHFkTbTjHaUUGL4kgYZFYhsQsdDJSIykG86qpIA/6gSWmtwNfy5Iprhw==}
+  '@tanstack/react-table@8.17.3':
+    resolution: {integrity: sha512-5gwg5SvPD3lNAXPuJJz1fOCEZYk9/GeBFH3w/hCgnfyszOIzwkwgp5I7Q4MJtn0WECp84b5STQUDdmvGi8m3nA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
 
-  '@tanstack/table-core@8.16.0':
-    resolution: {integrity: sha512-dCG8vQGk4js5v88/k83tTedWOwjGnIyONrKpHpfmSJB8jwFHl8GSu1sBBxbtACVAPtAQgwNxl0rw1d3RqRM1Tg==}
+  '@tanstack/table-core@8.17.3':
+    resolution: {integrity: sha512-mPBodDGVL+fl6d90wUREepHa/7lhsghg2A3vFpakEhrhtbIlgNAZiMr7ccTgak5qbHqF14Fwy+W1yFWQt+WmYQ==}
     engines: {node: '>=12'}
 
   '@tootallnate/quickjs-emscripten@0.23.0':
@@ -3604,8 +3601,8 @@ packages:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
 
-  knip@5.15.1:
-    resolution: {integrity: sha512-v6/Bf2qUmZ7pMJb2GjTficHyEjhP2ysIifjM1wgJr2psFbK6Vbxw2/DpeDAcgK9d99kTGh1PUQwoiFd6LHtI6A==}
+  knip@5.16.0:
+    resolution: {integrity: sha512-kdHfTRZuOqsMnvYYNT+pwefyBUNUYTqgyeGM8k4hfw++GZ3TMRGSPZoSl8IxQTy56AkxEDWyj1/P/mYv1vu/Gw==}
     engines: {node: '>=18.6.0'}
     hasBin: true
     peerDependencies:
@@ -4327,9 +4324,6 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
-
-  react-twc@1.4.1:
-    resolution: {integrity: sha512-G8Z4a20zM5bFMUPUrVlMiOIRiIbrNgj4CbvqNH6A1KcbEaEsXrKnDAtN6h7JptSaREbl/Mz66Rg+bEpiHnZDig==}
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
@@ -5873,7 +5867,7 @@ snapshots:
 
   '@floating-ui/utils@0.1.6': {}
 
-  '@hookform/resolvers@3.3.4(react-hook-form@7.51.4(react@18.3.1))':
+  '@hookform/resolvers@3.4.0(react-hook-form@7.51.4(react@18.3.1))':
     dependencies:
       react-hook-form: 7.51.4(react@18.3.1)
 
@@ -6762,13 +6756,13 @@ snapshots:
 
   '@tanstack/query-core@5.36.0': {}
 
-  '@tanstack/react-table@8.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@tanstack/react-table@8.17.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@tanstack/table-core': 8.16.0
+      '@tanstack/table-core': 8.17.3
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@tanstack/table-core@8.16.0': {}
+  '@tanstack/table-core@8.17.3': {}
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
@@ -9051,9 +9045,9 @@ snapshots:
       jotai: 2.8.0(@types/react@18.3.2)(react@18.3.1)
       wonka: 6.3.4
 
-  jotai-tanstack-table@0.0.1(@tanstack/table-core@8.16.0)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1)):
+  jotai-tanstack-table@0.0.1(@tanstack/table-core@8.17.3)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1)):
     dependencies:
-      '@tanstack/table-core': 8.16.0
+      '@tanstack/table-core': 8.17.3
       jotai: 2.8.0(@types/react@18.3.2)(react@18.3.1)
 
   jotai@2.8.0(@types/react@18.3.2)(react@18.3.1):
@@ -9116,7 +9110,7 @@ snapshots:
 
   klona@2.0.6: {}
 
-  knip@5.15.1(@types/node@20.12.12)(typescript@5.4.5):
+  knip@5.16.0(@types/node@20.12.12)(typescript@5.4.5):
     dependencies:
       '@ericcornelissen/bash-parser': 0.5.2
       '@nodelib/fs.walk': 2.0.0
@@ -9896,14 +9890,6 @@ snapshots:
       tslib: 2.6.2
     optionalDependencies:
       '@types/react': 18.3.2
-
-  react-twc@1.4.1(@types/react@18.3.2)(react@18.3.1):
-    dependencies:
-      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.2)(react@18.3.1)
-      clsx: 2.1.1
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
 
   react@18.3.1:
     dependencies:

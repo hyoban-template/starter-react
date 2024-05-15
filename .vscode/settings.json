@@ -34,7 +34,5 @@
     "lucide-react",
     "react-day-picker",
     "@radix-ui/*",
-    "react-twc",
-    "react-router-dom"
   ]
 }
