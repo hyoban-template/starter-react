@@ -2,14 +2,11 @@ import * as React from 'react'
 
 import { cn } from '~/lib/utils'
 
-import type { InputProps } from './ui/input'
-import { Input } from './ui/input'
+import type { InputProps } from './input'
+import { Input } from './input'
 
 export type MyInputProps = { iconClassName?: string | undefined } & InputProps
 
-/**
- * @public
- */
 export const InputWithIcon = React.forwardRef<HTMLInputElement, MyInputProps>(
   ({ className, iconClassName, ...props }, ref) => {
     if (!iconClassName)
