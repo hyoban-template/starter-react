@@ -11,8 +11,8 @@
   "rsc": false,
   "tsx": true,
   "aliases": {
-    "utils": "~/lib/utils",
     "components": "~/components",
+    "utils": "~/lib/utils",
     "ui": "~/components/ui"
   }
 }

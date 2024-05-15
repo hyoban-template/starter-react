@@ -24,7 +24,6 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "preview": "vite preview",
-    "release": "release-it",
     "start": "node .output/server/index.mjs",
     "test": "echo 'we have no tests'",
     "typecheck": "tsc"
@@ -77,8 +76,6 @@
     "react-hook-form": "^7.51.4",
     "react-i18next": "^14.1.1",
     "react-resizable-panels": "^2.0.19",
-    "release-it": "^17.2.1",
-    "release-it-pnpm": "^4.5.1",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.3.0",
     "typescript": "^5.4.5",
