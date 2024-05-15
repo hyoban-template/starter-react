@@ -11,7 +11,7 @@ export function Loading({
   if (!center && !children) {
     return (
       <div
-        className={cn('i-lucide-loader-2 animate-spin w-5 h-5', className)}
+        className={cn('i-lucide-loader-circle animate-spin w-5 h-5', className)}
       />
     )
   }
