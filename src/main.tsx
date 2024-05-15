@@ -30,6 +30,7 @@ createRoot(document.querySelector('#root')!).render(
               <Route path="/"><HomePage /></Route>
               <Route path="/dashboard"><DashboardPage /></Route>
               <Route path="/analytics"><AnalyticsPage /></Route>
+              <Route path="/analytics/:id"><AnalyticsPage /></Route>
               <Route path="/settings"><SettingsPage /></Route>
             </Suspense>
           </HomeLayout>
