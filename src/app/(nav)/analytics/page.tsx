@@ -26,9 +26,7 @@ const idMinusOneAtom = atom(null, (get) => {
 })
 const userAtom = atomWithSuspenseQuery((get: Getter) => ({
   queryKey: ['users', get(idAtom)],
-  queryFn: async ({ queryKey: [, id] }) => {
-    return await $fetch<unknown>(`https://reqres.in/api/users/${id}?delay=1`)
-  },
+  queryFn: async ({ queryKey: [, id] }) => await $fetch<unknown>(`https://reqres.in/api/users/${id}?delay=1`),
 }))
 
 function UserData() {

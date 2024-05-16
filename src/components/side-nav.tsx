@@ -91,34 +91,32 @@ function NavGroup({
         <span className="grow font-bold text-left text-sm">{item.label}</span>
       </AccordionTrigger>
       <AccordionContent className="overflow-hidden mt-2 space-y-2 pb-0">
-        {item.items?.map((subItem) => {
-          return (
-            <div
-              key={subItem.label}
-              className={cn(
-                'pl-[2.25rem] py-2 rounded-md text-white/80',
-                currentNav
-                && subItem.href
-                && currentNav.href?.startsWith(subItem.href)
-                  ? 'bg-white text-black'
-                  : 'hover:bg-neutral-800',
-              )}
-            >
-              <div className="flex items-center gap-x-2">
-                {!!subItem.icon && <i className={cn(subItem.icon)} />}
-                {subItem.href
-                  ? (
-                    <Link href={subItem.href} className="text-sm grow">
-                      {subItem.label}
-                    </Link>
-                    )
-                  : (
-                    <span className="text-sm grow">{subItem.label}</span>
-                    )}
-              </div>
+        {item.items?.map(subItem => (
+          <div
+            key={subItem.label}
+            className={cn(
+              'pl-[2.25rem] py-2 rounded-md text-white/80',
+              currentNav
+              && subItem.href
+              && currentNav.href?.startsWith(subItem.href)
+                ? 'bg-white text-black'
+                : 'hover:bg-neutral-800',
+            )}
+          >
+            <div className="flex items-center gap-x-2">
+              {!!subItem.icon && <i className={cn(subItem.icon)} />}
+              {subItem.href
+                ? (
+                  <Link href={subItem.href} className="text-sm grow">
+                    {subItem.label}
+                  </Link>
+                  )
+                : (
+                  <span className="text-sm grow">{subItem.label}</span>
+                  )}
             </div>
-          )
-        })}
+          </div>
+        ))}
       </AccordionContent>
     </AccordionItem>
   )

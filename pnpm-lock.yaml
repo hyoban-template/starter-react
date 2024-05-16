@@ -60,8 +60,8 @@ importers:
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.4.5)(zod@3.23.8)
       '@tanstack/query-core':
-        specifier: ^5.36.0
-        version: 5.36.0
+        specifier: ^5.36.1
+        version: 5.36.1
       '@tanstack/react-table':
         specifier: ^8.17.3
         version: 8.17.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -99,8 +99,8 @@ importers:
         specifier: ^9.2.0
         version: 9.2.0
       eslint-config-hyoban:
-        specifier: ^2.3.1
-        version: 2.3.1(@typescript-eslint/parser@7.9.0(eslint@9.2.0)(typescript@5.4.5))(eslint@9.2.0)(typescript@5.4.5)
+        specifier: ^2.3.4
+        version: 2.3.4(@typescript-eslint/parser@7.9.0(eslint@9.2.0)(typescript@5.4.5))(eslint@9.2.0)(typescript@5.4.5)
       i18next:
         specifier: ^23.11.4
         version: 23.11.4
@@ -121,7 +121,7 @@ importers:
         version: 0.5.5(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1))
       jotai-tanstack-query:
         specifier: ^0.8.5
-        version: 0.8.5(@tanstack/query-core@5.36.0)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1))(wonka@6.3.4)
+        version: 0.8.5(@tanstack/query-core@5.36.1)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1))(wonka@6.3.4)
       jotai-tanstack-table:
         specifier: ^0.0.1
         version: 0.0.1(@tanstack/table-core@8.17.3)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1))
@@ -372,6 +372,10 @@ packages:
 
   '@cloudflare/kv-asset-handler@0.3.0':
     resolution: {integrity: sha512-9CB/MKf/wdvbfkUdfrj+OkEwZ5b7rws0eogJ4293h+7b6KX5toPwym+VQKmILafNB9YiehqY0DlNrDcDhdWHSQ==}
+
+  '@es-joy/jsdoccomment@0.43.0':
+    resolution: {integrity: sha512-Q1CnsQrytI3TlCB1IVWXWeqUIPGVEKGaE7IbVdt13Nq/3i0JESAkQQERrfiQkmlpijl+++qyqPgaS31Bvc1jRQ==}
+    engines: {node: '>=16'}
 
   '@esbuild/aix-ppc64@0.20.2':
     resolution: {integrity: sha512-D+EBOJHXdNZcLJRBkhENNG8Wji2kgc9AZ9KiPr1JuZjsNtyHzrsfLRrY0tk2H2aoFu6RANO1y1iPPUCDYWkb5g==}
@@ -1481,8 +1485,8 @@ packages:
       typescript:
         optional: true
 
-  '@tanstack/query-core@5.36.0':
-    resolution: {integrity: sha512-B5BD3pg/mztDR36i77hGcyySKKeYrbM5mnogOROTBi1SUml5ByRK7PGUUl16vvubvQC+mSnqziFG/VIy/DE3FQ==}
+  '@tanstack/query-core@5.36.1':
+    resolution: {integrity: sha512-BteWYEPUcucEu3NBcDAgKuI4U25R9aPrHSP6YSf2NvaD2pSlIQTdqOfLRsxH9WdRYg7k0Uom35Uacb6nvbIMJg==}
 
   '@tanstack/react-table@8.17.3':
     resolution: {integrity: sha512-5gwg5SvPD3lNAXPuJJz1fOCEZYk9/GeBFH3w/hCgnfyszOIzwkwgp5I7Q4MJtn0WECp84b5STQUDdmvGi8m3nA==}
@@ -2118,8 +2122,8 @@ packages:
   eslint-config-flat-gitignore@0.1.5:
     resolution: {integrity: sha512-hEZLwuZjDBGDERA49c2q7vxc8sCGv8EdBp6PQYzGOMcHIgrfG9YOM6s/4jx24zhD+wnK9AI8mgN5RxSss5nClQ==}
 
-  eslint-config-hyoban@2.3.1:
-    resolution: {integrity: sha512-9bbsxsKfA7vJ4PxGuuB//VLrMO9KDFvkQnyiFiC0t6DWEekrNF1jixtx5RQC4j5SU4czctBmLEQ9L0pSkzfwEg==}
+  eslint-config-hyoban@2.3.4:
+    resolution: {integrity: sha512-D/W/+mYtXusGCKY86K+esPGGdse6r1fO3LjNjT8aSLGTdV+Cw4gVNYrOz0tdGr0wTgLtWOJUsrozaZcj9Ls3GQ==}
     peerDependencies:
       eslint: ^8.56.0 || ^9.0.0
       typescript: '>=4.7.4'
@@ -2132,8 +2136,8 @@ packages:
     peerDependencies:
       eslint: '*'
 
-  eslint-plugin-command@0.2.0:
-    resolution: {integrity: sha512-SGOMTs6Pu5HQKwCF9uZ214cdVlJ99U+6GRoUS01zeLZmcQcFU4YXy2KTKqXaEsNCvaFY91OrHRZbh4/1xt9Yzw==}
+  eslint-plugin-command@0.2.1:
+    resolution: {integrity: sha512-dA44MFCzjNpGlKa1xRA+qi2bTbpf5+zr2JgWUp9IFPteN+qCIS8DHu4EGmPs1680STcwQPvYBANFudpvIOeCYA==}
     peerDependencies:
       eslint: '*'
 
@@ -2185,8 +2189,8 @@ packages:
       eslint: ^8.57.0
       typescript: ^5.3.3
 
-  eslint-plugin-react-hooks@5.1.0-beta-e7d213dfb0-20240507:
-    resolution: {integrity: sha512-tZG6F/cSt0Q5oFbzx2b33P2ScXBbaaTrqwQ6k3ozEgWw3lFjCvJ9x1z5y5AA9phaZZFB7t/Z/TiS2HPcPOkL6w==}
+  eslint-plugin-react-hooks@5.1.0-rc-915b914b3a-20240515:
+    resolution: {integrity: sha512-paf59zX5WFcZrYcy77i3PerVW3pYgX8Gxq9448XCiQ6ghysqNH5WvvPNVQDrfBD5+j7I4dXVOs060MxikBNOLg==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -4133,6 +4137,15 @@ snapshots:
     dependencies:
       mime: 3.0.0
 
+  '@es-joy/jsdoccomment@0.43.0':
+    dependencies:
+      '@types/eslint': 8.56.10
+      '@types/estree': 1.0.5
+      '@typescript-eslint/types': 7.9.0
+      comment-parser: 1.4.1
+      esquery: 1.5.0
+      jsdoc-type-pratt-parser: 4.0.0
+
   '@esbuild/aix-ppc64@0.20.2':
     optional: true
 
@@ -5185,7 +5198,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.4.5
 
-  '@tanstack/query-core@5.36.0': {}
+  '@tanstack/query-core@5.36.1': {}
 
   '@tanstack/react-table@8.17.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -5925,7 +5938,7 @@ snapshots:
       find-up: 7.0.0
       parse-gitignore: 2.0.0
 
-  eslint-config-hyoban@2.3.1(@typescript-eslint/parser@7.9.0(eslint@9.2.0)(typescript@5.4.5))(eslint@9.2.0)(typescript@5.4.5):
+  eslint-config-hyoban@2.3.4(@typescript-eslint/parser@7.9.0(eslint@9.2.0)(typescript@5.4.5))(eslint@9.2.0)(typescript@5.4.5):
     dependencies:
       '@eslint-react/eslint-plugin': 1.5.11(@typescript-eslint/parser@7.9.0(eslint@9.2.0)(typescript@5.4.5))(eslint@9.2.0)(typescript@5.4.5)
       '@eslint/js': 9.2.0
@@ -5935,12 +5948,12 @@ snapshots:
       eslint: 9.2.0
       eslint-config-flat-gitignore: 0.1.5
       eslint-plugin-antfu: 2.2.0(eslint@9.2.0)
-      eslint-plugin-command: 0.2.0(eslint@9.2.0)
+      eslint-plugin-command: 0.2.1(eslint@9.2.0)
       eslint-plugin-hyoban: 0.4.1(eslint@9.2.0)(typescript@5.4.5)
       eslint-plugin-import-x: 0.5.0(eslint@9.2.0)(typescript@5.4.5)
       eslint-plugin-jsonc: 2.15.1(eslint@9.2.0)
       eslint-plugin-package-json: 0.13.1(eslint@9.2.0)(jsonc-eslint-parser@2.4.0)
-      eslint-plugin-react-hooks: 5.1.0-beta-e7d213dfb0-20240507(eslint@9.2.0)
+      eslint-plugin-react-hooks: 5.1.0-rc-915b914b3a-20240515(eslint@9.2.0)
       eslint-plugin-react-refresh: 0.4.7(eslint@9.2.0)
       eslint-plugin-regexp: 2.5.0(eslint@9.2.0)
       eslint-plugin-simple-import-sort: 12.1.0(eslint@9.2.0)
@@ -5966,8 +5979,9 @@ snapshots:
       '@antfu/utils': 0.7.8
       eslint: 9.2.0
 
-  eslint-plugin-command@0.2.0(eslint@9.2.0):
+  eslint-plugin-command@0.2.1(eslint@9.2.0):
     dependencies:
+      '@es-joy/jsdoccomment': 0.43.0
       eslint: 9.2.0
 
   eslint-plugin-hyoban@0.4.1(eslint@9.2.0)(typescript@5.4.5):
@@ -6079,7 +6093,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-hooks@5.1.0-beta-e7d213dfb0-20240507(eslint@9.2.0):
+  eslint-plugin-react-hooks@5.1.0-rc-915b914b3a-20240515(eslint@9.2.0):
     dependencies:
       eslint: 9.2.0
 
@@ -6615,9 +6629,9 @@ snapshots:
     dependencies:
       jotai: 2.8.0(@types/react@18.3.2)(react@18.3.1)
 
-  jotai-tanstack-query@0.8.5(@tanstack/query-core@5.36.0)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1))(wonka@6.3.4):
+  jotai-tanstack-query@0.8.5(@tanstack/query-core@5.36.1)(jotai@2.8.0(@types/react@18.3.2)(react@18.3.1))(wonka@6.3.4):
     dependencies:
-      '@tanstack/query-core': 5.36.0
+      '@tanstack/query-core': 5.36.1
       jotai: 2.8.0(@types/react@18.3.2)(react@18.3.1)
       wonka: 6.3.4
 

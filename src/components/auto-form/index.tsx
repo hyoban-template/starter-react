@@ -81,17 +81,15 @@ export function AutoForm<SchemaType extends ZodObjectOrWrapped>({
           }
           return acc
         }, [])
-        .flatMap((group) => {
-          return Array.isArray(group)
-            ? {
-                label: '',
-                fields: group,
-              }
-            : {
-                label: Object.keys(group)[0],
-                fields: Object.values(group).flat(),
-              }
-        }),
+        .flatMap(group => Array.isArray(group)
+          ? {
+              label: '',
+              fields: group,
+            }
+          : {
+              label: Object.keys(group)[0],
+              fields: Object.values(group).flat(),
+            }),
     [groups, shapeKeys],
   )
 
